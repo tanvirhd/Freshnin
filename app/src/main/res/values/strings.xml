@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Freshnin</string>
+    <string name="password">Password</string>
+    <string name="phone_number_email">Phone Number / Email</string>
 </resources>

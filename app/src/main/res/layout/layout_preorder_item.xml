@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginRight="14dp"
+        android:elevation="10dp"
+        app:cardCornerRadius="12dp">
+
+        <ImageView
+            android:id="@+id/ivFoodImage"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:alpha="0.7"
+            android:scaleType="centerCrop"
+            android:src="@drawable/food_pasta" />
+
+        <TextView
+            android:id="@+id/tvFoodTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="100dp"
+            android:text="Masala Pasta"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/tvPreOrderDateLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="125dp"
+            android:text="Order going on till"
+            android:textColor="@color/black"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tvOrderRemainday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="125dp"
+            android:text="WednessDay"
+            android:textColor="@color/black"
+            android:textSize="14dp" />
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
