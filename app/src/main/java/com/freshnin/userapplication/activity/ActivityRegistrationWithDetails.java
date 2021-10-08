@@ -23,7 +23,7 @@ public class ActivityRegistrationWithDetails extends AppCompatActivity {
         btnRegiConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(ActivityRegistrationWithDetails.this, ActivityProductDetails.class);
+                Intent intent=new Intent(ActivityRegistrationWithDetails.this, ActivityPreOrderHistory.class);
                 startActivity(intent);
             }
         });

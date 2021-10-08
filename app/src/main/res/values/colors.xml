@@ -11,4 +11,6 @@
 
     <color name="theamColor">#4B82F3</color>
     <color name="appbg">#EEF0F3</color>
+    <color name="ash">#BCBCBC</color>
+    <color name="fade_ash">#DFDEDE</color>
 </resources>

@@ -57,6 +57,6 @@
             android:text="WednessDay"
             android:textColor="@color/black"
             android:textSize="14dp" />
-    </androidx.cardview.widget.CardView>
 
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>
