@@ -1,18 +1,36 @@
 package com.freshnin.userapplication.activity;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
+import android.view.View;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.freshnin.userapplication.R;
 
 public class ActivityProductDetails extends AppCompatActivity {
+    private static final String TAG = "ActivityProductDetails";
+
+    private Toolbar toolbar;
+
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
+
+        toolbar=findViewById(R.id.toolbarActivityProfuctDetails);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white,null));
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Bogurar Doi");
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+
 
     }
 }

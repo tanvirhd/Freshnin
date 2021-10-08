@@ -25,7 +25,9 @@
         <activity android:name=".activity.ActivityRegistrationWithPhone" />
         <activity android:name=".activity.ActivityVerification" />
         <activity android:name=".activity.ActivityRegistrationWithDetails" />
-        <activity android:name=".activity.ActivityProductDetails" />
+        <activity android:name=".activity.ActivityProductDetails" >
+
+        </activity>
         <activity android:name=".activity.ActivityPreOrderHistory"
             android:parentActivityName=".activity.ActivityHome"></activity>
     </application>
