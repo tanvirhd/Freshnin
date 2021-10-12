@@ -1,6 +1,8 @@
 package com.freshnin.userapplication.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,12 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.adapter.AdapterPreOrderHistoryRecy;
+import com.freshnin.userapplication.callbacks.AdapterPreOrderHistoryRecycCallbacks;
 import com.freshnin.userapplication.model.ModelPreOrderHistory;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActivityPreOrderHistory extends AppCompatActivity {
+public class ActivityPreOrderHistory extends AppCompatActivity implements AdapterPreOrderHistoryRecycCallbacks {
 
     private Toolbar toolbar;
     private RecyclerView preOrderHistoryRecy;
@@ -29,7 +32,7 @@ public class ActivityPreOrderHistory extends AppCompatActivity {
 
         toolbar=findViewById(R.id.preOrder_history_list_main_toolbar);
         setSupportActionBar(toolbar);
-
+        getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
@@ -38,7 +41,8 @@ public class ActivityPreOrderHistory extends AppCompatActivity {
         preOrderHistoryRecy=findViewById(R.id.preOrderHistoryRecy);
         preOrderHistoryRecy.setLayoutManager(new LinearLayoutManager(ActivityPreOrderHistory.this));
 
-        adapterPreOrderHistoryRecy=new AdapterPreOrderHistoryRecy(preOrderHistoryList,ActivityPreOrderHistory.this);
+        adapterPreOrderHistoryRecy=new AdapterPreOrderHistoryRecy(
+                preOrderHistoryList,ActivityPreOrderHistory.this,ActivityPreOrderHistory.this);
         preOrderHistoryRecy.setAdapter(adapterPreOrderHistoryRecy);
     }
 
@@ -116,5 +120,13 @@ public class ActivityPreOrderHistory extends AppCompatActivity {
         ));
 
 
+    }
+
+
+    @Override
+    public void onDetailsClicked(int index) {
+        Intent gotoHLogin =new Intent(ActivityPreOrderHistory.this,ActivityLogIn.class);
+        gotoHLogin.putExtra("key_int_value",152);
+        startActivity(gotoHLogin);
     }
 }

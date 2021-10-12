@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,11 +22,11 @@ public class ActivityLogIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
-
         mLogIn=findViewById(R.id.btnLogin);
         mNewRegister=findViewById(R.id.tv_register);
 
+        int data=getIntent().getIntExtra("key_int_value",-1);
+        Toast.makeText(ActivityLogIn.this, String.valueOf(data), Toast.LENGTH_SHORT).show();
 
         mNewRegister.setOnClickListener(new View.OnClickListener() {
             @Override

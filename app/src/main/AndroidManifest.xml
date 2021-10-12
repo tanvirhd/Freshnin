@@ -25,11 +25,6 @@
         <activity
             android:name=".activity.ActivitySplashScreen"
             android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
         </activity>
         <activity android:name=".activity.ActivityRegistrationWithPhone" />
         <activity android:name=".activity.ActivityVerification" />
@@ -37,13 +32,15 @@
         <activity android:name=".activity.ActivityPreOrderProductDetails" />
         <activity
             android:name=".activity.ActivityPreOrderHistory"
-            android:parentActivityName=".activity.ActivityHome" />
-        <activity android:name=".activity.ActivityPreOrderFoodList">
+            android:parentActivityName=".activity.ActivityHome" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".activity.ActivityPreOrderFoodList">
+
         </activity>
     </application>
 
