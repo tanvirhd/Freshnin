@@ -8,7 +8,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.freshnin.userapplication.R;
 
-public class ActivityProductDetails extends AppCompatActivity {
+public class ActivityPreOrderProductDetails extends AppCompatActivity {
     private static final String TAG = "ActivityProductDetails";
 
     private Toolbar toolbar;
@@ -16,7 +16,7 @@ public class ActivityProductDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product_details);
+        setContentView(R.layout.activity_preorder_product_details);
 
         toolbar=findViewById(R.id.toolbarActivityProfuctDetails);
         toolbar.setTitleTextColor(getResources().getColor(R.color.white,null));

@@ -24,9 +24,9 @@
             android:id="@+id/ivFoodImage"
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            android:alpha="0.7"
             android:scaleType="centerCrop"
-            android:src="@drawable/food_pasta" />
+            android:src="@drawable/food_pasta"
+            android:foreground="@drawable/bg_gradient_whitish"/>
 
         <TextView
             android:id="@+id/tvFoodTitle"

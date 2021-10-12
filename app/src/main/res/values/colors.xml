@@ -14,6 +14,8 @@
     <color name="appbg">#EEF0F3</color>
     <color name="ash">#BCBCBC</color>
     <color name="fade_ash">#DFDEDE</color>
+
+    <color name="price_color">#EC3131</color>
 </resources>
 
 

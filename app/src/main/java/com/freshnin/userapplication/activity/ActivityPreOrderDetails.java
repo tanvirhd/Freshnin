@@ -8,16 +8,16 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.freshnin.userapplication.R;
 
-public class ActivityPreOrderHistoryDetails extends AppCompatActivity {
+public class ActivityPreOrderDetails extends AppCompatActivity {
 
     private Toolbar toolbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_preorder_history_details);
+        setContentView(R.layout.activity_preorder_details);
 
-        toolbar=findViewById(R.id.main_toolbar);
+        toolbar=findViewById(R.id.preOrder_history_list_main_toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

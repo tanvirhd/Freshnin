@@ -27,7 +27,7 @@
                 android:src="@drawable/food_pasta"
                 app:layout_collapseMode="parallax"
                 app:layout_collapseParallaxMultiplier="0.7"
-                android:scaleType="fitXY"/>
+                android:scaleType="fitXY" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbarActivityProfuctDetails"
@@ -79,7 +79,7 @@
                     app:layout_constraintVertical_bias="0.0" />-->
 
                 <TextView
-                    android:id="@+id/tvProductDetails"
+                    android:id="@+id/tvFoodDetails"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -105,11 +105,11 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvProductDetails"
+                    app:layout_constraintTop_toBottomOf="@+id/tvFoodDetails"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
-                    android:id="@+id/tvProductPrice"
+                    android:id="@+id/tvPerFoodPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -138,11 +138,11 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvProductPrice"
+                    app:layout_constraintTop_toBottomOf="@+id/tvPerFoodPrice"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
-                    android:id="@+id/tvProductWeight"
+                    android:id="@+id/tvFoodWeight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -153,7 +153,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/textView7"
-                    app:layout_constraintTop_toBottomOf="@+id/tvProductPrice"
+                    app:layout_constraintTop_toBottomOf="@+id/tvPerFoodPrice"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
@@ -322,8 +322,8 @@
                     android:textColor="@color/black"
                     android:textSize="25dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/tvProductDetails"
-                    app:layout_constraintStart_toStartOf="@+id/tvProductDetails"
+                    app:layout_constraintEnd_toEndOf="@+id/tvFoodDetails"
+                    app:layout_constraintStart_toStartOf="@+id/tvFoodDetails"
                     app:layout_constraintTop_toBottomOf="@+id/textView13"
                     app:layout_constraintVertical_bias="1.0" />
 

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="310dp"
+    android:layout_height="280dp"
     android:background="@color/appbg">
 
 
@@ -23,7 +23,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/tvOrder"
+            android:id="@+id/tvOrderWordView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -43,23 +43,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
-            android:layout_toEndOf="@id/tvOrder"
+            android:layout_toEndOf="@id/tvOrderWordView"
             android:text="Pre26453"
             android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/tvOrder"
+            app:layout_constraintBottom_toBottomOf="@+id/tvOrderWordView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/tvOrder"
-            app:layout_constraintTop_toTopOf="@+id/tvOrder" />
+            app:layout_constraintStart_toEndOf="@+id/tvOrderWordView"
+            app:layout_constraintTop_toTopOf="@+id/tvOrderWordView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/inner_constrain"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:background="@drawable/bg_preorder_history"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -79,20 +79,26 @@
             android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/delivery"
+            android:id="@+id/deliveryWordView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:text="Delivery Date:"
             android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/tvProductName"
-            app:layout_constraintTop_toBottomOf="@+id/tvProductName" />
+            app:layout_constraintTop_toBottomOf="@+id/tvProductName"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/tvDeliveryDate"
@@ -101,42 +107,47 @@
             android:layout_marginLeft="6dp"
             android:text="23 Sep 2021"
             android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="@+id/delivery"
+            app:layout_constraintBottom_toBottomOf="@+id/deliveryWordView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/delivery"
-            app:layout_constraintTop_toTopOf="@+id/delivery" />
+            app:layout_constraintStart_toEndOf="@+id/deliveryWordView"
+            app:layout_constraintTop_toTopOf="@+id/deliveryWordView" />
 
         <TextView
-            android:id="@+id/advancepayment"
+            android:id="@+id/advancePaymentWordView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:text="Advance Paynment Satus"
             android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/delivery"
-            app:layout_constraintTop_toBottomOf="@+id/delivery" />
+            app:layout_constraintStart_toStartOf="@+id/deliveryWordView"
+            app:layout_constraintTop_toBottomOf="@+id/deliveryWordView"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/tvVerificationStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
             android:text="Verification Pending"
             android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/advancepayment"
-            app:layout_constraintTop_toBottomOf="@+id/advancepayment" />
+            app:layout_constraintStart_toStartOf="@+id/advancePaymentWordView"
+            app:layout_constraintTop_toBottomOf="@+id/advancePaymentWordView"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/btnPreorderDetailsView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="18dp"
             android:layout_marginBottom="12dp"
             android:background="@drawable/bg_preorder_history_details_buttton"

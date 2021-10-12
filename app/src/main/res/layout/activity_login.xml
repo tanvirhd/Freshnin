@@ -11,16 +11,18 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="50dp"
         android:text="Log In"
         android:textColor="@color/black"
         android:textSize="40dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.097"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.059" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_field_login_with_phone"
@@ -67,7 +69,7 @@
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="150dp"
-        android:layout_height="60dp"
+        android:layout_height="45dp"
         android:background="@drawable/bg_button"
         android:text="Login"
         android:textAllCaps="false"
