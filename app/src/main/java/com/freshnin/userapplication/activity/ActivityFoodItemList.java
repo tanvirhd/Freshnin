@@ -31,7 +31,7 @@ public class ActivityFoodItemList extends AppCompatActivity {
 
         intList();
 
-        toolbar=findViewById(R.id.toolbar_activity_food_item_list);
+        toolbar=findViewById(R.id.afil_toolbar_activity_food_item_list);
         setSupportActionBar(toolbar);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -42,7 +42,7 @@ public class ActivityFoodItemList extends AppCompatActivity {
         });
 
 
-        recyclerViewFoodItem=findViewById(R.id.foodItemRecy);
+        recyclerViewFoodItem=findViewById(R.id.afil_foodItemRecy);
         recyclerViewFoodItem.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
 
         adapterFoodItemListRecy=new AdapterFoodItemListRecy(foodItems,ActivityFoodItemList.this);

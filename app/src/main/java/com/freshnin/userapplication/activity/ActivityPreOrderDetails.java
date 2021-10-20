@@ -17,7 +17,7 @@ public class ActivityPreOrderDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preorder_details);
 
-        toolbar=findViewById(R.id.preOrder_history_list_main_toolbar);
+        toolbar=findViewById(R.id.apoh_preOrder_history_list_main_toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

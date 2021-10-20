@@ -53,9 +53,9 @@ public class AdapterMyCartItemListRecy extends RecyclerView.Adapter<AdapterMyCar
 
         public ViewHolderAdapterMyCartItemListRecy(@NonNull View itemView) {
             super(itemView);
-            tvCartPorductName=itemView.findViewById(R.id.tv_cart_food_name);
-            tvCartProductPrice=itemView.findViewById(R.id.tv_cart_food_pice);
-            tvCartProductQuantity=itemView.findViewById(R.id.tv_cart_food_quantity);
+            tvCartPorductName=itemView.findViewById(R.id.amc_tv_cart_food_name);
+            tvCartProductPrice=itemView.findViewById(R.id.amc_tv_cart_food_pice);
+            tvCartProductQuantity=itemView.findViewById(R.id.amc_tv_cart_food_quantity);
 
 //            btnRemoveItem=itemView.findViewById(R.id.btn_cart_cancle_item);
 //            btnIncreaseItem=itemView.findViewById(R.id.btn_cart_quantity_increment);

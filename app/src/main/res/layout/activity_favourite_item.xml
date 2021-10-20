@@ -5,35 +5,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/appbg"
-    tools:context=".activity.ActivityFoodItemList">
+    tools:context=".activity.ActivityFavouriteItem">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/afi_appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/afil_toolbar_activity_food_item_list"
+            android:id="@+id/afi_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:titleTextColor="@color/black"
-            app:navigationIcon="@drawable/icon_back_button"
             android:background="@color/appbg"
-            app:title="Dry Food"
-            />
+            app:navigationIcon="@drawable/icon_back_button"
+            app:title="Favourites"
+            app:titleTextColor="@color/black" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/afil_foodItemRecy"
-        android:layout_width="match_parent"
+        android:id="@+id/afi_favourite_food_recy"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginTop="8dp"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/layout_food_item_cardview" />
+        tools:listitem="@layout/layout_favourite_item_cardview"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -18,7 +18,7 @@ public class ActivityPreOrderProductDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preorder_product_details);
 
-        toolbar=findViewById(R.id.toolbarActivityProfuctDetails);
+        toolbar=findViewById(R.id.apopd_toolbarActivityProfuctDetails);
         toolbar.setTitleTextColor(getResources().getColor(R.color.white,null));
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Bogurar Doi");

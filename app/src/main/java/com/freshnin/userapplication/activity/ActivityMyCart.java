@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.adapter.AdapterMyCartItemListRecy;
@@ -28,7 +27,7 @@ public class ActivityMyCart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_cart);
 
-        toolbar=findViewById(R.id.cart_main_toolbar);
+        toolbar=findViewById(R.id.amc_cart_main_toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -40,7 +39,7 @@ public class ActivityMyCart extends AppCompatActivity {
             }
         });
 
-        myCartRecyclerView=findViewById(R.id.myCart_recyclerView);
+        myCartRecyclerView=findViewById(R.id.amc_myCart_recyclerView);
         initList();
 
         myCartRecyclerView.setLayoutManager(new LinearLayoutManager(ActivityMyCart.this));

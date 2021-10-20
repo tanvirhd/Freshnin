@@ -2,7 +2,6 @@ package com.freshnin.userapplication.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,7 +29,7 @@ public class ActivityPreOrderHistory extends AppCompatActivity implements Adapte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preorder_history);
 
-        toolbar=findViewById(R.id.preOrder_history_list_main_toolbar);
+        toolbar=findViewById(R.id.apoh_preOrder_history_list_main_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -38,7 +37,7 @@ public class ActivityPreOrderHistory extends AppCompatActivity implements Adapte
 
         initList();
 
-        preOrderHistoryRecy=findViewById(R.id.preOrderHistoryRecy);
+        preOrderHistoryRecy=findViewById(R.id.apoh_preOrderHistoryRecy);
         preOrderHistoryRecy.setLayoutManager(new LinearLayoutManager(ActivityPreOrderHistory.this));
 
         adapterPreOrderHistoryRecy=new AdapterPreOrderHistoryRecy(

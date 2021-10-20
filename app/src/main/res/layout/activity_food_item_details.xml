@@ -20,7 +20,7 @@
             app:scrimAnimationDuration="400">
 
             <ImageView
-                android:id="@+id/ivFoodPicture"
+                android:id="@+id/afid_ivFoodPicture"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:scaleType="fitXY"
@@ -30,7 +30,7 @@
 
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar_food_item_details"
+                android:id="@+id/afid_toolbar_food_item_details"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
@@ -43,13 +43,13 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout6"
+        android:id="@+id/afid_constraintLayout6"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.core.widget.NestedScrollView
-            android:id="@+id/scrollView"
+            android:id="@+id/afid_scrollView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:fillViewport="true"
@@ -64,7 +64,7 @@
 
 
                 <TextView
-                    android:id="@+id/tvFoodDetails"
+                    android:id="@+id/afid_tvFoodDetails"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -79,7 +79,7 @@
                     app:layout_constraintVertical_bias="0.004" />
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/afid_textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -90,11 +90,11 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvFoodDetails"
+                    app:layout_constraintTop_toBottomOf="@+id/afid_tvFoodDetails"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
-                    android:id="@+id/tvPerFoodPrice"
+                    android:id="@+id/afid_tvPerFoodPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -107,11 +107,11 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView6"
+                    app:layout_constraintTop_toBottomOf="@+id/afid_textView6"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
-                    android:id="@+id/textView7"
+                    android:id="@+id/afid_textView7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -123,11 +123,11 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvPerFoodPrice"
+                    app:layout_constraintTop_toBottomOf="@+id/afid_tvPerFoodPrice"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
-                    android:id="@+id/tvFoodWeight"
+                    android:id="@+id/afid_tvFoodWeight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -137,12 +137,12 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/textView7"
-                    app:layout_constraintTop_toBottomOf="@+id/tvPerFoodPrice"
+                    app:layout_constraintStart_toEndOf="@+id/afid_textView7"
+                    app:layout_constraintTop_toBottomOf="@+id/afid_tvPerFoodPrice"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
-                    android:id="@+id/btnAddToCart"
+                    android:id="@+id/afid_btnAddToCart"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="14dp"
@@ -153,13 +153,13 @@
                     android:textColor="@color/white"
                     android:textSize="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline"
+                    app:layout_constraintEnd_toStartOf="@+id/afid_guideline"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="1.0" />
 
                 <TextView
-                    android:id="@+id/btn_Buy_Now"
+                    android:id="@+id/afid_btn_Buy_Now"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="14dp"
@@ -171,12 +171,12 @@
                     android:textSize="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/guideline"
+                    app:layout_constraintStart_toStartOf="@+id/afid_guideline"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="1.0" />
 
                 <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline"
+                    android:id="@+id/afid_guideline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"

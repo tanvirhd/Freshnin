@@ -45,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <com.chaos.view.PinView
-        android:id="@+id/pvOtp"
+        android:id="@+id/av_pvOtp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="140dp"
@@ -64,7 +64,7 @@
         app:lineColor="@color/theamColor" />
 
     <Button
-        android:id="@+id/btnVarify"
+        android:id="@+id/av_btnVarify"
         android:layout_width="150dp"
         android:layout_height="45dp"
         android:layout_marginTop="8dp"
@@ -73,12 +73,12 @@
         android:textAllCaps="false"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/pvOtp"
-        app:layout_constraintStart_toStartOf="@+id/pvOtp"
-        app:layout_constraintTop_toBottomOf="@+id/pvOtp" />
+        app:layout_constraintEnd_toEndOf="@+id/av_pvOtp"
+        app:layout_constraintStart_toStartOf="@+id/av_pvOtp"
+        app:layout_constraintTop_toBottomOf="@+id/av_pvOtp" />
 
     <TextView
-        android:id="@+id/tv_resend_otp"
+        android:id="@+id/av_tv_resend_otp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -86,22 +86,22 @@
         android:textSize="16dp"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/btnVarify"
-        app:layout_constraintStart_toStartOf="@+id/btnVarify"
-        app:layout_constraintTop_toBottomOf="@+id/btnVarify"
+        app:layout_constraintEnd_toEndOf="@+id/av_btnVarify"
+        app:layout_constraintStart_toStartOf="@+id/av_btnVarify"
+        app:layout_constraintTop_toBottomOf="@+id/av_btnVarify"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/tv_otp_countdown"
+        android:id="@+id/av_tv_otp_countdown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:textSize="16dp"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/btnVarify"
-        app:layout_constraintStart_toStartOf="@+id/btnVarify"
-        app:layout_constraintTop_toBottomOf="@+id/btnVarify"
+        app:layout_constraintEnd_toEndOf="@+id/av_btnVarify"
+        app:layout_constraintStart_toStartOf="@+id/av_btnVarify"
+        app:layout_constraintTop_toBottomOf="@+id/av_btnVarify"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

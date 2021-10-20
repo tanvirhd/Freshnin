@@ -28,14 +28,14 @@ public class ActivityPreOrderFoodList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preorder_item_list);
 
-        toolbar=findViewById(R.id.preOrder_list_toolbar);
+        toolbar=findViewById(R.id.apofl_preOrder_list_toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         initList();
 
-        preOrderFoodRecy=findViewById(R.id.pre_Order_FoodRecy);
+        preOrderFoodRecy=findViewById(R.id.apofl_pre_Order_FoodRecy);
         preOrderFoodRecy.setLayoutManager(new LinearLayoutManager(ActivityPreOrderFoodList.this));
 
         adapterPreOrderFoodRecy=new AdapterPreOrderFoodRecy(preOrderFoodList,ActivityPreOrderFoodList.this);

@@ -26,9 +26,9 @@ public class ActivityVerification extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_varification);
 
-        mResendOtp=findViewById(R.id.tv_resend_otp);
-        mOtpTimeCountdown=findViewById(R.id.tv_otp_countdown);
-        btnVerifyOtp=findViewById(R.id.btnVarify);
+        mResendOtp=findViewById(R.id.av_tv_resend_otp);
+        mOtpTimeCountdown=findViewById(R.id.av_tv_otp_countdown);
+        btnVerifyOtp=findViewById(R.id.av_btnVarify);
 
         btnVerifyOtp.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    android:background="@drawable/bg_product_quantity">
+    android:background="@color/fade_ash"
+    android:layout_margin="8dp">
 
-    <TextView
-        android:id="@+id/amc_tv_cart_food_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:text="Bogurar Doi"
-        android:textColor="@color/black"
-        android:textSize="24dp"
-        android:textStyle="bold"
+    <ImageView
+        android:id="@+id/apoic_iv_food_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="10dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/food_bogurar_doi"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -24,44 +22,46 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-
-    <ImageView
-        android:id="@+id/amc_btn_cart_cancle_item"
+    <TextView
+        android:id="@+id/apoic_tvFoodName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:src="@drawable/icon_cancle"
-        app:layout_constraintBottom_toBottomOf="@+id/amc_tv_cart_food_name"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:text="Bogurar Doi"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/amc_tv_cart_food_name"
-        app:layout_constraintTop_toTopOf="@+id/amc_tv_cart_food_name"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/apoic_iv_food_image"
+        app:layout_constraintTop_toTopOf="@+id/apoic_iv_food_image"
         app:layout_constraintVertical_bias="0.0" />
 
+
     <LinearLayout
-        android:id="@+id/amc_linearLayout"
+        android:id="@+id/apoic_linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginTop="16dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/amc_tv_cart_food_name"
-        app:layout_constraintTop_toBottomOf="@+id/amc_tv_cart_food_name"
+        app:layout_constraintStart_toStartOf="@+id/apoic_tvFoodName"
+        app:layout_constraintTop_toBottomOf="@+id/apoic_tvFoodName"
         app:layout_constraintVertical_bias="0.0">
 
         <ImageView
-            android:id="@+id/amc_btn_cart_quantity_decrement"
+            android:id="@+id/apoic_btn_cart_quantity_decrement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_item_increse_decrease_btn"
+            android:background="@color/ash"
             android:padding="4dp"
             android:src="@drawable/icon_remove" />
 
         <TextView
-            android:id="@+id/amc_tv_cart_food_quantity"
+            android:id="@+id/apoic_tv_cart_food_quantity"
             android:layout_width="35dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="18dp"
@@ -75,28 +75,26 @@
             android:textSize="25dp" />
 
         <ImageView
-            android:id="@+id/amc_btn_cart_quantity_increment"
+            android:id="@+id/apoic_btn_cart_quantity_increment"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@drawable/bg_item_increse_decrease_btn"
+            android:background="@color/ash"
             android:padding="4dp"
             android:src="@drawable/icon_add" />
 
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/amc_tv_cart_food_pice"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="200 Tk"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/amc_linearLayout"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/icon_cancle"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.89"
-        app:layout_constraintStart_toEndOf="@+id/amc_linearLayout"
-        app:layout_constraintTop_toTopOf="@+id/amc_linearLayout" />
-
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/apoic_tvFoodName"
+        app:layout_constraintTop_toTopOf="@+id/apoic_iv_food_image"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

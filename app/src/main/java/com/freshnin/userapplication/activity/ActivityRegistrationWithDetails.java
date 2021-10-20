@@ -18,7 +18,7 @@ public class ActivityRegistrationWithDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_with_details);
 
-        btnRegiConfirm=findViewById(R.id.btnRegConfirm);
+        btnRegiConfirm=findViewById(R.id.arwd_btnRegConfirm);
 
         btnRegiConfirm.setOnClickListener(new View.OnClickListener() {
             @Override

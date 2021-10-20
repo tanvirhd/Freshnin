@@ -10,6 +10,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Freshnin">
         <activity
+            android:name=".activity.ActivityOldOrderHistory"
+            android:exported="true" />
+        <activity
+            android:name=".activity.ActivityCheckOut"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.ActivityFavouriteItem"
+            android:exported="true"></activity>
+        <activity
+            android:name=".activity.ActivityPreOrderItemCart"
+            android:exported="true" />
+        <activity
             android:name=".activity.ActivityMyCart"
             android:exported="true" />
         <activity
@@ -17,31 +35,22 @@
             android:exported="true" />
         <activity
             android:name=".activity.ActivityFoodItemList"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".activity.ActivityHome"
             android:exported="true" />
         <activity android:name=".activity.ActivityLogIn" />
         <activity
             android:name=".activity.ActivitySplashScreen"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity android:name=".activity.ActivityRegistrationWithPhone" />
         <activity android:name=".activity.ActivityVerification" />
         <activity android:name=".activity.ActivityRegistrationWithDetails" />
         <activity android:name=".activity.ActivityPreOrderProductDetails" />
         <activity
             android:name=".activity.ActivityPreOrderHistory"
-            android:parentActivityName=".activity.ActivityHome" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activity.ActivityPreOrderFoodList">
-
-        </activity>
+            android:parentActivityName=".activity.ActivityHome" />
+        <activity android:name=".activity.ActivityPreOrderFoodList" />
     </application>
 
 </manifest>

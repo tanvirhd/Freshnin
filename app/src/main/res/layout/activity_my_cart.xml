@@ -8,7 +8,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout2"
+        android:id="@+id/amc_appBarLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/appbg"
@@ -16,7 +16,7 @@
         app:liftOnScroll="true">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/cart_main_toolbar"
+            android:id="@+id/amc_cart_main_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize">
 
@@ -32,24 +32,24 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout7"
+        android:id="@+id/amc_constraintLayout7"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/myCart_recyclerView"
+            android:id="@+id/amc_myCart_recyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/btnConstrain"
+            app:layout_constraintBottom_toTopOf="@+id/amc_btnConstrain"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/layout_mycart_item_cardview" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/btnConstrain"
+            android:id="@+id/amc_btnConstrain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -61,10 +61,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/myCart_recyclerView">
+            app:layout_constraintTop_toBottomOf="@+id/amc_myCart_recyclerView">
 
             <TextView
-                android:id="@+id/textView23"
+                android:id="@+id/amc_textView23"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"

@@ -63,15 +63,15 @@ public class AdapterFoodItemListRecy extends RecyclerView.Adapter<AdapterFoodIte
 
         public ViewHolderAdapterFoodItemListRecy(@NonNull View itemView) {
             super(itemView);
-            ivFoodImage=itemView.findViewById(R.id.iv_food_picture);
-            tvFoodName=itemView.findViewById(R.id.tvFoodName);
-            tvFoodPrice=itemView.findViewById(R.id.tvFoodPrice);
+            ivFoodImage=itemView.findViewById(R.id.afil_iv_food_picture);
+            tvFoodName=itemView.findViewById(R.id.afil_tvFoodName);
+            tvFoodPrice=itemView.findViewById(R.id.afil_tvFoodPrice);
 
-            notFavouriteIcon=itemView.findViewById(R.id.ivNotFavouriteFood);
-            favouriteIcon =itemView.findViewById(R.id.ivFavouriteFood);
+            notFavouriteIcon=itemView.findViewById(R.id.afil_ivNotFavouriteFood);
+            favouriteIcon =itemView.findViewById(R.id.afil_ivFavouriteFood);
 
-            btnAddtoCart=itemView.findViewById(R.id.btn_add_to_cart);
-            priceWord=itemView.findViewById(R.id.priceWord);
+            btnAddtoCart=itemView.findViewById(R.id.afil_btn_add_to_cart);
+            priceWord=itemView.findViewById(R.id.afil_priceWord);
 
 
         }

@@ -54,10 +54,10 @@ public class AdapterPreOrderFoodRecy extends RecyclerView.Adapter<AdapterPreOrde
         public ViewHolderAdapterPreOrderFoodRecy(@NonNull View itemView) {
             super(itemView);
 
-            tvPreOrderFoodTitle =itemView.findViewById(R.id.tvFoodTitle);
-            tvOrderGoingOnTillDay =itemView.findViewById(R.id.tvOrderRemainday);
+            tvPreOrderFoodTitle =itemView.findViewById(R.id.apofl_tvFoodTitle);
+            tvOrderGoingOnTillDay =itemView.findViewById(R.id.apofl_tvOrderRemainday);
 
-            ivPreOrderFoodImage=itemView.findViewById(R.id.ivFoodImage);
+            ivPreOrderFoodImage=itemView.findViewById(R.id.apofl_ivFoodImage);
         }
     }
 

@@ -20,7 +20,7 @@ public class ActivityFoodItemDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_item_details);
 
-        toolbar=findViewById(R.id.toolbar_food_item_details);
+        toolbar=findViewById(R.id.afid_toolbar_food_item_details);
         setSupportActionBar(toolbar);
 
         //toolbar.setBackgroundColor(R.color.appbg);

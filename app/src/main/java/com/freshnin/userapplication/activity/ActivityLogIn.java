@@ -22,8 +22,8 @@ public class ActivityLogIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mLogIn=findViewById(R.id.btnLogin);
-        mNewRegister=findViewById(R.id.tv_register);
+        mLogIn=findViewById(R.id.al_btnLogin);
+        mNewRegister=findViewById(R.id.al_tv_register);
 
         int data=getIntent().getIntExtra("key_int_value",-1);
         Toast.makeText(ActivityLogIn.this, String.valueOf(data), Toast.LENGTH_SHORT).show();

@@ -10,6 +10,8 @@ public class ModelFoodItem {
 
     private int foodImage;
 
+    private String quantityOfFood;
+
 
     public ModelFoodItem(String foodName, String foodPrice, String foodWeight, boolean isFavourite, int foodImage) {
         this.foodName = foodName;
@@ -17,6 +19,26 @@ public class ModelFoodItem {
         this.foodWeight = foodWeight;
         this.isFavourite = isFavourite;
         this.foodImage = foodImage;
+    }
+
+    // For Favourite Food List
+    public ModelFoodItem(String foodName, String foodPrice, String foodWeight, int foodImage) {
+        this.foodName = foodName;
+        this.foodPrice = foodPrice;
+        this.foodWeight = foodWeight;
+        this.foodImage = foodImage;
+    }
+    // For check Out
+    public ModelFoodItem(String foodName, String foodPrice, String quantityOfFood) {
+        this.foodName = foodName;
+        this.foodPrice = foodPrice;
+        this.quantityOfFood = quantityOfFood;
+    }
+
+    // For Billing in check out
+    public ModelFoodItem(String foodName, String foodPrice) {
+        this.foodName = foodName;
+        this.foodPrice = foodPrice;
     }
 
     public String getFoodName() {
@@ -57,5 +79,13 @@ public class ModelFoodItem {
 
     public void setFoodImage(int foodImage) {
         this.foodImage = foodImage;
+    }
+
+    public String getQuantityOfFood() {
+        return quantityOfFood;
+    }
+
+    public void setQuantityOfFood(String quantityOfFood) {
+        this.quantityOfFood = quantityOfFood;
     }
 }

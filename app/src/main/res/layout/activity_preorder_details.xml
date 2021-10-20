@@ -13,12 +13,12 @@
         app:liftOnScroll="true">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/preOrder_Details_main_toolbar"
+            android:id="@+id/apod_preOrder_Details_main_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvPreOrderId_fromHistoryDetails"
+                android:id="@+id/apod_tvPreOrderId_fromHistoryDetails"
                 style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -31,14 +31,14 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constrain_layout_from_history_details"
+        android:id="@+id/apod_constrain_layout_from_history_details"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/appbg"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout2"
+            android:id="@+id/apod_constraintLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -52,7 +52,7 @@
             app:layout_constraintVertical_bias="0.0">
 
             <ImageView
-                android:id="@+id/ivItemImage"
+                android:id="@+id/apod_ivItemImage"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:scaleType="fitCenter"
@@ -65,7 +65,7 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/tvItemName"
+                android:id="@+id/apod_tvItemName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -77,12 +77,12 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/ivItemImage"
+                app:layout_constraintStart_toEndOf="@+id/apod_ivItemImage"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/textView15"
+                android:id="@+id/apod_textView15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -93,12 +93,12 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/tvItemName"
-                app:layout_constraintTop_toBottomOf="@+id/tvItemName"
+                app:layout_constraintStart_toStartOf="@+id/apod_tvItemName"
+                app:layout_constraintTop_toBottomOf="@+id/apod_tvItemName"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/tvItemQuantity"
+                android:id="@+id/apod_tvItemQuantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
@@ -106,16 +106,16 @@
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/textView15"
+                app:layout_constraintBottom_toBottomOf="@+id/apod_textView15"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/textView15"
-                app:layout_constraintTop_toTopOf="@+id/textView15" />
+                app:layout_constraintStart_toEndOf="@+id/apod_textView15"
+                app:layout_constraintTop_toTopOf="@+id/apod_textView15" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/textView16"
+            android:id="@+id/apod_textView16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -124,12 +124,12 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+            app:layout_constraintStart_toStartOf="@+id/apod_constraintLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/apod_constraintLayout2"
             app:layout_constraintVertical_bias="0.0" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout3"
+            android:id="@+id/apod_constraintLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -138,12 +138,12 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView16"
+            app:layout_constraintTop_toBottomOf="@+id/apod_textView16"
             app:layout_constraintVertical_bias="0.0">
 
 
             <TextView
-                android:id="@+id/tv_item_name"
+                android:id="@+id/apod_tv_item_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Bogura Doi"
@@ -158,7 +158,7 @@
 
 
             <TextView
-                android:id="@+id/textView17"
+                android:id="@+id/apod_textView17"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -168,13 +168,13 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/tv_item_name"
-                app:layout_constraintTop_toBottomOf="@+id/tv_item_name"
+                app:layout_constraintStart_toStartOf="@+id/apod_tv_item_name"
+                app:layout_constraintTop_toBottomOf="@+id/apod_tv_item_name"
                 app:layout_constraintVertical_bias="0.0" />
 
 
             <TextView
-                android:id="@+id/textView18"
+                android:id="@+id/apod_textView18"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -184,53 +184,53 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/textView17"
-                app:layout_constraintTop_toBottomOf="@+id/textView17"
+                app:layout_constraintStart_toStartOf="@+id/apod_textView17"
+                app:layout_constraintTop_toBottomOf="@+id/apod_textView17"
                 app:layout_constraintVertical_bias="0.0" />
 
 
             <TextView
-                android:id="@+id/tvItemPrice"
+                android:id="@+id/apod_tvItemPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="900 Tk"
                 android:textColor="@color/black"
                 android:textSize="18dp"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_item_name"
+                app:layout_constraintBottom_toBottomOf="@+id/apod_tv_item_name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/tv_item_name"
-                app:layout_constraintTop_toTopOf="@+id/tv_item_name" />
+                app:layout_constraintStart_toEndOf="@+id/apod_tv_item_name"
+                app:layout_constraintTop_toTopOf="@+id/apod_tv_item_name" />
 
             <TextView
-                android:id="@+id/tvItemDeliveryCharge"
+                android:id="@+id/apod_tvItemDeliveryCharge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="80 Tk"
                 android:textColor="@color/black"
                 android:textSize="18dp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView17"
+                app:layout_constraintBottom_toBottomOf="@+id/apod_textView17"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/textView17"
-                app:layout_constraintTop_toTopOf="@+id/textView17" />
+                app:layout_constraintStart_toEndOf="@+id/apod_textView17"
+                app:layout_constraintTop_toTopOf="@+id/apod_textView17" />
 
 
             <TextView
-                android:id="@+id/tvPaidAmount"
+                android:id="@+id/apod_tvPaidAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="270 Tk"
                 android:textColor="@color/black"
                 android:textSize="18dp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView18"
+                app:layout_constraintBottom_toBottomOf="@+id/apod_textView18"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/textView18"
-                app:layout_constraintTop_toTopOf="@+id/textView18" />
+                app:layout_constraintStart_toEndOf="@+id/apod_textView18"
+                app:layout_constraintTop_toTopOf="@+id/apod_textView18" />
 
             <View
-                android:id="@+id/View03"
+                android:id="@+id/apod_View03"
                 android:layout_width="fill_parent"
                 android:layout_height="2dip"
                 android:layout_marginTop="30dp"
@@ -239,11 +239,11 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView18"
+                app:layout_constraintTop_toBottomOf="@+id/apod_textView18"
                 app:layout_constraintVertical_bias="1.0" />
 
             <TextView
-                android:id="@+id/textView19"
+                android:id="@+id/apod_textView19"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -253,8 +253,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/textView18"
-                app:layout_constraintTop_toBottomOf="@+id/View03"
+                app:layout_constraintStart_toStartOf="@+id/apod_textView18"
+                app:layout_constraintTop_toBottomOf="@+id/apod_View03"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
@@ -263,16 +263,16 @@
                 android:text="630 Tk"
                 android:textColor="@color/black"
                 android:textSize="18dp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView19"
+                app:layout_constraintBottom_toBottomOf="@+id/apod_textView19"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/textView19"
-                app:layout_constraintTop_toTopOf="@+id/textView19" />
+                app:layout_constraintStart_toEndOf="@+id/apod_textView19"
+                app:layout_constraintTop_toTopOf="@+id/apod_textView19" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/textView20"
+            android:id="@+id/apod_textView20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -281,28 +281,28 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/constraintLayout3"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
+            app:layout_constraintStart_toStartOf="@+id/apod_constraintLayout3"
+            app:layout_constraintTop_toBottomOf="@+id/apod_constraintLayout3"
             app:layout_constraintVertical_bias="0.0" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout4"
+            android:id="@+id/apod_constraintLayout4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:background="@color/fade_ash"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp"
             android:paddingLeft="8dp"
+            android:paddingTop="16dp"
             android:paddingRight="8dp"
+            android:paddingBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView20"
+            app:layout_constraintTop_toBottomOf="@+id/apod_textView20"
             app:layout_constraintVertical_bias="0.0">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/apod_imageView3"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:src="@drawable/icon_location"
@@ -314,6 +314,7 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
+                android:id="@+id/apod_tv_delivery_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -322,17 +323,17 @@
                 android:text="Hakir Mor Notun Bazar Chittagong"
                 android:textColor="@color/black"
                 android:textSize="18dp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                app:layout_constraintBottom_toBottomOf="@+id/apod_imageView3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imageView3"
-                app:layout_constraintTop_toTopOf="@+id/imageView3" />
+                app:layout_constraintStart_toEndOf="@+id/apod_imageView3"
+                app:layout_constraintTop_toTopOf="@+id/apod_imageView3" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <TextView
-            android:id="@+id/textView21"
+            android:id="@+id/apod_textView21"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -341,12 +342,12 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/constraintLayout4"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout4"
+            app:layout_constraintStart_toStartOf="@+id/apod_constraintLayout4"
+            app:layout_constraintTop_toBottomOf="@+id/apod_constraintLayout4"
             app:layout_constraintVertical_bias="0.0" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout5"
+            android:id="@+id/apod_constraintLayout5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -358,11 +359,11 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView21"
+            app:layout_constraintTop_toBottomOf="@+id/apod_textView21"
             app:layout_constraintVertical_bias="0.0">
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/apod_imageView4"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:src="@drawable/icon_calander"
@@ -374,21 +375,22 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
+                android:id="@+id/apod_tv_delivery_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="23 Sep 2021"
                 android:textColor="@color/black"
                 android:textSize="18dp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+                app:layout_constraintBottom_toBottomOf="@+id/apod_imageView4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imageView4"
-                app:layout_constraintTop_toTopOf="@+id/imageView4" />
+                app:layout_constraintStart_toEndOf="@+id/apod_imageView4"
+                app:layout_constraintTop_toTopOf="@+id/apod_imageView4" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/textView22"
+            android:id="@+id/apod_textView22"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -397,8 +399,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/constraintLayout5"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout5"
+            app:layout_constraintStart_toStartOf="@+id/apod_constraintLayout5"
+            app:layout_constraintTop_toBottomOf="@+id/apod_constraintLayout5"
             app:layout_constraintVertical_bias="0.0" />
 
 
@@ -414,9 +416,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView22">
+            app:layout_constraintTop_toBottomOf="@+id/apod_textView22">
 
             <TextView
+                android:id="@+id/apod_tv_paymentType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cash On Delivery"

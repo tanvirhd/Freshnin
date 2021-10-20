@@ -19,7 +19,7 @@ public class ActivityRegistrationWithPhone extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_with_phone);
 
-        btnSendOtp=findViewById(R.id.btn_send_otp);
+        btnSendOtp=findViewById(R.id.arwp_btn_send_otp);
         btnSendOtp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
