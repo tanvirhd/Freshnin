@@ -10,20 +10,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Freshnin">
         <activity
-            android:name=".activity.ActivityOldOrderHistory"
-            android:exported="true" />
-        <activity
-            android:name=".activity.ActivityCheckOut"
+            android:name=".activity.ActivityOnGoingOrderDetails"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
-            android:name=".activity.ActivityFavouriteItem"
+            android:name=".activity.ActivityOnGoingOrders"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".activity.ActivityOldOrderHistory"
             android:exported="true"></activity>
+        <activity
+            android:name=".activity.ActivityCheckOut"
+            android:exported="true" />
+        <activity
+            android:name=".activity.ActivityFavouriteItem"
+            android:exported="true" />
         <activity
             android:name=".activity.ActivityPreOrderItemCart"
             android:exported="true" />

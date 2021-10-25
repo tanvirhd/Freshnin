@@ -35,10 +35,17 @@ public class ModelFoodItem {
         this.quantityOfFood = quantityOfFood;
     }
 
-    // For Billing in check out
+    // For Billing in check out && on going order Details
     public ModelFoodItem(String foodName, String foodPrice) {
         this.foodName = foodName;
         this.foodPrice = foodPrice;
+    }
+
+    // For on going order food list
+    public ModelFoodItem(String foodName, int foodImage, String quantityOfFood) {
+        this.foodName = foodName;
+        this.foodImage = foodImage;
+        this.quantityOfFood = quantityOfFood;
     }
 
     public String getFoodName() {

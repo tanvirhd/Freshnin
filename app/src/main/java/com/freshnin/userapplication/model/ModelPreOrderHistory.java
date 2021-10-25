@@ -5,7 +5,7 @@ public class ModelPreOrderHistory {
     private String preOrdrId;
     private String preOrderProductName;
     private String preOrderProductDeliverDate;
-    private String preOrderPaymentStatus;
+    private String preOrderPaymentStatus; 
 
     public ModelPreOrderHistory(String preOrdrId, String preOrderProductName, String preOrderProductDeliverDate, String preOrderPaymentStatus) {
         this.preOrdrId = preOrdrId;
