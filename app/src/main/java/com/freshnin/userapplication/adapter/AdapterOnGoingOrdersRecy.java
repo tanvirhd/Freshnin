@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.freshnin.userapplication.R;
+import com.freshnin.userapplication.callbacks.AdapterOnGoingOrdersRecycCallBacks;
 import com.freshnin.userapplication.model.ModelOrder;
 
 import java.util.List;
@@ -20,11 +21,13 @@ public class AdapterOnGoingOrdersRecy extends RecyclerView.Adapter<AdapterOnGoin
     List<ModelOrder> onGoingOrderList;
     List<ModelOrder> onGoingOrderProductList;
     Context context;
+    AdapterOnGoingOrdersRecycCallBacks adapterOnGoingOrdersRecycCallBacks;
 
-    public AdapterOnGoingOrdersRecy(List<ModelOrder> onGoingOrderList, List<ModelOrder> onGoingOrderProductList, Context context) {
+    public AdapterOnGoingOrdersRecy(List<ModelOrder> onGoingOrderList, List<ModelOrder> onGoingOrderProductList, Context context, AdapterOnGoingOrdersRecycCallBacks adapterOnGoingOrdersRecycCallBacks) {
         this.onGoingOrderList = onGoingOrderList;
         this.onGoingOrderProductList = onGoingOrderProductList;
         this.context = context;
+        this.adapterOnGoingOrdersRecycCallBacks = adapterOnGoingOrdersRecycCallBacks;
     }
 
     @NonNull
@@ -45,6 +48,13 @@ public class AdapterOnGoingOrdersRecy extends RecyclerView.Adapter<AdapterOnGoin
         holder.nestedRecyOnGoingOrderProductList.setLayoutManager(linearLayoutManager);
         holder.nestedRecyOnGoingOrderProductList.setAdapter(adapterOngoingOrderProductListRecy);
 
+        holder.btnDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adapterOnGoingOrdersRecycCallBacks.onDetailsClicked(holder.getAdapterPosition());
+            }
+        });
+
     }
 
     @Override
@@ -55,11 +65,13 @@ public class AdapterOnGoingOrdersRecy extends RecyclerView.Adapter<AdapterOnGoin
     public class ViewHolderAdapterOnGoingOrdersRecy extends RecyclerView.ViewHolder{
         TextView tvOnGoingOrderId;
         RecyclerView nestedRecyOnGoingOrderProductList;
+        TextView btnDetails;
 
         public ViewHolderAdapterOnGoingOrdersRecy(@NonNull View itemView) {
             super(itemView);
             tvOnGoingOrderId=itemView.findViewById(R.id.aogo_tvPreOrderId);
             nestedRecyOnGoingOrderProductList=itemView.findViewById(R.id.aogo_recyclerView_productList);
+            btnDetails=itemView.findViewById(R.id.aogo_btnPreorderDetailsView);
         }
     }
 }

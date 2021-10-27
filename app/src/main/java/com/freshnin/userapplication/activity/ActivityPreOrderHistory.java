@@ -2,6 +2,7 @@ package com.freshnin.userapplication.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +18,7 @@ import com.freshnin.userapplication.model.ModelPreOrderHistory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActivityPreOrderHistory extends AppCompatActivity implements AdapterPreOrderHistoryRecycCallbacks {
+public class  ActivityPreOrderHistory extends AppCompatActivity implements AdapterPreOrderHistoryRecycCallbacks {
 
     private Toolbar toolbar;
     private RecyclerView preOrderHistoryRecy;
@@ -33,6 +34,14 @@ public class ActivityPreOrderHistory extends AppCompatActivity implements Adapte
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
 
 
         initList();
@@ -124,8 +133,8 @@ public class ActivityPreOrderHistory extends AppCompatActivity implements Adapte
 
     @Override
     public void onDetailsClicked(int index) {
-        Intent gotoHLogin =new Intent(ActivityPreOrderHistory.this,ActivityLogIn.class);
-        gotoHLogin.putExtra("key_int_value",152);
-        startActivity(gotoHLogin);
+        Intent gotoPreOrderDetails =new Intent(ActivityPreOrderHistory.this,ActivityPreOrderDetails.class);
+        //gotoHLogin.putExtra("key_int_value",152);
+        startActivity(gotoPreOrderDetails);
     }
 }

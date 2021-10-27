@@ -5,18 +5,20 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.adapter.AdapterFoodItemListRecy;
+import com.freshnin.userapplication.callbacks.AdapterFoodItemListRecycCallBacks;
 import com.freshnin.userapplication.model.ModelFoodItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActivityFoodItemList extends AppCompatActivity {
+public class ActivityFoodItemList extends AppCompatActivity implements AdapterFoodItemListRecycCallBacks{
 
     private List<ModelFoodItem> foodItems;
     private RecyclerView recyclerViewFoodItem;
@@ -45,7 +47,7 @@ public class ActivityFoodItemList extends AppCompatActivity {
         recyclerViewFoodItem=findViewById(R.id.afil_foodItemRecy);
         recyclerViewFoodItem.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
 
-        adapterFoodItemListRecy=new AdapterFoodItemListRecy(foodItems,ActivityFoodItemList.this);
+        adapterFoodItemListRecy=new AdapterFoodItemListRecy(foodItems,ActivityFoodItemList.this, (AdapterFoodItemListRecycCallBacks) ActivityFoodItemList.this);
         recyclerViewFoodItem.setAdapter(adapterFoodItemListRecy);
 
 
@@ -181,5 +183,11 @@ public class ActivityFoodItemList extends AppCompatActivity {
                 R.drawable.food_bogurar_doi
         ));
 
+    }
+
+    @Override
+    public void onItemClick(int index) {
+        Intent intent=new Intent(ActivityFoodItemList.this,ActivityFoodItemDetails.class);
+        startActivity(intent);
     }
 }

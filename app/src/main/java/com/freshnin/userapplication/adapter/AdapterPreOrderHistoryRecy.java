@@ -1,5 +1,6 @@
 package com.freshnin.userapplication.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.callbacks.AdapterPreOrderHistoryRecycCallbacks;
 import com.freshnin.userapplication.model.ModelPreOrderHistory;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -46,7 +49,7 @@ public class AdapterPreOrderHistoryRecy extends RecyclerView.Adapter<AdapterPreO
         holder.btnDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                callbacks.onDetailsClicked(position);
+                callbacks.onDetailsClicked(holder.getAdapterPosition());
             }
         });
     }

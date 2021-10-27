@@ -2,11 +2,14 @@ package com.freshnin.userapplication.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.adapter.AdapterMyCartItemListRecy;
@@ -21,6 +24,7 @@ public class ActivityMyCart extends AppCompatActivity {
     private RecyclerView myCartRecyclerView;
     private AdapterMyCartItemListRecy adapterMyCartItemListRecy;
     private List<ModelMycartItem> myCartItems;
+    private ConstraintLayout btnCheckOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,15 @@ public class ActivityMyCart extends AppCompatActivity {
         myCartRecyclerView.setLayoutManager(new LinearLayoutManager(ActivityMyCart.this));
         adapterMyCartItemListRecy=new AdapterMyCartItemListRecy(myCartItems,ActivityMyCart.this);
         myCartRecyclerView.setAdapter(adapterMyCartItemListRecy);
+
+        btnCheckOut=findViewById(R.id.amc_btnConstrain);
+        btnCheckOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(ActivityMyCart.this,ActivityCheckOut.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

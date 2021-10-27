@@ -5,18 +5,20 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.adapter.AdapterOnGoingOrdersRecy;
+import com.freshnin.userapplication.callbacks.AdapterOnGoingOrdersRecycCallBacks;
 import com.freshnin.userapplication.model.ModelOrder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActivityOnGoingOrders extends AppCompatActivity {
+public class ActivityOnGoingOrders extends AppCompatActivity implements AdapterOnGoingOrdersRecycCallBacks{
 
     private Toolbar toolbar;
     private List<ModelOrder> onGoingOrderList;
@@ -47,7 +49,8 @@ public class ActivityOnGoingOrders extends AppCompatActivity {
         onGoingOrderRecy=findViewById(R.id.aogo_on_oging_order_recy);
 
         onGoingOrderRecy.setLayoutManager(new LinearLayoutManager(ActivityOnGoingOrders.this));
-        adapterOnGoingOrdersRecy=new AdapterOnGoingOrdersRecy(onGoingOrderList,onGoingOrderProductList,ActivityOnGoingOrders.this);
+        adapterOnGoingOrdersRecy=new AdapterOnGoingOrdersRecy(
+                onGoingOrderList,onGoingOrderProductList,ActivityOnGoingOrders.this, (AdapterOnGoingOrdersRecycCallBacks) ActivityOnGoingOrders.this);
         onGoingOrderRecy.setAdapter(adapterOnGoingOrdersRecy);
 
 
@@ -86,5 +89,11 @@ public class ActivityOnGoingOrders extends AppCompatActivity {
                 "06"
         ));
 
+    }
+
+    @Override
+    public void onDetailsClicked(int index) {
+        Intent intent=new Intent(ActivityOnGoingOrders.this,ActivityOnGoingOrderDetails.class);
+        startActivity(intent);
     }
 }

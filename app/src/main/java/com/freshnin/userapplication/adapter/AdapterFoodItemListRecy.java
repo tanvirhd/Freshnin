@@ -8,9 +8,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.freshnin.userapplication.R;
+import com.freshnin.userapplication.callbacks.AdapterFoodItemListRecycCallBacks;
 import com.freshnin.userapplication.model.ModelFoodItem;
 
 import java.util.List;
@@ -19,12 +21,13 @@ public class AdapterFoodItemListRecy extends RecyclerView.Adapter<AdapterFoodIte
 
     List<ModelFoodItem> foodItemList;
     Context context;
+    AdapterFoodItemListRecycCallBacks adapterFoodItemListRecycCallBacks;
 
-    public AdapterFoodItemListRecy(List<ModelFoodItem> foodItemList, Context context) {
+    public AdapterFoodItemListRecy(List<ModelFoodItem> foodItemList, Context context, AdapterFoodItemListRecycCallBacks adapterFoodItemListRecycCallBacks) {
         this.foodItemList = foodItemList;
         this.context = context;
+        this.adapterFoodItemListRecycCallBacks = adapterFoodItemListRecycCallBacks;
     }
-
 
     @NonNull
     @Override
@@ -50,6 +53,13 @@ public class AdapterFoodItemListRecy extends RecyclerView.Adapter<AdapterFoodIte
             holder.notFavouriteIcon.setVisibility(View.VISIBLE);
         }
 
+
+        holder.onClickDetailsView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adapterFoodItemListRecycCallBacks.onItemClick(holder.getAdapterPosition());
+            }
+        });
     }
 
     @Override
@@ -60,6 +70,7 @@ public class AdapterFoodItemListRecy extends RecyclerView.Adapter<AdapterFoodIte
     public class ViewHolderAdapterFoodItemListRecy extends RecyclerView.ViewHolder{
         ImageView ivFoodImage, notFavouriteIcon, favouriteIcon;
         TextView tvFoodName, tvFoodPrice,btnAddtoCart,priceWord;
+        ConstraintLayout onClickDetailsView;
 
         public ViewHolderAdapterFoodItemListRecy(@NonNull View itemView) {
             super(itemView);
@@ -73,6 +84,8 @@ public class AdapterFoodItemListRecy extends RecyclerView.Adapter<AdapterFoodIte
             btnAddtoCart=itemView.findViewById(R.id.afil_btn_add_to_cart);
             priceWord=itemView.findViewById(R.id.afil_priceWord);
 
+
+            onClickDetailsView =itemView.findViewById(R.id.afil_on_detailsView);
 
         }
     }

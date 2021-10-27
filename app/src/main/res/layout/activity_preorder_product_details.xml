@@ -296,7 +296,7 @@
                     app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/apopd_tvDeliveryCharge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -312,7 +312,7 @@
                     app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/apopd_btnOrderNow"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="32dp"

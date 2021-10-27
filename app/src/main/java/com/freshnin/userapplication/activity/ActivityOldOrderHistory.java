@@ -5,17 +5,19 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.adapter.AdapterOldOrderHistoryRecy;
+import com.freshnin.userapplication.callbacks.AdapterOldOrderHistoryRecycCallBacks;
 import com.freshnin.userapplication.model.ModelOrder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActivityOldOrderHistory extends AppCompatActivity {
+public class ActivityOldOrderHistory extends AppCompatActivity implements AdapterOldOrderHistoryRecycCallBacks {
 
     private Toolbar toolbar;
     private AdapterOldOrderHistoryRecy adapterOldOrderHistoryRecy;
@@ -45,7 +47,8 @@ public class ActivityOldOrderHistory extends AppCompatActivity {
         oldOrderHistoryRecy=findViewById(R.id.aooh_recyclerView_orderHistory);
 
         oldOrderHistoryRecy.setLayoutManager(new LinearLayoutManager(ActivityOldOrderHistory.this));
-        adapterOldOrderHistoryRecy=new AdapterOldOrderHistoryRecy(oldOrderHistoryList,oldOrderHistoryProductList,ActivityOldOrderHistory.this);
+        adapterOldOrderHistoryRecy=new AdapterOldOrderHistoryRecy(
+                oldOrderHistoryList,oldOrderHistoryProductList,ActivityOldOrderHistory.this,ActivityOldOrderHistory.this);
         oldOrderHistoryRecy.setAdapter(adapterOldOrderHistoryRecy);
     }
 
@@ -86,5 +89,11 @@ public class ActivityOldOrderHistory extends AppCompatActivity {
                 "Chomchom",
                 "02"
         ));
+    }
+
+    @Override
+    public void onOrderAgainClicked(int index) {
+        Intent intent=new Intent(ActivityOldOrderHistory.this,ActivityCheckOut.class);
+        startActivity(intent);
     }
 }

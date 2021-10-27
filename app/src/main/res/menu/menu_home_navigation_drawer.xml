@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item android:title="App">
+        <menu>
+            <item android:title="Profile"
+                android:id="@+id/nav_goto_profile"
+                android:icon="@drawable/icon_nav_menu"/>
+
+            <item android:title="My Cart"
+                android:id="@+id/nav_goto_myCart"
+                android:icon="@drawable/icon_nav_menu"/>
+
+            <item android:title="Pre Order"
+                android:id="@+id/nav_goto_preOrder"
+                android:icon="@drawable/icon_nav_menu"/>
+
+            <item android:title="On Going Order"
+                android:id="@+id/nav_goto_onGoingOrder"
+                android:icon="@drawable/icon_nav_menu"/>
+
+            <item android:title="Old Order"
+                android:id="@+id/nav_goto_oldOrder"
+                android:icon="@drawable/icon_nav_menu"/>
+
+            <item android:title="Favourite"
+                android:id="@+id/nav_goto_favourite"
+                android:icon="@drawable/icon_nav_menu"/>
+        </menu>
+    </item>
+
+    <item android:title="Contact">
+        <menu>
+            <item android:title="Contact Us"
+                android:id="@+id/nav_goto_contuctUs"
+                android:icon="@drawable/icon_nav_menu"/>
+
+            <item android:title="About Us"
+                android:id="@+id/nav_goto_aboutUs"
+                android:icon="@drawable/icon_nav_menu"/>
+        </menu>
+    </item>
+
+</menu>

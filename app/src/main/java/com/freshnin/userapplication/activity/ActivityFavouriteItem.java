@@ -31,7 +31,6 @@ public class ActivityFavouriteItem extends AppCompatActivity {
 
         toolbar=findViewById(R.id.afi_toolbar);
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

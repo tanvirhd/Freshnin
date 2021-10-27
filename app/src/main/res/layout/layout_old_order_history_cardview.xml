@@ -96,7 +96,7 @@
             android:paddingTop="8dp"
             android:paddingRight="32dp"
             android:paddingBottom="8dp"
-            android:text="Details"
+            android:text="Order Again"
             android:textColor="@color/black"
             android:textSize="20dp"
             app:layout_constraintBottom_toBottomOf="parent"

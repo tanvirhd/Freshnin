@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.freshnin.userapplication.R;
+import com.freshnin.userapplication.callbacks.AdapterOldOrderHistoryRecycCallBacks;
 import com.freshnin.userapplication.model.ModelOrder;
 
 import java.util.List;
@@ -21,11 +22,13 @@ public class AdapterOldOrderHistoryRecy extends RecyclerView.Adapter<AdapterOldO
     List<ModelOrder> oldOrderList;
     List<ModelOrder> oldOrderProductList;
     Context context;
+    AdapterOldOrderHistoryRecycCallBacks adapterOldOrderHistoryRecycCallBacks;
 
-    public AdapterOldOrderHistoryRecy(List<ModelOrder> oldOrderList, List<ModelOrder> oldOrderProductList, Context context) {
+    public AdapterOldOrderHistoryRecy(List<ModelOrder> oldOrderList, List<ModelOrder> oldOrderProductList, Context context, AdapterOldOrderHistoryRecycCallBacks adapterOldOrderHistoryRecycCallBacks) {
         this.oldOrderList = oldOrderList;
         this.oldOrderProductList = oldOrderProductList;
         this.context = context;
+        this.adapterOldOrderHistoryRecycCallBacks = adapterOldOrderHistoryRecycCallBacks;
     }
 
     @NonNull
@@ -46,6 +49,13 @@ public class AdapterOldOrderHistoryRecy extends RecyclerView.Adapter<AdapterOldO
         holder.nestedRecyProductList.setLayoutManager(linearLayoutManager);
         holder.nestedRecyProductList.setAdapter(adapterOldOrderHistoryProductListRecy);
 
+        holder.btnOrderAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adapterOldOrderHistoryRecycCallBacks.onOrderAgainClicked(holder.getAdapterPosition());
+            }
+        });
+
     }
 
     @Override
@@ -57,11 +67,13 @@ public class AdapterOldOrderHistoryRecy extends RecyclerView.Adapter<AdapterOldO
 
         TextView tvOrderId;
         RecyclerView nestedRecyProductList;
+        TextView btnOrderAgain;
 
         public ViewHolderAdapterOldOrderHistoryRecy(@NonNull View itemView) {
             super(itemView);
             tvOrderId=itemView.findViewById(R.id.aooh_tvPreOrderId);
             nestedRecyProductList=itemView.findViewById(R.id.aooh_recyclerView_productList);
+            btnOrderAgain=itemView.findViewById(R.id.aooh_btnPreorderDetailsView);
         }
     }
 }

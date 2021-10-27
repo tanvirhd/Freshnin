@@ -8,9 +8,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.freshnin.userapplication.R;
+import com.freshnin.userapplication.callbacks.AdapterPreOrderFoodRecycCallBacks;
 import com.freshnin.userapplication.model.ModelPreOrderFood;
 
 import java.util.List;
@@ -19,10 +21,12 @@ public class AdapterPreOrderFoodRecy extends RecyclerView.Adapter<AdapterPreOrde
 
     List<ModelPreOrderFood> preOrderFoodList;
     Context context;
+    AdapterPreOrderFoodRecycCallBacks adapterPreOrderFoodRecycCallBacks;
 
-    public AdapterPreOrderFoodRecy(List<ModelPreOrderFood> preOrderFoodList, Context context) {
+    public AdapterPreOrderFoodRecy(List<ModelPreOrderFood> preOrderFoodList, Context context, AdapterPreOrderFoodRecycCallBacks adapterPreOrderFoodRecycCallBacks) {
         this.preOrderFoodList = preOrderFoodList;
         this.context = context;
+        this.adapterPreOrderFoodRecycCallBacks = adapterPreOrderFoodRecycCallBacks;
     }
 
     @NonNull
@@ -40,6 +44,13 @@ public class AdapterPreOrderFoodRecy extends RecyclerView.Adapter<AdapterPreOrde
 
         holder.tvPreOrderFoodTitle.setText(preOrderFoodList.get(position).getPreOrderFoodName());
         holder.tvOrderGoingOnTillDay.setText(preOrderFoodList.get(position).getOrderGoingTillDay());
+
+        holder.itemDetailsOnClick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adapterPreOrderFoodRecycCallBacks.onItemClick(holder.getAdapterPosition());
+            }
+        });
     }
 
     @Override
@@ -50,14 +61,17 @@ public class AdapterPreOrderFoodRecy extends RecyclerView.Adapter<AdapterPreOrde
     public class ViewHolderAdapterPreOrderFoodRecy extends RecyclerView.ViewHolder{
         TextView tvPreOrderFoodTitle, tvOrderGoingOnTillDay;
         ImageView ivPreOrderFoodImage;
+        CardView itemDetailsOnClick;
 
         public ViewHolderAdapterPreOrderFoodRecy(@NonNull View itemView) {
             super(itemView);
 
             tvPreOrderFoodTitle =itemView.findViewById(R.id.apofl_tvFoodTitle);
             tvOrderGoingOnTillDay =itemView.findViewById(R.id.apofl_tvOrderRemainday);
-
             ivPreOrderFoodImage=itemView.findViewById(R.id.apofl_ivFoodImage);
+
+            itemDetailsOnClick=itemView.findViewById(R.id.apofl_item);
+
         }
     }
 

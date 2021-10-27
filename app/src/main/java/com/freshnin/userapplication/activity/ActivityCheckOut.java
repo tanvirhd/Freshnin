@@ -5,9 +5,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
+import android.widget.TextView;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.adapter.AdapterCheckOutBillingRecy;
@@ -28,6 +30,9 @@ public class ActivityCheckOut extends AppCompatActivity {
     private RecyclerView checkOutBillingRecy;
     private List<ModelFoodItem> checkOutBillingFoodItemList;
     private AdapterCheckOutBillingRecy adapterCheckOutBillingRecy;
+
+    private TextView btnPlaceOrder;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +66,16 @@ public class ActivityCheckOut extends AppCompatActivity {
         checkOutBillingRecy.setLayoutManager(new LinearLayoutManager(ActivityCheckOut.this));
         adapterCheckOutBillingRecy=new AdapterCheckOutBillingRecy(checkOutBillingFoodItemList,ActivityCheckOut.this);
         checkOutBillingRecy.setAdapter(adapterCheckOutBillingRecy);
+
+        btnPlaceOrder=findViewById(R.id.aco_btn_placeOrder);
+        btnPlaceOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityCheckOut.this, ActivityHome .class);
+                startActivity(intent);
+            }
+        });
+
 
 
     }

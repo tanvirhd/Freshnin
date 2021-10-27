@@ -4,15 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.freshnin.userapplication.R;
 
 public class ActivityFoodItemDetails extends AppCompatActivity {
 
     private Toolbar toolbar;
+    private TextView btnBuyNow;
 
     @SuppressLint("ResourceAsColor")
     @Override
@@ -31,6 +35,17 @@ public class ActivityFoodItemDetails extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+        btnBuyNow=findViewById(R.id.afid_btn_Buy_Now);
+        btnBuyNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityFoodItemDetails.this, ActivityCheckOut.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     @Override

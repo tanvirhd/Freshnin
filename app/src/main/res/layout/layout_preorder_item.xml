@@ -7,6 +7,7 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/apofl_item"
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:layout_alignParentStart="true"
@@ -24,9 +25,9 @@
             android:id="@+id/apofl_ivFoodImage"
             android:layout_width="match_parent"
             android:layout_height="160dp"
+            android:foreground="@drawable/bg_gradient_whitish"
             android:scaleType="centerCrop"
-            android:src="@drawable/food_pasta"
-            android:foreground="@drawable/bg_gradient_whitish"/>
+            android:src="@drawable/food_pasta" />
 
         <TextView
             android:id="@+id/apofl_tvFoodTitle"
