@@ -1,6 +1,5 @@
 package com.freshnin.userapplication.adapter;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.callbacks.AdapterPreOrderHistoryRecycCallbacks;
 import com.freshnin.userapplication.model.ModelPreOrderHistory;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -33,7 +30,7 @@ public class AdapterPreOrderHistoryRecy extends RecyclerView.Adapter<AdapterPreO
     @NonNull
     @Override
     public ViewHolderAdapterPreOrderHistoryRecy onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(context).inflate(R.layout.layout_proorder_history_cardview,parent,false);
+        View view= LayoutInflater.from(context).inflate(R.layout.layout_preorder_history_cardview,parent,false);
         ViewHolderAdapterPreOrderHistoryRecy viewHolderAdapterPreOrderHistoryRecy=new ViewHolderAdapterPreOrderHistoryRecy(view);
 
         return viewHolderAdapterPreOrderHistoryRecy;

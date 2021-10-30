@@ -6,7 +6,10 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:background="@drawable/bg_rounded_corner_image"
-    android:padding="8dp">
+    android:paddingTop="4dp"
+    android:paddingLeft="8dp"
+    android:paddingBottom="4dp"
+    android:paddingRight="8dp">
 
     <!--    <androidx.cardview.widget.CardView-->
     <!--        android:id="@+id/cardView2"-->

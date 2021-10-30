@@ -133,7 +133,7 @@
                     android:id="@+id/apoic_linearLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="12dp"
                     android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -147,7 +147,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/ash"
-                        android:padding="4dp"
+                        android:padding="2dp"
                         android:src="@drawable/icon_remove" />
 
                     <TextView
@@ -162,14 +162,14 @@
                         android:paddingRight="10dp"
                         android:text="1"
                         android:textColor="@color/black"
-                        android:textSize="25dp" />
+                        android:textSize="20dp" />
 
                     <ImageView
                         android:id="@+id/apoic_btn_cart_quantity_increment"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:background="@color/ash"
-                        android:padding="4dp"
+                        android:padding="2dp"
                         android:src="@drawable/icon_add" />
 
 
@@ -266,7 +266,7 @@
                     android:id="@+id/textView26"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="20dp"
                     android:text="Delivery Charge"
                     android:textColor="@color/black"
                     android:textSize="20dp"
@@ -339,7 +339,7 @@
                     android:id="@+id/textView29"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="20dp"
                     android:text="Total Bill (30%)"
                     android:textColor="@color/black"
                     android:textSize="20dp"
@@ -455,7 +455,7 @@
                     android:gravity="start|top"
                     android:hint="Write your address here"
                     android:paddingLeft="10dp"
-                    android:paddingTop="4dp"
+                    android:paddingTop="6dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/apoic_DA"
@@ -523,7 +523,7 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="2dp"
+
                         android:text="Bkash"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
@@ -531,7 +531,7 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="2dp"
+
                         android:text="Nagad"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
@@ -539,7 +539,7 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="2dp"
+
                         android:text="Rocket"
                         android:textColor="@color/black"
                         android:textSize="18dp" />
@@ -565,13 +565,13 @@
                 <EditText
                     android:id="@+id/apoic_etvPreorder_payment_transction_id"
                     android:layout_width="0dp"
-                    android:layout_height="48dp"
+                    android:layout_height="44dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:background="@drawable/bg_preorder_delivery_address"
                     android:gravity="center|start"
                     android:hint="Enter Transction id here"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:paddingLeft="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -630,7 +630,7 @@
             <TextView
                 android:id="@+id/apoic_btnPlaceOrder"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_height="45dp"
                 android:layout_marginTop="45dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/bg_place_order"

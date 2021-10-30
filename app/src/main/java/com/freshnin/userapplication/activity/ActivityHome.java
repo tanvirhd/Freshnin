@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.freshnin.userapplication.R;
 import com.google.android.material.navigation.NavigationView;
@@ -20,7 +21,7 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
-    private Button btnCloseNavDrawer;
+    private ImageView btnCloseNavDrawer;
 
     private Button btnPreOrderGoingOn;
     private Button btnFoodItem;
@@ -48,8 +49,6 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
         actionBarDrawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        // Need to fix
-        //btnCloseNavDrawer=findViewById(R.id.ah_btn_close_nav_drawer);
 
 
         btnPreOrderGoingOn=findViewById(R.id.ah_btn_goto_preOrderOnGoing);
@@ -71,6 +70,15 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
             }
         });
 
+
+        // Need to fix
+//        btnCloseNavDrawer=(ImageView) findViewById(R.id.ah_btn_close_nav_drawer);
+//        btnCloseNavDrawer.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
 
     }
 

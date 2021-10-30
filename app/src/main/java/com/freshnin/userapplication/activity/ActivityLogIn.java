@@ -26,7 +26,7 @@ public class ActivityLogIn extends AppCompatActivity {
         mNewRegister=findViewById(R.id.al_tv_register);
 
         int data=getIntent().getIntExtra("key_int_value",-1);
-        Toast.makeText(ActivityLogIn.this, String.valueOf(data), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(ActivityLogIn.this, String.valueOf(data), Toast.LENGTH_SHORT).show();
 
         mNewRegister.setOnClickListener(new View.OnClickListener() {
             @Override

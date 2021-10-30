@@ -33,6 +33,7 @@ public class ActivityMyCart extends AppCompatActivity {
 
         toolbar=findViewById(R.id.amc_cart_main_toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
