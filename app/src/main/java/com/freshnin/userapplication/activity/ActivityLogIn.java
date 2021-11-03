@@ -9,23 +9,34 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.freshnin.userapplication.R;
+import com.freshnin.userapplication.model.ModelLogIn;
+import com.freshnin.userapplication.model.ModelUser;
+import com.freshnin.userapplication.viewholder.ViewModelCheckValidLogIn;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class ActivityLogIn extends AppCompatActivity {
 
+    private static final String TAG = "ActivityLogIn";
     private Button mLogIn;
     private TextView mNewRegister;
+    private TextInputEditText tietUserPhoneNumber;
+    private TextInputEditText tietUserPassword;
+    private ViewModelCheckValidLogIn viewModelCheckValidLogIn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mLogIn=findViewById(R.id.al_btnLogin);
-        mNewRegister=findViewById(R.id.al_tv_register);
+        init();
+        mLogIn = findViewById(R.id.al_btnLogin);
+        mNewRegister = findViewById(R.id.al_tv_register);
 
-        int data=getIntent().getIntExtra("key_int_value",-1);
+        int data = getIntent().getIntExtra("key_int_value", -1);
         //Toast.makeText(ActivityLogIn.this, String.valueOf(data), Toast.LENGTH_SHORT).show();
 
         mNewRegister.setOnClickListener(new View.OnClickListener() {
@@ -35,5 +46,33 @@ public class ActivityLogIn extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        tietUserPhoneNumber = findViewById(R.id.al_tietUserPhoneNumber);
+        tietUserPassword = findViewById(R.id.al_tietUserPassword);
+
+        mLogIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewModelCheckValidLogIn.checkValidLogIn(new ModelUser(tietUserPhoneNumber.getText().toString(), tietUserPassword.getText().toString()))
+                        .observe(ActivityLogIn.this, new Observer<ModelLogIn>() {
+                            @Override
+                            public void onChanged(ModelLogIn modelLogIn) {
+                                if (modelLogIn == null) {
+                                    Toast.makeText(ActivityLogIn.this, "something went wrong", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    if (modelLogIn.isValidUser()) {
+                                        Toast.makeText(ActivityLogIn.this, "Successfully Loged in", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(ActivityLogIn.this, "Wrong userid or password", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }
+                        });
+            }
+        });
+    }
+
+    void init() {
+        viewModelCheckValidLogIn = new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(ViewModelCheckValidLogIn.class);
     }
 }
