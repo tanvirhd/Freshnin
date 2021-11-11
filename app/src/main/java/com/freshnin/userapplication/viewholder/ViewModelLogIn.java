@@ -8,17 +8,17 @@ import androidx.lifecycle.LiveData;
 
 import com.freshnin.userapplication.model.ModelLogIn;
 import com.freshnin.userapplication.model.ModelUser;
-import com.freshnin.userapplication.repository.RepositoryValidLogIn;
+import com.freshnin.userapplication.repository.RepositoryLogIn;
 
-public class ViewModelCheckValidLogIn extends AndroidViewModel {
-    private RepositoryValidLogIn repositoryValidLogIn;
+public class ViewModelLogIn extends AndroidViewModel {
+    private RepositoryLogIn repositoryLogIn;
 
-    public ViewModelCheckValidLogIn(@NonNull Application application) {
+    public ViewModelLogIn(@NonNull Application application) {
         super(application);
-        repositoryValidLogIn=new RepositoryValidLogIn();
+        repositoryLogIn =new RepositoryLogIn();
     }
 
     public LiveData<ModelLogIn> checkValidLogIn(ModelUser user){
-        return repositoryValidLogIn.checkValidLogIn(user);
+        return repositoryLogIn.checkValidLogIn(user);
     }
 }

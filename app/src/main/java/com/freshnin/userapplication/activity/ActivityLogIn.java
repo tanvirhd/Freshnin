@@ -15,7 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.model.ModelLogIn;
 import com.freshnin.userapplication.model.ModelUser;
-import com.freshnin.userapplication.viewholder.ViewModelCheckValidLogIn;
+import com.freshnin.userapplication.viewholder.ViewModelLogIn;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class ActivityLogIn extends AppCompatActivity {
@@ -25,7 +25,7 @@ public class ActivityLogIn extends AppCompatActivity {
     private TextView mNewRegister;
     private TextInputEditText tietUserPhoneNumber;
     private TextInputEditText tietUserPassword;
-    private ViewModelCheckValidLogIn viewModelCheckValidLogIn;
+    private ViewModelLogIn viewModelLogIn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,8 +33,7 @@ public class ActivityLogIn extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         init();
-        mLogIn = findViewById(R.id.al_btnLogin);
-        mNewRegister = findViewById(R.id.al_tv_register);
+
 
         int data = getIntent().getIntExtra("key_int_value", -1);
         //Toast.makeText(ActivityLogIn.this, String.valueOf(data), Toast.LENGTH_SHORT).show();
@@ -42,18 +41,17 @@ public class ActivityLogIn extends AppCompatActivity {
         mNewRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityLogIn.this, ActivityRegistrationWithPhone.class);
+                Intent intent = new Intent(ActivityLogIn.this, ActivityCreateAccount.class);
                 startActivity(intent);
             }
         });
 
-        tietUserPhoneNumber = findViewById(R.id.al_tietUserPhoneNumber);
-        tietUserPassword = findViewById(R.id.al_tietUserPassword);
+
 
         mLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewModelCheckValidLogIn.checkValidLogIn(new ModelUser(tietUserPhoneNumber.getText().toString(), tietUserPassword.getText().toString()))
+                viewModelLogIn.checkValidLogIn(new ModelUser(tietUserPhoneNumber.getText().toString(), tietUserPassword.getText().toString()))
                         .observe(ActivityLogIn.this, new Observer<ModelLogIn>() {
                             @Override
                             public void onChanged(ModelLogIn modelLogIn) {
@@ -73,6 +71,10 @@ public class ActivityLogIn extends AppCompatActivity {
     }
 
     void init() {
-        viewModelCheckValidLogIn = new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(ViewModelCheckValidLogIn.class);
+        mLogIn = findViewById(R.id.al_btnLogin);
+        mNewRegister = findViewById(R.id.al_tv_register);
+        tietUserPhoneNumber = findViewById(R.id.al_tietUserPhoneNumber);
+        tietUserPassword = findViewById(R.id.al_tietUserPassword);
+        viewModelLogIn = new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(ViewModelLogIn.class);
     }
 }

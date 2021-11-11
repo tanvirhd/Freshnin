@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -45,40 +46,47 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <com.chaos.view.PinView
-        android:id="@+id/av_pvOtp"
+        android:id="@+id/aotpv_pinViewOTP"
+        style="@style/PinWidget.PinView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="150dp"
         android:cursorVisible="true"
         android:inputType="number"
-        android:itemBackground="#ffffff"
-        app:hideLineWhenFilled="true"
-        app:itemHeight="50dp"
-        app:itemRadius="8dp"
-        app:itemSpacing="24dp"
-        app:itemWidth="55dp"
-        app:layout_constraintEnd_toEndOf="@+id/textView3"
-        app:layout_constraintHorizontal_bias="0.459"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:cursorWidth="2dp"
+        app:hideLineWhenFilled="false"
+        app:itemCount="5"
+        app:itemHeight="48dp"
+        app:itemRadius="4dp"
+        app:itemSpacing="0dp"
+        app:itemWidth="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:lineColor="@color/theamColor" />
+        app:lineColor="@color/black"
+        app:lineWidth="2dp"
+        app:viewType="rectangle" />
 
     <Button
-        android:id="@+id/av_btnVarify"
+        android:id="@+id/aotpv_btnVarify"
         android:layout_width="150dp"
         android:layout_height="45dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/bg_button"
         android:text="Verify"
         android:textAllCaps="false"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/av_pvOtp"
-        app:layout_constraintStart_toStartOf="@+id/av_pvOtp"
-        app:layout_constraintTop_toBottomOf="@+id/av_pvOtp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aotpv_pinViewOTP"
+        app:layout_constraintVertical_bias="0.65999997" />
 
     <TextView
-        android:id="@+id/av_tv_resend_otp"
+        android:id="@+id/aotpv_tv_resend_otp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -86,22 +94,22 @@
         android:textSize="16dp"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/av_btnVarify"
-        app:layout_constraintStart_toStartOf="@+id/av_btnVarify"
-        app:layout_constraintTop_toBottomOf="@+id/av_btnVarify"
+        app:layout_constraintEnd_toEndOf="@+id/aotpv_btnVarify"
+        app:layout_constraintStart_toStartOf="@+id/aotpv_btnVarify"
+        app:layout_constraintTop_toBottomOf="@+id/aotpv_btnVarify"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/av_tv_otp_countdown"
+        android:id="@+id/aotpv_tv_otp_countdown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:textSize="16dp"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/av_btnVarify"
-        app:layout_constraintStart_toStartOf="@+id/av_btnVarify"
-        app:layout_constraintTop_toBottomOf="@+id/av_btnVarify"
+        app:layout_constraintEnd_toEndOf="@+id/aotpv_btnVarify"
+        app:layout_constraintStart_toStartOf="@+id/aotpv_btnVarify"
+        app:layout_constraintTop_toBottomOf="@+id/aotpv_btnVarify"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

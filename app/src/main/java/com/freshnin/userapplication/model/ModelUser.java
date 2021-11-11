@@ -33,6 +33,10 @@ public class ModelUser {
         this.userPassWord = userPassWord;
     }
 
+    public ModelUser(String userPhoneNumber) {
+        this.userPhoneNumber = userPhoneNumber;
+    }
+
     public ModelUser() {
     }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.freshnin.userapplication">
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -63,8 +63,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ActivityRegistrationWithPhone" />
-        <activity android:name=".activity.ActivityVerification" />
+        <activity android:name=".activity.ActivityCreateAccount" />
+        <activity android:name=".activity.ActivityOTPVerification" />
         <activity android:name=".activity.ActivityRegistrationWithDetails" />
         <activity android:name=".activity.ActivityPreOrderProductDetails" />
         <activity

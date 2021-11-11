@@ -1,5 +1,9 @@
 package com.freshnin.userapplication.repository;
 
+
+
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -12,11 +16,12 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
-public class RepositoryValidLogIn {
+public class RepositoryLogIn {
 
+    private static final String TAG = "RepositoryValidLogIn";
     private ApiInterface apiInterface;
 
-    public RepositoryValidLogIn() {
+    public RepositoryLogIn() {
         apiInterface = ApiClient.getApiInterface();
     }
 
@@ -34,6 +39,7 @@ public class RepositoryValidLogIn {
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
+                        Log.d(TAG, "accept: "+throwable.getMessage());
                         result.postValue(null);
                     }
                 });
