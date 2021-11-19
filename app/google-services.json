@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "809879623605",
+    "project_id": "freshninapp",
+    "storage_bucket": "freshninapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:809879623605:android:545ff9782c718ba741abfc",
+        "android_client_info": {
+          "package_name": "com.freshnin.userapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "809879623605-g4c38i819ki1clldlep2stou0oqkiumi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHQgQMnZVKKMz7-2ZU8F_WCaF4iDxBnFM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "809879623605-g4c38i819ki1clldlep2stou0oqkiumi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
