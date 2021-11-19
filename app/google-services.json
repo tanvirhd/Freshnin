@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "809879623605-3d702tna6vq5nb6251flm47aeod27da5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.freshnin.userapplication",
+            "certificate_hash": "b50a2a532699969e30200f5bb783d3a808d2f6a2"
+          }
+        },
+        {
           "client_id": "809879623605-g4c38i819ki1clldlep2stou0oqkiumi.apps.googleusercontent.com",
           "client_type": 3
         }
