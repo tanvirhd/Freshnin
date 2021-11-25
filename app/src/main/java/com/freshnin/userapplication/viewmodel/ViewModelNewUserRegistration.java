@@ -1,4 +1,4 @@
-package com.freshnin.userapplication.viewholder;
+package com.freshnin.userapplication.viewmodel;
 
 import android.app.Application;
 

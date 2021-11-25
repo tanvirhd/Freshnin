@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.model.ModelNewUserRegistration;
 import com.freshnin.userapplication.model.ModelUser;
-import com.freshnin.userapplication.viewholder.ViewModelNewUserRegistration;
+import com.freshnin.userapplication.viewmodel.ViewModelNewUserRegistration;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class ActivityRegistrationWithDetails extends AppCompatActivity {

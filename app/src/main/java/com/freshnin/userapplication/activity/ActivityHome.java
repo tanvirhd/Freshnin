@@ -5,16 +5,28 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import com.freshnin.userapplication.R;
+import com.freshnin.userapplication.adapter.AdapterCanFoodListRecy;
+import com.freshnin.userapplication.adapter.AdapterDryFoodListRecy;
+import com.freshnin.userapplication.adapter.AdapterEdibleOilFoodListRecy;
+import com.freshnin.userapplication.adapter.AdapterHerbalItemRecy;
+import com.freshnin.userapplication.adapter.AdapterHoneyAndGheeListRecy;
+import com.freshnin.userapplication.adapter.AdapterPreOrderGoingOnListRecy;
+import com.freshnin.userapplication.model.ModelFoodItem;
+import com.freshnin.userapplication.model.ModelPreOrderFood;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ActivityHome extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -23,13 +35,39 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
     private NavigationView navigationView;
     private ImageView btnCloseNavDrawer;
 
-    private Button btnPreOrderGoingOn;
-    private Button btnFoodItem;
+    private RecyclerView preOrderRecy;
+    private List<ModelPreOrderFood> preOrderFoodList;
+    private AdapterPreOrderGoingOnListRecy adapterPreOrderGoingOnListRecy;
+
+    private RecyclerView dryFoodRecy;
+    private List<ModelFoodItem> dryFoodItemList;
+    private AdapterDryFoodListRecy adapterDryFoodListRecy;
+
+    private RecyclerView edibleOilFoodRecy;
+    private List<ModelFoodItem> edibleFoodList;
+    private AdapterEdibleOilFoodListRecy adapterEdibleOilFoodListRecy;
+
+    private RecyclerView herbalItemRecy;
+    private List<ModelFoodItem> herbalItemList;
+    private AdapterHerbalItemRecy adapterHerbalItemRecy;
+
+    private RecyclerView canFoodItemRecy;
+    private List<ModelFoodItem> canFoodItemList;
+    private AdapterCanFoodListRecy adapterCanFoodListRecy;
+
+    private RecyclerView honeyAndGheeItemRecy;
+    private List<ModelFoodItem> honeyAndGheeItemList;
+    private AdapterHoneyAndGheeListRecy adapterHoneyAndGheeListRecy;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        initList();
+        init();
+
 
         toolbar=findViewById(R.id.ah_home_toolbar);
         setSupportActionBar(toolbar);
@@ -50,11 +88,36 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
 
+        // Pre-Order RecyclerView Horizontal
+        preOrderRecy.setLayoutManager(new LinearLayoutManager(ActivityHome.this,LinearLayoutManager.HORIZONTAL,false));
+        preOrderRecy.setAdapter(adapterPreOrderGoingOnListRecy);
 
-        btnPreOrderGoingOn=findViewById(R.id.ah_btn_goto_preOrderOnGoing);
-        btnFoodItem=findViewById(R.id.ah_btn_gotoFoodItem);
+        // Dry Food RecyclerView
+        dryFoodRecy.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        dryFoodRecy.setAdapter(adapterDryFoodListRecy);
 
-        btnPreOrderGoingOn.setOnClickListener(new View.OnClickListener() {
+        // Edible Food RecyclerView
+        edibleOilFoodRecy.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        edibleOilFoodRecy.setAdapter(adapterEdibleOilFoodListRecy);
+
+        // Herbal Item RecyclerView
+        herbalItemRecy.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        herbalItemRecy.setAdapter(adapterHerbalItemRecy);
+
+        // Can Food Item RecyclerView
+        canFoodItemRecy.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        canFoodItemRecy.setAdapter(adapterCanFoodListRecy);
+
+        // Honey And Ghee Item RecyclerView
+        honeyAndGheeItemRecy.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        honeyAndGheeItemRecy.setAdapter(adapterHoneyAndGheeListRecy);
+
+
+
+//        btnPreOrderGoingOn=findViewById(R.id.ah_btn_goto_preOrderOnGoing);
+//        btnFoodItem=findViewById(R.id.ah_btn_gotoFoodItem);
+
+        /*btnPreOrderGoingOn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ActivityHome.this, ActivityPreOrderFoodList.class);
@@ -68,20 +131,189 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
                 Intent intent = new Intent(ActivityHome.this, ActivityFoodItemList.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
 
         // Need to fix
-//        btnCloseNavDrawer=(ImageView) findViewById(R.id.ah_btn_close_nav_drawer);
-//        btnCloseNavDrawer.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
+        /*btnCloseNavDrawer=(ImageView) findViewById(R.id.ah_btn_close_nav_drawer);
+        btnCloseNavDrawer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });*/
 
     }
 
+
+    public void init(){
+        preOrderRecy=findViewById(R.id.ah_preOrder_recyclerView);
+        adapterPreOrderGoingOnListRecy =new AdapterPreOrderGoingOnListRecy(preOrderFoodList,this);
+
+        dryFoodRecy=findViewById(R.id.ah_dryFood_recyclerView);
+        adapterDryFoodListRecy =new AdapterDryFoodListRecy(dryFoodItemList,this);
+
+        edibleOilFoodRecy=findViewById(R.id.ah_edibleOil_recyclerView);
+        adapterEdibleOilFoodListRecy=new AdapterEdibleOilFoodListRecy(edibleFoodList,this);
+
+        herbalItemRecy=findViewById(R.id.ah_herbalItem_recyclerView);
+        adapterHerbalItemRecy=new AdapterHerbalItemRecy(herbalItemList,this);
+
+        canFoodItemRecy=findViewById(R.id.ah_canFood_recyclerView);
+        adapterCanFoodListRecy=new AdapterCanFoodListRecy(canFoodItemList,this);
+
+        honeyAndGheeItemRecy=findViewById(R.id.ah_HoneyAndGhee_recyclerView);
+        adapterHoneyAndGheeListRecy=new AdapterHoneyAndGheeListRecy(honeyAndGheeItemList,this);
+    }
+
+    public void initList(){
+        preOrderFoodList=new ArrayList<>();
+        preOrderFoodList.add(new ModelPreOrderFood(
+                R.drawable.food_bogurar_doi
+        ));
+        preOrderFoodList.add(new ModelPreOrderFood(
+                R.drawable.food_krishna_kebiner_malaikari
+        ));
+        preOrderFoodList.add(new ModelPreOrderFood(
+                R.drawable.food_krishna_kebiner_malaikari
+        ));
+        preOrderFoodList.add(new ModelPreOrderFood(
+                R.drawable.food_bogurar_doi
+        ));
+        preOrderFoodList.add(new ModelPreOrderFood(
+                R.drawable.food_bogurar_khirsha
+        ));
+        preOrderFoodList.add(new ModelPreOrderFood(
+                R.drawable.food_krishna_kebiner_malaikari
+        ));
+        preOrderFoodList.add(new ModelPreOrderFood(
+                R.drawable.food_bogurar_doi
+        ));
+        preOrderFoodList.add(new ModelPreOrderFood(
+                R.drawable.food_bogurar_khirsha
+        ));
+
+
+
+        dryFoodItemList=new ArrayList<>();
+        dryFoodItemList.add(new ModelFoodItem(
+                R.drawable.food_bogurar_doi
+        ));
+        dryFoodItemList.add(new ModelFoodItem(
+                R.drawable.food_bogurar_khirsha
+        ));
+        dryFoodItemList.add(new ModelFoodItem(
+                R.drawable.food_krishna_kebiner_malaikari
+        ));
+        dryFoodItemList.add(new ModelFoodItem(
+                R.drawable.food_bogurar_doi
+        ));
+        dryFoodItemList.add(new ModelFoodItem(
+                R.drawable.food_bogurar_khirsha
+        ));
+        dryFoodItemList.add(new ModelFoodItem(
+                R.drawable.food_krishna_kebiner_malaikari
+        ));
+
+
+        edibleFoodList=new ArrayList<>();
+        edibleFoodList.add(new ModelFoodItem(
+                R.drawable.food_bogurar_doi
+        ));
+        edibleFoodList.add(new ModelFoodItem(
+                R.drawable.food_krishna_kebiner_malaikari
+        ));
+        edibleFoodList.add(new ModelFoodItem(
+                R.drawable.food_bogurar_khirsha
+        ));
+        edibleFoodList.add(new ModelFoodItem(
+                R.drawable.food_porabari_chomchom
+        ));
+        edibleFoodList.add(new ModelFoodItem(
+                R.drawable.food_bogurar_doi
+        ));
+        edibleFoodList.add(new ModelFoodItem(
+                R.drawable.food_porabari_chomchom
+        ));
+        edibleFoodList.add(new ModelFoodItem(
+                R.drawable.food_bogurar_doi
+        ));
+
+
+
+        herbalItemList=new ArrayList<>();
+        herbalItemList.add(new ModelFoodItem(
+                R.drawable.food_bogurar_doi
+        ));
+        herbalItemList.add(new ModelFoodItem(
+                R.drawable.food_porabari_chomchom
+        ));
+        herbalItemList.add(new ModelFoodItem(
+                R.drawable.food_bogurar_khirsha
+        ));
+        herbalItemList.add(new ModelFoodItem(
+                R.drawable.food_krishna_kebiner_malaikari
+        ));
+        herbalItemList.add(new ModelFoodItem(
+                R.drawable.food_bogurar_doi
+        ));
+        herbalItemList.add(new ModelFoodItem(
+                R.drawable.food_bogurar_khirsha
+        ));
+        herbalItemList.add(new ModelFoodItem(
+                R.drawable.food_porabari_chomchom
+        ));
+
+
+
+        canFoodItemList=new ArrayList<>();
+        canFoodItemList.add(new ModelFoodItem(
+                R.drawable.food_bogurar_doi
+        ));
+        canFoodItemList.add(new ModelFoodItem(
+                R.drawable.food_bogurar_khirsha
+        ));
+        canFoodItemList.add(new ModelFoodItem(
+                R.drawable.food_porabari_chomchom
+        ));
+        canFoodItemList.add(new ModelFoodItem(
+                R.drawable.food_porabari_chomchom
+        ));
+        canFoodItemList.add(new ModelFoodItem(
+                R.drawable.food_porabari_chomchom
+        ));canFoodItemList.add(new ModelFoodItem(
+                R.drawable.food_bogurar_doi
+        ));
+        canFoodItemList.add(new ModelFoodItem(
+                R.drawable.food_bogurar_khirsha
+        ));
+
+
+        honeyAndGheeItemList=new ArrayList<>();
+        honeyAndGheeItemList.add(new ModelFoodItem(
+                R.drawable.food_bogurar_khirsha
+        ));
+        honeyAndGheeItemList.add(new ModelFoodItem(
+                R.drawable.food_bogurar_doi
+        ));
+        honeyAndGheeItemList.add(new ModelFoodItem(
+                R.drawable.food_porabari_chomchom
+        ));
+        honeyAndGheeItemList.add(new ModelFoodItem(
+                R.drawable.food_krishna_kebiner_malaikari
+        ));
+        honeyAndGheeItemList.add(new ModelFoodItem(
+                R.drawable.food_bogurar_khirsha
+        ));
+        honeyAndGheeItemList.add(new ModelFoodItem(
+                R.drawable.food_bogurar_doi
+        ));
+        honeyAndGheeItemList.add(new ModelFoodItem(
+                R.drawable.food_porabari_chomchom
+        ));
+
+
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -128,5 +360,26 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.menu_activity_home,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch(item.getItemId()){
+            case R.id.ah_cartIcon:
+                Intent intentMyCart = new Intent(ActivityHome.this, ActivityMyCart.class);
+                startActivity(intentMyCart);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

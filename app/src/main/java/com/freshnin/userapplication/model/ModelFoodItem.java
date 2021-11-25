@@ -48,6 +48,11 @@ public class ModelFoodItem {
         this.quantityOfFood = quantityOfFood;
     }
 
+    public ModelFoodItem(int foodImage) {
+        this.foodImage = foodImage;
+    }
+
+
     public String getFoodName() {
         return foodName;
     }

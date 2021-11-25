@@ -13,6 +13,10 @@ public class ModelPreOrderFood {
         this.preOrderFoodImage = preOrderFoodImage;
     }
 
+    public ModelPreOrderFood(int preOrderFoodImage) {
+        this.preOrderFoodImage = preOrderFoodImage;
+    }
+
     public String getPreOrderFoodName() {
         return preOrderFoodName;
     }

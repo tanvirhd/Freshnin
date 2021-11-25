@@ -15,7 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.model.ModelLogIn;
 import com.freshnin.userapplication.model.ModelUser;
-import com.freshnin.userapplication.viewholder.ViewModelLogIn;
+import com.freshnin.userapplication.viewmodel.ViewModelLogIn;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class ActivityLogIn extends AppCompatActivity {

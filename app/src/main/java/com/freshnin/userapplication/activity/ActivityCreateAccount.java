@@ -16,17 +16,14 @@ import androidx.lifecycle.ViewModelProvider;
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.model.ModelUser;
 import com.freshnin.userapplication.model.ModelUserVerify;
-import com.freshnin.userapplication.viewholder.ViewModelCheckUserVerify;
+import com.freshnin.userapplication.viewmodel.ViewModelCheckUserVerify;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.FirebaseTooManyRequestsException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
-
-import java.util.concurrent.TimeUnit;
 
 public class ActivityCreateAccount extends AppCompatActivity {
 
@@ -44,8 +41,7 @@ public class ActivityCreateAccount extends AppCompatActivity {
 
         init();
 
-
-       /* btnSendOtp.setOnClickListener(new View.OnClickListener() {
+        btnSendOtp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(tietUserPhoneNumber.getText().toString().length()!=11){
@@ -69,23 +65,23 @@ public class ActivityCreateAccount extends AppCompatActivity {
                 }
 
             }
-        });*/
-        sendOTP();
+        });
+        //sendOTP();
     }
 
     private void sendOTP() {
-//             Intent intent =new Intent(ActivityCreateAccount.this, ActivityOTPVerification.class);
-//             intent.putExtra("userPhoneNumber",tietUserPhoneNumber.getText().toString());
-//             startActivity(intent);
+             Intent intent =new Intent(ActivityCreateAccount.this, ActivityOTPVerification.class);
+             intent.putExtra("userPhoneNumber",tietUserPhoneNumber.getText().toString());
+             startActivity(intent);
 
-        PhoneAuthOptions options =
+        /*PhoneAuthOptions options =
                 PhoneAuthOptions.newBuilder(mAuth)
                         .setPhoneNumber("+8801774201312")       // Phone number to verify
                         .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
                         .setActivity(this)                 // Activity (for callback binding)
                         .setCallbacks(mCallbacks)          // OnVerificationStateChangedCallbacks
                         .build();
-        PhoneAuthProvider.verifyPhoneNumber(options);
+        PhoneAuthProvider.verifyPhoneNumber(options);*/
     }
 
     void init(){

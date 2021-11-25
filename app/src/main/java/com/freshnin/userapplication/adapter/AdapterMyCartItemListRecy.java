@@ -11,18 +11,21 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.freshnin.userapplication.R;
-import com.freshnin.userapplication.model.ModelMycartItem;
+import com.freshnin.userapplication.callbacks.AdapterMyCartItemListRecyCallBacks;
+import com.freshnin.userapplication.model.ModelMyCartItem;
 
 import java.util.List;
 
 public class AdapterMyCartItemListRecy extends RecyclerView.Adapter<AdapterMyCartItemListRecy.ViewHolderAdapterMyCartItemListRecy> {
 
-    List<ModelMycartItem> mycartItemList;
+    List<ModelMyCartItem> mycartItemList;
     Context context;
+    AdapterMyCartItemListRecyCallBacks adapterMyCartItemListRecyCallBacks;
 
-    public AdapterMyCartItemListRecy(List<ModelMycartItem> mycartItemList, Context context) {
+    public AdapterMyCartItemListRecy(List<ModelMyCartItem> mycartItemList, Context context, AdapterMyCartItemListRecyCallBacks adapterMyCartItemListRecyCallBacks) {
         this.mycartItemList = mycartItemList;
         this.context = context;
+        this.adapterMyCartItemListRecyCallBacks = adapterMyCartItemListRecyCallBacks;
     }
 
     @NonNull
@@ -36,9 +39,21 @@ public class AdapterMyCartItemListRecy extends RecyclerView.Adapter<AdapterMyCar
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderAdapterMyCartItemListRecy holder, int position) {
+
+        ModelMyCartItem myCartItem=mycartItemList.get(position);
+        int index=position;
+
         holder.tvCartPorductName.setText(mycartItemList.get(position).getProductName());
         holder.tvCartProductPrice.setText(mycartItemList.get(position).getProductPrice());
         holder.tvCartProductQuantity.setText(mycartItemList.get(position).getProductQuantity());
+
+        holder.btnRemoveItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adapterMyCartItemListRecyCallBacks.onDeleteClicked(myCartItem,index);
+            }
+        });
+
     }
 
     @Override
@@ -57,7 +72,7 @@ public class AdapterMyCartItemListRecy extends RecyclerView.Adapter<AdapterMyCar
             tvCartProductPrice=itemView.findViewById(R.id.amc_tv_cart_food_pice);
             tvCartProductQuantity=itemView.findViewById(R.id.amc_tv_cart_food_quantity);
 
-//            btnRemoveItem=itemView.findViewById(R.id.btn_cart_cancle_item);
+            btnRemoveItem=itemView.findViewById(R.id.amc_btn_cart_cancle_item);
 //            btnIncreaseItem=itemView.findViewById(R.id.btn_cart_quantity_increment);
 //            btnDecreaseItem=itemView.findViewById(R.id.btn_cart_quantity_decrement);
         }

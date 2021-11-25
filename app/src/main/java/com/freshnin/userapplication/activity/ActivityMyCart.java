@@ -3,28 +3,33 @@ package com.freshnin.userapplication.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.adapter.AdapterMyCartItemListRecy;
-import com.freshnin.userapplication.model.ModelMycartItem;
+import com.freshnin.userapplication.callbacks.AdapterMyCartItemListRecyCallBacks;
+import com.freshnin.userapplication.model.ModelMyCartItem;
+import com.freshnin.userapplication.viewmodel.ViewModelMyCartItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActivityMyCart extends AppCompatActivity {
+public class ActivityMyCart extends AppCompatActivity implements AdapterMyCartItemListRecyCallBacks{
 
     private Toolbar toolbar;
     private RecyclerView myCartRecyclerView;
     private AdapterMyCartItemListRecy adapterMyCartItemListRecy;
-    private List<ModelMycartItem> myCartItems;
+    private List<ModelMyCartItem> myCartItemList;
     private ConstraintLayout btnCheckOut;
+
+    private ViewModelMyCartItem myCartItemViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +53,8 @@ public class ActivityMyCart extends AppCompatActivity {
         initList();
 
         myCartRecyclerView.setLayoutManager(new LinearLayoutManager(ActivityMyCart.this));
-        adapterMyCartItemListRecy=new AdapterMyCartItemListRecy(myCartItems,ActivityMyCart.this);
+        adapterMyCartItemListRecy=new AdapterMyCartItemListRecy(
+                myCartItemList,ActivityMyCart.this, (AdapterMyCartItemListRecyCallBacks) ActivityMyCart.this);
         myCartRecyclerView.setAdapter(adapterMyCartItemListRecy);
 
         btnCheckOut=findViewById(R.id.amc_btnConstrain);
@@ -62,78 +68,48 @@ public class ActivityMyCart extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        myCartItemViewModel.getAllMyCartItem().observe(this, new Observer<List<ModelMyCartItem>>() {
+            @Override
+            public void onChanged(List<ModelMyCartItem> modelMyCartItems) {
+                myCartItemList.clear();
+                myCartItemList.addAll(modelMyCartItems);
+                adapterMyCartItemListRecy.notifyDataSetChanged();
+            }
+        });
+    }
+
+    @Override
+    public void onDeleteClicked(ModelMyCartItem myCartItem, int position) {
+        myCartItemViewModel.deleteMyCartItemById(myCartItem.id);
+        myCartItemViewModel.getAllMyCartItem();
+    }
+
+
     private void initList() {
-        myCartItems=new ArrayList<>();
-        myCartItems.add(new ModelMycartItem(
+        myCartItemViewModel = new ViewModelProvider(this).get(ViewModelMyCartItem.class);
+        myCartItemList = new ArrayList<>();
+        myCartItemViewModel.insertNewMyCartItem(new ModelMyCartItem(
                 "Bogurar Doi",
                 "200 Tk",
                 "3"
         ));
-
-        myCartItems.add(new ModelMycartItem(
+        myCartItemViewModel.insertNewMyCartItem(new ModelMyCartItem(
                 "Khirsha",
                 "330 Tk",
                 "1"
         ));
-
-        myCartItems.add(new ModelMycartItem(
+        myCartItemViewModel.insertNewMyCartItem(new ModelMyCartItem(
                 "malai kari",
                 "200 Tk",
                 "2"
         ));
-
-
-        myCartItems.add(new ModelMycartItem(
+        myCartItemViewModel.insertNewMyCartItem(new ModelMyCartItem(
                 "Bogurar Doi",
                 "200 Tk",
                 "3"
-        ));
-
-        myCartItems.add(new ModelMycartItem(
-                "Bogurar Doi",
-                "200 Tk",
-                "1"
-        ));
-        myCartItems.add(new ModelMycartItem(
-                "Bogurar Doi",
-                "200 Tk",
-                "6"
-        ));
-
-        myCartItems.add(new ModelMycartItem(
-                "Bogurar Doi",
-                "200 Tk",
-                "3"
-        ));
-
-        myCartItems.add(new ModelMycartItem(
-                "Khirsha",
-                "330 Tk",
-                "1"
-        ));
-
-        myCartItems.add(new ModelMycartItem(
-                "malai kari",
-                "200 Tk",
-                "2"
-        ));
-
-
-        myCartItems.add(new ModelMycartItem(
-                "Bogurar Doi",
-                "200 Tk",
-                "3"
-        ));
-
-        myCartItems.add(new ModelMycartItem(
-                "Bogurar Doi",
-                "200 Tk",
-                "1"
-        ));
-        myCartItems.add(new ModelMycartItem(
-                "Bogurar Doi",
-                "200 Tk",
-                "6"
         ));
     }
 }
