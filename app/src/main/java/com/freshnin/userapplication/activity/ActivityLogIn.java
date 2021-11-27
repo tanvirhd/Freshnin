@@ -5,17 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.freshnin.userapplication.R;
-import com.freshnin.userapplication.model.ModelLogIn;
-import com.freshnin.userapplication.model.ModelUser;
-import com.freshnin.userapplication.viewmodel.ViewModelLogIn;
+import com.freshnin.userapplication.viewmodel.ViewModelUser;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class ActivityLogIn extends AppCompatActivity {
@@ -25,7 +21,7 @@ public class ActivityLogIn extends AppCompatActivity {
     private TextView mNewRegister;
     private TextInputEditText tietUserPhoneNumber;
     private TextInputEditText tietUserPassword;
-    private ViewModelLogIn viewModelLogIn;
+    private ViewModelUser viewModelUser;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -77,6 +73,6 @@ public class ActivityLogIn extends AppCompatActivity {
         mNewRegister = findViewById(R.id.al_tv_register);
         tietUserPhoneNumber = findViewById(R.id.al_tietUserPhoneNumber);
         tietUserPassword = findViewById(R.id.al_tietUserPassword);
-        viewModelLogIn = new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(ViewModelLogIn.class);
+        viewModelUser = new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(ViewModelUser.class);
     }
 }

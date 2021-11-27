@@ -16,7 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.model.ModelUser;
 import com.freshnin.userapplication.model.ModelUserVerify;
-import com.freshnin.userapplication.viewmodel.ViewModelCheckUserVerify;
+import com.freshnin.userapplication.viewmodel.ViewModelUser;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.FirebaseTooManyRequestsException;
@@ -29,7 +29,7 @@ public class ActivityCreateAccount extends AppCompatActivity {
 
     private Button btnSendOtp;
     private TextInputEditText tietUserPhoneNumber;
-    private ViewModelCheckUserVerify viewModelCheckUserVerify;
+    private ViewModelUser viewModelUser;
     private FirebaseAuth mAuth;
     private static final String TAG = "ActivityCreateAccount";
 
@@ -47,7 +47,7 @@ public class ActivityCreateAccount extends AppCompatActivity {
                 if(tietUserPhoneNumber.getText().toString().length()!=11){
                     Toast.makeText(ActivityCreateAccount.this, "Invalid Phone Number", Toast.LENGTH_SHORT).show();
                 }else{
-                    viewModelCheckUserVerify.checkUserValidation(new ModelUser(tietUserPhoneNumber.getText().toString()))
+                    viewModelUser.checkUserValidation(new ModelUser(tietUserPhoneNumber.getText().toString()))
                             .observe(ActivityCreateAccount.this, new Observer<ModelUserVerify>() {
                                 @Override
                                 public void onChanged(ModelUserVerify modelUserVerify) {
@@ -88,7 +88,7 @@ public class ActivityCreateAccount extends AppCompatActivity {
         btnSendOtp=findViewById(R.id.aca_btn_send_otp);
         tietUserPhoneNumber=findViewById(R.id.aca_tiet_userPhoneNumber);
         mAuth=FirebaseAuth.getInstance();
-        viewModelCheckUserVerify=new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(ViewModelCheckUserVerify.class);
+        viewModelUser =new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(ViewModelUser.class);
     }
 
     PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
