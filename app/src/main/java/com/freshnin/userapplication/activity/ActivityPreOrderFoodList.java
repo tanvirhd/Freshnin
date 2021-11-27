@@ -7,6 +7,8 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,6 +16,8 @@ import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.adapter.AdapterPreOrderFoodRecy;
 import com.freshnin.userapplication.callbacks.AdapterPreOrderFoodRecycCallBacks;
 import com.freshnin.userapplication.model.ModelPreOrderFood;
+import com.freshnin.userapplication.model.ModelPreOrderItem;
+import com.freshnin.userapplication.viewmodel.ViewModelPreOrderItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +27,9 @@ public class ActivityPreOrderFoodList extends AppCompatActivity implements Adapt
     private Toolbar toolbar;
     private RecyclerView preOrderFoodRecy;
     private AdapterPreOrderFoodRecy adapterPreOrderFoodRecy;
-    private List<ModelPreOrderFood> preOrderFoodList;
+    private List<ModelPreOrderItem> preOrderFoodList;
 
+    ViewModelPreOrderItem viewModelPreOrderItem;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,9 +38,7 @@ public class ActivityPreOrderFoodList extends AppCompatActivity implements Adapt
 
         toolbar=findViewById(R.id.apofl_preOrder_list_toolbar);
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,83 +47,43 @@ public class ActivityPreOrderFoodList extends AppCompatActivity implements Adapt
         });
 
 
-        initList();
+        init();
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getAllPreOrderActiveSession();
+    }
+
+    private void init() {
+        viewModelPreOrderItem=new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(ViewModelPreOrderItem.class);
+
+        preOrderFoodList=new ArrayList<>();
         preOrderFoodRecy=findViewById(R.id.apofl_pre_Order_FoodRecy);
         preOrderFoodRecy.setLayoutManager(new LinearLayoutManager(ActivityPreOrderFoodList.this));
 
         adapterPreOrderFoodRecy=new AdapterPreOrderFoodRecy(preOrderFoodList,ActivityPreOrderFoodList.this,ActivityPreOrderFoodList.this);
         preOrderFoodRecy.setAdapter(adapterPreOrderFoodRecy);
-
     }
 
-    private void initList() {
-        preOrderFoodList=new ArrayList<>();
-
-        preOrderFoodList.add(new ModelPreOrderFood(
-                "Bogurar Doi",
-                "Wednesday",
-                R.drawable.food_bogurar_doi
-        ));
-
-        preOrderFoodList.add(new ModelPreOrderFood(
-                "Bogurar Khirsha",
-                "Monday",
-                R.drawable.food_bogurar_doi
-        ));
-
-        preOrderFoodList.add(new ModelPreOrderFood(
-                "Krishna kabiner Malai kari",
-                "Satarday",
-                R.drawable.food_bogurar_doi
-        ));
-
-        preOrderFoodList.add(new ModelPreOrderFood(
-                "Bogurar Doi",
-                "Wednesday",
-                R.drawable.food_bogurar_doi
-        ));
-
-        preOrderFoodList.add(new ModelPreOrderFood(
-                "Bogurar Doi",
-                "Wednesday",
-                R.drawable.food_bogurar_doi
-        ));
-
-        preOrderFoodList.add(new ModelPreOrderFood(
-                "Bogurar Doi",
-                "Wednesday",
-                R.drawable.food_bogurar_doi
-        ));
-
-        preOrderFoodList.add(new ModelPreOrderFood(
-                "Bogurar Khirsha",
-                "Monday",
-                R.drawable.food_bogurar_doi
-        ));
-
-        preOrderFoodList.add(new ModelPreOrderFood(
-                "Krishna kabiner Malai kari",
-                "Satarday",
-                R.drawable.food_bogurar_doi
-        ));
-
-        preOrderFoodList.add(new ModelPreOrderFood(
-                "Bogurar Doi",
-                "Wednesday",
-                R.drawable.food_bogurar_doi
-        ));
-
-        preOrderFoodList.add(new ModelPreOrderFood(
-                "Bogurar Doi",
-                "Wednesday",
-                R.drawable.food_bogurar_doi
-        ));
+    void  getAllPreOrderActiveSession(){
+        viewModelPreOrderItem.getAllActivePreOrderSession().observe(this, new Observer<List<ModelPreOrderItem>>() {
+            @Override
+            public void onChanged(List<ModelPreOrderItem> modelPreOrderItems) {
+                if(modelPreOrderItems != null){
+                    preOrderFoodList.clear();
+                    preOrderFoodList.addAll(modelPreOrderItems);
+                    adapterPreOrderFoodRecy.notifyDataSetChanged();
+                }
+            }
+        });
     }
 
     @Override
     public void onItemClick(int index) {
         Intent intent=new Intent(ActivityPreOrderFoodList.this, ActivityPreOrderProductDetails.class);
+        intent.putExtra("parcel",preOrderFoodList.get(index));
         startActivity(intent);
     }
 }

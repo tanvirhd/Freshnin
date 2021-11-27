@@ -34,6 +34,14 @@ public class ActivityRegistrationWithDetails extends AppCompatActivity {
         btnRegiConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent=new Intent(ActivityRegistrationWithDetails.this,  ActivityHome.class);
+                startActivity(intent);
+            }
+        });
+
+        /*btnRegiConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 if(tietUserName.getText().toString()==null || tietUserPassWord.getText().toString()==null
                         || tietReTypePassword.getText().toString()==null){
                     Toast.makeText(ActivityRegistrationWithDetails.this, "Fill up all fields", Toast.LENGTH_SHORT).show();
@@ -62,7 +70,7 @@ public class ActivityRegistrationWithDetails extends AppCompatActivity {
                     }
                 }
             }
-        });
+        });*/
 
     }
 

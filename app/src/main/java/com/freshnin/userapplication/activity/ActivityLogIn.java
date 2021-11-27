@@ -36,7 +36,6 @@ public class ActivityLogIn extends AppCompatActivity {
 
 
         int data = getIntent().getIntExtra("key_int_value", -1);
-        //Toast.makeText(ActivityLogIn.this, String.valueOf(data), Toast.LENGTH_SHORT).show();
 
         mNewRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +50,10 @@ public class ActivityLogIn extends AppCompatActivity {
         mLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewModelLogIn.checkValidLogIn(new ModelUser(tietUserPhoneNumber.getText().toString(), tietUserPassword.getText().toString()))
+                startActivity(new Intent(ActivityLogIn.this,ActivityHome.class));
+
+                //todo revert
+               /* viewModelLogIn.checkValidLogIn(new ModelUser(tietUserPhoneNumber.getText().toString(), tietUserPassword.getText().toString()))
                         .observe(ActivityLogIn.this, new Observer<ModelLogIn>() {
                             @Override
                             public void onChanged(ModelLogIn modelLogIn) {
@@ -65,7 +67,7 @@ public class ActivityLogIn extends AppCompatActivity {
                                     }
                                 }
                             }
-                        });
+                        });*/
             }
         });
     }

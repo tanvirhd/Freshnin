@@ -10,12 +10,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.freshnin.userapplication.R;
+import com.freshnin.userapplication.model.ModelPreOrderItem;
 
 public class ActivityPreOrderProductDetails extends AppCompatActivity {
     private static final String TAG = "ActivityProductDetails";
 
     private Toolbar toolbar;
-    private TextView btnOrderNow;
+    private TextView btnOrderNow,tvShortDescription;
+
+    private ModelPreOrderItem itemDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,12 @@ public class ActivityPreOrderProductDetails extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Bogurar Doi");
 
+        btnOrderNow=findViewById(R.id.apopd_btnOrderNow);
+        tvShortDescription=findViewById(R.id.apopd_tv_Food_Details);
+
+        init();
+
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,7 +43,6 @@ public class ActivityPreOrderProductDetails extends AppCompatActivity {
             }
         });
 
-        btnOrderNow=findViewById(R.id.apopd_btnOrderNow);
         btnOrderNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,8 +50,18 @@ public class ActivityPreOrderProductDetails extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
 
 
+    void init(){
+        itemDetails = getIntent().getExtras().getParcelable("parcel");
+        if(itemDetails != null){
+            updateUI(itemDetails);
+        }
 
+    }
+
+    void updateUI(ModelPreOrderItem modelPreOrderItem){
+        tvShortDescription.setText(modelPreOrderItem.getProductShortDes());
     }
 }

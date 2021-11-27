@@ -50,16 +50,10 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.6.1'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
 
-    //RX Java
+    //Room & RX Java
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.10'
     implementation 'com.jakewharton.rxbinding2:rxbinding-appcompat-v7:2.1.1'
-
-    implementation platform('com.google.firebase:firebase-bom:28.4.2')
-    implementation 'com.google.firebase:firebase-analytics'
-    implementation 'com.google.firebase:firebase-auth'
-
-    // Room
     implementation "androidx.room:room-runtime:2.2.5"
     annotationProcessor "androidx.room:room-compiler:2.2.5"
 
@@ -69,5 +63,13 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata:2.2.0"
     implementation "androidx.lifecycle:lifecycle-runtime:2.2.0"
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:2.2.0"
+
+    implementation platform('com.google.firebase:firebase-bom:28.4.2')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-auth'
+
+    //picasso image loader
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
 
 }

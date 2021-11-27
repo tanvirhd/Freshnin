@@ -7,7 +7,7 @@ public class ModelOrder {
     private String orderedFoodQuantity;
 
     public ModelOrder(String orderId) {
-        this.orderId = orderId;
+        this.orderId = orderId; 
     }
 
     public ModelOrder(String orderedFoodName, String orderedFoodQuantity) {
