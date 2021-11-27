@@ -11,18 +11,21 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.freshnin.userapplication.R;
+import com.freshnin.userapplication.callbacks.AdapterFavouriteFoodRecyCallBacks;
 import com.freshnin.userapplication.model.ModelFoodItem;
 
 import java.util.List;
 
-public class AdapterFavouriteItemRecy extends RecyclerView.Adapter<AdapterFavouriteItemRecy.ViewHolderAdapterFavouriteItemRecy>{
+public class AdapterFavouriteFoodRecy extends RecyclerView.Adapter<AdapterFavouriteFoodRecy.ViewHolderAdapterFavouriteItemRecy>{
 
     List<ModelFoodItem> favouriteFoodList;
     Context context;
+    AdapterFavouriteFoodRecyCallBacks favouriteFoodRecyCallBacks;
 
-    public AdapterFavouriteItemRecy(List<ModelFoodItem> favouriteFoodList, Context context) {
+    public AdapterFavouriteFoodRecy(List<ModelFoodItem> favouriteFoodList, Context context, AdapterFavouriteFoodRecyCallBacks favouriteFoodRecyCallBacks) {
         this.favouriteFoodList = favouriteFoodList;
         this.context = context;
+        this.favouriteFoodRecyCallBacks = favouriteFoodRecyCallBacks;
     }
 
     @NonNull
@@ -36,10 +39,19 @@ public class AdapterFavouriteItemRecy extends RecyclerView.Adapter<AdapterFavour
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderAdapterFavouriteItemRecy holder, int position) {
+        ModelFoodItem favouriteFood=favouriteFoodList.get(position);
+        int index=position;
 
         holder.ivFavFoodImage.setImageResource(favouriteFoodList.get(position).getFoodImage());
         holder.tvFavFoobName.setText(favouriteFoodList.get(position).getFoodName());
         holder.tvFavFoodPrice.setText(favouriteFoodList.get(position).getFoodPrice());
+
+        holder.btnRemoveFromFavouriteFood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                favouriteFoodRecyCallBacks.onUnFavouriteClicked(favouriteFood,index);
+            }
+        });
 
     }
 
@@ -50,16 +62,17 @@ public class AdapterFavouriteItemRecy extends RecyclerView.Adapter<AdapterFavour
 
     public class ViewHolderAdapterFavouriteItemRecy extends RecyclerView.ViewHolder{
 
-        ImageView ivFavFoodImage;
+        ImageView ivFavFoodImage, btnRemoveFromFavouriteFood;
         TextView tvFavFoobName, tvFavFoodPrice;
 
         public ViewHolderAdapterFavouriteItemRecy(@NonNull View itemView) {
             super(itemView);
 
-            ivFavFoodImage=itemView.findViewById(R.id.afi_iv_food_picture);
+            ivFavFoodImage=itemView.findViewById(R.id.aff_iv_food_picture);
 
-            tvFavFoobName=itemView.findViewById(R.id.afi_tvFoodName);
-            tvFavFoodPrice=itemView.findViewById(R.id.afi_tvFoodPrice);
+            tvFavFoobName=itemView.findViewById(R.id.aff_tvFoodName);
+            tvFavFoodPrice=itemView.findViewById(R.id.aff_tvFoodPrice);
+            btnRemoveFromFavouriteFood =itemView.findViewById(R.id.aff_ivFavouriteFood);
 
         }
     }

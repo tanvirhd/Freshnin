@@ -18,12 +18,12 @@ import java.util.List;
 
 public class AdapterMyCartItemListRecy extends RecyclerView.Adapter<AdapterMyCartItemListRecy.ViewHolderAdapterMyCartItemListRecy> {
 
-    List<ModelMyCartItem> mycartItemList;
+    List<ModelMyCartItem> myCartItemList;
     Context context;
     AdapterMyCartItemListRecyCallBacks adapterMyCartItemListRecyCallBacks;
 
-    public AdapterMyCartItemListRecy(List<ModelMyCartItem> mycartItemList, Context context, AdapterMyCartItemListRecyCallBacks adapterMyCartItemListRecyCallBacks) {
-        this.mycartItemList = mycartItemList;
+    public AdapterMyCartItemListRecy(List<ModelMyCartItem> myCartItemList, Context context, AdapterMyCartItemListRecyCallBacks adapterMyCartItemListRecyCallBacks) {
+        this.myCartItemList = myCartItemList;
         this.context = context;
         this.adapterMyCartItemListRecyCallBacks = adapterMyCartItemListRecyCallBacks;
     }
@@ -40,12 +40,12 @@ public class AdapterMyCartItemListRecy extends RecyclerView.Adapter<AdapterMyCar
     @Override
     public void onBindViewHolder(@NonNull ViewHolderAdapterMyCartItemListRecy holder, int position) {
 
-        ModelMyCartItem myCartItem=mycartItemList.get(position);
+        ModelMyCartItem myCartItem= myCartItemList.get(position);
         int index=position;
 
-        holder.tvCartPorductName.setText(mycartItemList.get(position).getProductName());
-        holder.tvCartProductPrice.setText(mycartItemList.get(position).getProductPrice());
-        holder.tvCartProductQuantity.setText(mycartItemList.get(position).getProductQuantity());
+        holder.tvCartPorductName.setText(myCartItemList.get(position).getFoodName());
+        holder.tvCartProductPrice.setText(myCartItemList.get(position).getFoodPrice());
+        holder.tvCartProductQuantity.setText(myCartItemList.get(position).getFoodQuantity());
 
         holder.btnRemoveItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +58,7 @@ public class AdapterMyCartItemListRecy extends RecyclerView.Adapter<AdapterMyCar
 
     @Override
     public int getItemCount() {
-        return mycartItemList.size();
+        return myCartItemList.size();
     }
 
     public class ViewHolderAdapterMyCartItemListRecy extends RecyclerView.ViewHolder{

@@ -36,10 +36,9 @@ public class ActivityMyCart extends AppCompatActivity implements AdapterMyCartIt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_cart);
 
-        toolbar=findViewById(R.id.amc_cart_main_toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
+        init();
 
+        getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -49,15 +48,13 @@ public class ActivityMyCart extends AppCompatActivity implements AdapterMyCartIt
             }
         });
 
-        myCartRecyclerView=findViewById(R.id.amc_myCart_recyclerView);
-        initList();
+
 
         myCartRecyclerView.setLayoutManager(new LinearLayoutManager(ActivityMyCart.this));
-        adapterMyCartItemListRecy=new AdapterMyCartItemListRecy(
-                myCartItemList,ActivityMyCart.this, (AdapterMyCartItemListRecyCallBacks) ActivityMyCart.this);
+        adapterMyCartItemListRecy=new AdapterMyCartItemListRecy(myCartItemList,ActivityMyCart.this, (AdapterMyCartItemListRecyCallBacks) ActivityMyCart.this);
         myCartRecyclerView.setAdapter(adapterMyCartItemListRecy);
 
-        btnCheckOut=findViewById(R.id.amc_btnConstrain);
+
         btnCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,7 +62,6 @@ public class ActivityMyCart extends AppCompatActivity implements AdapterMyCartIt
                 startActivity(intent);
             }
         });
-
     }
 
     @Override
@@ -88,28 +84,37 @@ public class ActivityMyCart extends AppCompatActivity implements AdapterMyCartIt
     }
 
 
-    private void initList() {
+    private void init() {
+        myCartRecyclerView=findViewById(R.id.amc_myCart_recyclerView);
+        btnCheckOut=findViewById(R.id.amc_btnConstrain);
         myCartItemViewModel = new ViewModelProvider(this).get(ViewModelMyCartItem.class);
         myCartItemList = new ArrayList<>();
-        myCartItemViewModel.insertNewMyCartItem(new ModelMyCartItem(
+        /*myCartItemViewModel.insertNewMyCartItem(new ModelMyCartItem(
                 "Bogurar Doi",
                 "200 Tk",
-                "3"
+                "3",
+                "1"
         ));
         myCartItemViewModel.insertNewMyCartItem(new ModelMyCartItem(
                 "Khirsha",
                 "330 Tk",
-                "1"
+                "1",
+                "2"
         ));
         myCartItemViewModel.insertNewMyCartItem(new ModelMyCartItem(
                 "malai kari",
                 "200 Tk",
-                "2"
+                "2",
+                "3"
         ));
         myCartItemViewModel.insertNewMyCartItem(new ModelMyCartItem(
                 "Bogurar Doi",
                 "200 Tk",
-                "3"
-        ));
+                "3",
+                "4"
+        ));*/
+
+        toolbar=findViewById(R.id.amc_cart_main_toolbar);
+        setSupportActionBar(toolbar);
     }
 }

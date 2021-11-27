@@ -30,7 +30,7 @@
             android:name=".activity.ActivityCheckOut"
             android:exported="true" />
         <activity
-            android:name=".activity.ActivityFavouriteItem"
+            android:name=".activity.ActivityFavouriteFood"
             android:exported="true" />
         <activity
             android:name=".activity.ActivityPreOrderItemCart"

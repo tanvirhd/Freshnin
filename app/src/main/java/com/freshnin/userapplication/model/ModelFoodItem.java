@@ -1,11 +1,29 @@
 package com.freshnin.userapplication.model;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "food_table")
 public class ModelFoodItem {
 
+    @PrimaryKey(autoGenerate = true)
+    public int id;
+
+    @ColumnInfo(name = "foodName")
     private String foodName;
+
+    @ColumnInfo(name = "foodPrice")
     private String foodPrice;
+
+    @ColumnInfo(name = "foodWeight")
     private String foodWeight;
 
+    @ColumnInfo(name = "foodId")
+    private String foodId;
+
+    @ColumnInfo(name = "isFavourite")
     private boolean isFavourite;
 
     private int foodImage;
@@ -13,6 +31,29 @@ public class ModelFoodItem {
     private String quantityOfFood;
 
 
+    // For favourite food
+    public ModelFoodItem(String foodName, String foodPrice, String foodWeight, String foodId, boolean isFavourite, int foodImage) {
+        this.foodName = foodName;
+        this.foodPrice = foodPrice;
+        this.foodWeight = foodWeight;
+        this.foodId = foodId;
+        this.isFavourite = isFavourite;
+        this.foodImage = foodImage;
+    }
+
+    @Ignore
+    public ModelFoodItem(int id, String foodName, String foodPrice, String foodWeight, String foodId, boolean isFavourite, int foodImage, String quantityOfFood) {
+        this.id = id;
+        this.foodName = foodName;
+        this.foodPrice = foodPrice;
+        this.foodWeight = foodWeight;
+        this.foodId = foodId;
+        this.isFavourite = isFavourite;
+        this.foodImage = foodImage;
+        this.quantityOfFood = quantityOfFood;
+    }
+
+    @Ignore
     public ModelFoodItem(String foodName, String foodPrice, String foodWeight, boolean isFavourite, int foodImage) {
         this.foodName = foodName;
         this.foodPrice = foodPrice;
@@ -22,6 +63,7 @@ public class ModelFoodItem {
     }
 
     // For Favourite Food List
+    @Ignore
     public ModelFoodItem(String foodName, String foodPrice, String foodWeight, int foodImage) {
         this.foodName = foodName;
         this.foodPrice = foodPrice;
@@ -29,6 +71,7 @@ public class ModelFoodItem {
         this.foodImage = foodImage;
     }
     // For check Out
+    @Ignore
     public ModelFoodItem(String foodName, String foodPrice, String quantityOfFood) {
         this.foodName = foodName;
         this.foodPrice = foodPrice;
@@ -36,20 +79,40 @@ public class ModelFoodItem {
     }
 
     // For Billing in check out && on going order Details
+    @Ignore
     public ModelFoodItem(String foodName, String foodPrice) {
         this.foodName = foodName;
         this.foodPrice = foodPrice;
     }
 
     // For on going order food list
+    @Ignore
     public ModelFoodItem(String foodName, int foodImage, String quantityOfFood) {
         this.foodName = foodName;
         this.foodImage = foodImage;
         this.quantityOfFood = quantityOfFood;
     }
 
+    @Ignore
     public ModelFoodItem(int foodImage) {
         this.foodImage = foodImage;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFoodId() {
+        return foodId;
+    }
+
+    public void setFoodId(String foodId) {
+        this.foodId = foodId;
     }
 
 

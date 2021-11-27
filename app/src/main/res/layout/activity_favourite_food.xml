@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.ActivityFavouriteItem">
+    tools:context=".activity.ActivityFavouriteFood">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/afi_appBarLayout"
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/afi_toolbar"
+            android:id="@+id/aff_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/appbg"
@@ -24,7 +24,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/afi_favourite_food_recy"
+        android:id="@+id/aff_favourite_food_recy"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         tools:listitem="@layout/layout_favourite_item_cardview"

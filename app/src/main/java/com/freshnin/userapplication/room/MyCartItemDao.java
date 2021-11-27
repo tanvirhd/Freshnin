@@ -21,6 +21,9 @@ public interface MyCartItemDao {
     @Query("select * from myCartItem_table")
     LiveData<List<ModelMyCartItem>> getAllMyCartItem();
 
-    @Query("update myCartItem_table set productName=:productName, productPrice=:productPrice, productQuantity=:productQuantity where id=:id")
-    void updateMyCartItem(int id, String productName, String productPrice, String productQuantity);
+    @Query("update myCartItem_table set foodName=:foodName, foodPrice=:foodPrice, foodQuantity=:foodQuantity,foodId=:foodId where id=:id")
+    void updateMyCartItem(int id, String foodName, String foodPrice, String foodQuantity,String foodId);
+
+    @Query("delete from myCartItem_table")
+    void deleteAllItemFromMyCart();
 }

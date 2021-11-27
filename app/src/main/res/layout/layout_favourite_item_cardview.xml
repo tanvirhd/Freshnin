@@ -11,11 +11,11 @@
 
 
     <ImageView
-        android:id="@+id/afi_iv_food_picture"
+        android:id="@+id/aff_iv_food_picture"
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/food_krishna_kebiner_malaikari"
+        android:src="@drawable/food_bogurar_doi"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,20 +24,20 @@
 
 
     <ImageView
-        android:id="@+id/afi_ivFavouriteFood"
+        android:id="@+id/aff_ivFavouriteFood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
         android:src="@drawable/icon_favourite"
-        app:layout_constraintBottom_toBottomOf="@+id/afi_iv_food_picture"
-        app:layout_constraintEnd_toEndOf="@+id/afi_iv_food_picture"
+        app:layout_constraintBottom_toBottomOf="@+id/aff_iv_food_picture"
+        app:layout_constraintEnd_toEndOf="@+id/aff_iv_food_picture"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/afi_iv_food_picture"
-        app:layout_constraintTop_toTopOf="@+id/afi_iv_food_picture"
+        app:layout_constraintStart_toStartOf="@+id/aff_iv_food_picture"
+        app:layout_constraintTop_toTopOf="@+id/aff_iv_food_picture"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/afi_tvFoodName"
+        android:id="@+id/aff_tvFoodName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|bottom"
@@ -52,12 +52,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/afi_iv_food_picture"
-        app:layout_constraintTop_toBottomOf="@+id/afi_iv_food_picture"
+        app:layout_constraintStart_toStartOf="@+id/aff_iv_food_picture"
+        app:layout_constraintTop_toBottomOf="@+id/aff_iv_food_picture"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/afi_priceWord"
+        android:id="@+id/aff_priceWord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|bottom"
@@ -68,12 +68,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/afi_tvFoodName"
-        app:layout_constraintTop_toBottomOf="@+id/afi_tvFoodName"
+        app:layout_constraintStart_toStartOf="@+id/aff_tvFoodName"
+        app:layout_constraintTop_toBottomOf="@+id/aff_tvFoodName"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/afi_tvFoodPrice"
+        android:id="@+id/aff_tvFoodPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|bottom"
@@ -82,15 +82,15 @@
         android:text="230 Tk"
         android:textColor="@color/black"
         android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/afi_priceWord"
+        app:layout_constraintBottom_toBottomOf="@+id/aff_priceWord"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/afi_priceWord"
-        app:layout_constraintTop_toTopOf="@+id/afi_priceWord"
+        app:layout_constraintStart_toEndOf="@+id/aff_priceWord"
+        app:layout_constraintTop_toTopOf="@+id/aff_priceWord"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/afi_btn_add_to_cart"
+        android:id="@+id/aff_btn_add_to_cart"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
@@ -108,9 +108,9 @@
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/afi_iv_food_picture"
-        app:layout_constraintStart_toStartOf="@+id/afi_iv_food_picture"
-        app:layout_constraintTop_toBottomOf="@+id/afi_priceWord"
+        app:layout_constraintEnd_toEndOf="@+id/aff_iv_food_picture"
+        app:layout_constraintStart_toStartOf="@+id/aff_iv_food_picture"
+        app:layout_constraintTop_toBottomOf="@+id/aff_priceWord"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

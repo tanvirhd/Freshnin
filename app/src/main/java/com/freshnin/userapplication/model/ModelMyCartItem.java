@@ -11,49 +11,64 @@ public class ModelMyCartItem {
     @PrimaryKey(autoGenerate = true)
     public int id;
 
-    @ColumnInfo(name = "productName")
-    private String productName;
+    @ColumnInfo(name = "foodName")
+    private String foodName;
 
-    @ColumnInfo(name = "productPrice")
-    private String productPrice;
+    @ColumnInfo(name = "foodPrice")
+    private String foodPrice;
 
-    @ColumnInfo(name = "productQuantity")
-    private String productQuantity;
+    @ColumnInfo(name = "foodQuantity")
+    private String foodQuantity;
 
-    public ModelMyCartItem(int id, String productName, String productPrice, String productQuantity) {
+    @ColumnInfo(name = "foodId")
+    private String foodId;
+
+    @Ignore
+    public ModelMyCartItem(int id, String foodName, String foodPrice, String foodQuantity, String foodId) {
         this.id = id;
-        this.productName = productName;
-        this.productPrice = productPrice;
-        this.productQuantity = productQuantity;
+        this.foodName = foodName;
+        this.foodPrice = foodPrice;
+        this.foodQuantity = foodQuantity;
+        this.foodId = foodId;
     }
 
-    public ModelMyCartItem(String productName, String productPrice, String productQuantity) {
-        this.productName = productName;
-        this.productPrice = productPrice;
-        this.productQuantity = productQuantity;
+
+    public ModelMyCartItem(String foodName, String foodPrice, String foodQuantity, String foodId) {
+        this.foodName = foodName;
+        this.foodPrice = foodPrice;
+        this.foodQuantity = foodQuantity;
+        this.foodId = foodId;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getFoodName() {
+        return foodName;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setFoodName(String foodName) {
+        this.foodName = foodName;
     }
 
-    public String getProductPrice() {
-        return productPrice;
+    public String getFoodPrice() {
+        return foodPrice;
     }
 
-    public void setProductPrice(String productPrice) {
-        this.productPrice = productPrice;
+    public void setFoodPrice(String foodPrice) {
+        this.foodPrice = foodPrice;
     }
 
-    public String getProductQuantity() {
-        return productQuantity;
+    public String getFoodQuantity() {
+        return foodQuantity;
     }
 
-    public void setProductQuantity(String productQuantity) {
-        this.productQuantity = productQuantity;
+    public void setFoodQuantity(String foodQuantity) {
+        this.foodQuantity = foodQuantity;
+    }
+
+    public String getFoodId() {
+        return foodId;
+    }
+
+    public void setFoodId(String foodId) {
+        this.foodId = foodId;
     }
 }

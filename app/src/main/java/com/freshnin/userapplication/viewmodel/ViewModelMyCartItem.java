@@ -31,7 +31,11 @@ public class ViewModelMyCartItem extends AndroidViewModel {
         return repository.getAllMyCartItem();
     }
 
-    public void updateMycartItem(ModelMyCartItem myCartItem){
+    public void updateMyCartItem(ModelMyCartItem myCartItem){
         repository.updateMyCartItem(myCartItem);
+    }
+
+    public void deleteAllItemFromMyCart(){
+        repository.deleteAllItemFromMyCart();
     }
 }

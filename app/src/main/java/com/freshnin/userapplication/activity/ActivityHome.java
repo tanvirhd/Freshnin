@@ -172,10 +172,10 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
                 R.drawable.food_bogurar_doi
         ));
         preOrderFoodList.add(new ModelPreOrderFood(
-                R.drawable.food_krishna_kebiner_malaikari
+                R.drawable.food_bogurar_khirsha
         ));
         preOrderFoodList.add(new ModelPreOrderFood(
-                R.drawable.food_krishna_kebiner_malaikari
+                R.drawable.food_bogurar_doi
         ));
         preOrderFoodList.add(new ModelPreOrderFood(
                 R.drawable.food_bogurar_doi
@@ -184,7 +184,7 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
                 R.drawable.food_bogurar_khirsha
         ));
         preOrderFoodList.add(new ModelPreOrderFood(
-                R.drawable.food_krishna_kebiner_malaikari
+                R.drawable.food_bogurar_khirsha
         ));
         preOrderFoodList.add(new ModelPreOrderFood(
                 R.drawable.food_bogurar_doi
@@ -203,7 +203,7 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
                 R.drawable.food_bogurar_khirsha
         ));
         dryFoodItemList.add(new ModelFoodItem(
-                R.drawable.food_krishna_kebiner_malaikari
+                R.drawable.food_bogurar_doi
         ));
         dryFoodItemList.add(new ModelFoodItem(
                 R.drawable.food_bogurar_doi
@@ -212,7 +212,7 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
                 R.drawable.food_bogurar_khirsha
         ));
         dryFoodItemList.add(new ModelFoodItem(
-                R.drawable.food_krishna_kebiner_malaikari
+                R.drawable.food_bogurar_doi
         ));
 
 
@@ -221,19 +221,19 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
                 R.drawable.food_bogurar_doi
         ));
         edibleFoodList.add(new ModelFoodItem(
-                R.drawable.food_krishna_kebiner_malaikari
+                R.drawable.food_bogurar_khirsha
         ));
         edibleFoodList.add(new ModelFoodItem(
                 R.drawable.food_bogurar_khirsha
         ));
         edibleFoodList.add(new ModelFoodItem(
-                R.drawable.food_porabari_chomchom
+                R.drawable.food_bogurar_khirsha
         ));
         edibleFoodList.add(new ModelFoodItem(
                 R.drawable.food_bogurar_doi
         ));
         edibleFoodList.add(new ModelFoodItem(
-                R.drawable.food_porabari_chomchom
+                R.drawable.food_bogurar_khirsha
         ));
         edibleFoodList.add(new ModelFoodItem(
                 R.drawable.food_bogurar_doi
@@ -246,13 +246,13 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
                 R.drawable.food_bogurar_doi
         ));
         herbalItemList.add(new ModelFoodItem(
-                R.drawable.food_porabari_chomchom
+                R.drawable.food_bogurar_khirsha
         ));
         herbalItemList.add(new ModelFoodItem(
                 R.drawable.food_bogurar_khirsha
         ));
         herbalItemList.add(new ModelFoodItem(
-                R.drawable.food_krishna_kebiner_malaikari
+                R.drawable.food_bogurar_khirsha
         ));
         herbalItemList.add(new ModelFoodItem(
                 R.drawable.food_bogurar_doi
@@ -261,7 +261,7 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
                 R.drawable.food_bogurar_khirsha
         ));
         herbalItemList.add(new ModelFoodItem(
-                R.drawable.food_porabari_chomchom
+                R.drawable.food_bogurar_khirsha
         ));
 
 
@@ -274,13 +274,13 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
                 R.drawable.food_bogurar_khirsha
         ));
         canFoodItemList.add(new ModelFoodItem(
-                R.drawable.food_porabari_chomchom
+                R.drawable.food_bogurar_doi
         ));
         canFoodItemList.add(new ModelFoodItem(
-                R.drawable.food_porabari_chomchom
+                R.drawable.food_bogurar_doi
         ));
         canFoodItemList.add(new ModelFoodItem(
-                R.drawable.food_porabari_chomchom
+                R.drawable.food_bogurar_doi
         ));canFoodItemList.add(new ModelFoodItem(
                 R.drawable.food_bogurar_doi
         ));
@@ -297,10 +297,10 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
                 R.drawable.food_bogurar_doi
         ));
         honeyAndGheeItemList.add(new ModelFoodItem(
-                R.drawable.food_porabari_chomchom
+                R.drawable.food_bogurar_doi
         ));
         honeyAndGheeItemList.add(new ModelFoodItem(
-                R.drawable.food_krishna_kebiner_malaikari
+                R.drawable.food_bogurar_doi
         ));
         honeyAndGheeItemList.add(new ModelFoodItem(
                 R.drawable.food_bogurar_khirsha
@@ -309,7 +309,7 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
                 R.drawable.food_bogurar_doi
         ));
         honeyAndGheeItemList.add(new ModelFoodItem(
-                R.drawable.food_porabari_chomchom
+                R.drawable.food_bogurar_doi
         ));
 
 
@@ -342,7 +342,7 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
                 break;
 
             case R.id.nav_goto_favourite:
-                Intent intentFavourite = new Intent(ActivityHome.this, ActivityFavouriteItem.class);
+                Intent intentFavourite = new Intent(ActivityHome.this, ActivityFavouriteFood.class);
                 startActivity(intentFavourite);
                 break;
 

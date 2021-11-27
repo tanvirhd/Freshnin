@@ -77,7 +77,7 @@ public class ActivityOnGoingOrderDetails extends AppCompatActivity {
 
         foodItemList.add(new ModelFoodItem(
                 "Chomchom",
-                R.drawable.food_porabari_chomchom,
+                R.drawable.food_bogurar_doi,
                 "05"
         ));
 
