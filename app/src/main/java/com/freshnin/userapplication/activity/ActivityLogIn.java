@@ -5,14 +5,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.freshnin.userapplication.R;
+import com.freshnin.userapplication.model.ModelLogIn;
+import com.freshnin.userapplication.model.ModelUser;
+import com.freshnin.userapplication.tools.GlobalKey;
+import com.freshnin.userapplication.tools.Utils;
 import com.freshnin.userapplication.viewmodel.ViewModelUser;
 import com.google.android.material.textfield.TextInputEditText;
+
 
 public class ActivityLogIn extends AppCompatActivity {
 
@@ -48,8 +55,12 @@ public class ActivityLogIn extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(ActivityLogIn.this,ActivityHome.class));
 
+                //todo delete next 2 line
+                Utils.savePrefBoolean(GlobalKey.IS_LOGGED_IN,true);
+                Utils.savePref(GlobalKey.USER_ID,tietUserPhoneNumber.getText().toString());
+
                 //todo revert
-               /* viewModelLogIn.checkValidLogIn(new ModelUser(tietUserPhoneNumber.getText().toString(), tietUserPassword.getText().toString()))
+                /*viewModelUser.checkValidLogIn(new ModelUser(tietUserPhoneNumber.getText().toString(), tietUserPassword.getText().toString()))
                         .observe(ActivityLogIn.this, new Observer<ModelLogIn>() {
                             @Override
                             public void onChanged(ModelLogIn modelLogIn) {
@@ -57,6 +68,8 @@ public class ActivityLogIn extends AppCompatActivity {
                                     Toast.makeText(ActivityLogIn.this, "something went wrong", Toast.LENGTH_SHORT).show();
                                 } else {
                                     if (modelLogIn.isValidUser()) {
+                                        Utils.savePrefBoolean(GlobalKey.IS_LOGGED_IN,true);
+                                        Utils.savePref(GlobalKey.USER_ID,tietUserPhoneNumber.getText().toString());
                                         Toast.makeText(ActivityLogIn.this, "Successfully Loged in", Toast.LENGTH_SHORT).show();
                                     } else {
                                         Toast.makeText(ActivityLogIn.this, "Wrong userid or password", Toast.LENGTH_SHORT).show();

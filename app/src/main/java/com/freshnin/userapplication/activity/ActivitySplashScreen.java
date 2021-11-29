@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.freshnin.userapplication.R;
+import com.freshnin.userapplication.tools.GlobalKey;
+import com.freshnin.userapplication.tools.Utils;
 
 public class ActivitySplashScreen extends AppCompatActivity {
 
@@ -19,8 +21,13 @@ public class ActivitySplashScreen extends AppCompatActivity {
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(ActivitySplashScreen.this, ActivityLogIn.class));
-                finish();
+                if(Utils.getPrefBoolean(GlobalKey.IS_LOGGED_IN,false)){
+                    startActivity(new Intent(ActivitySplashScreen.this, ActivityHome.class));
+                    finish();
+                }else {
+                    startActivity(new Intent(ActivitySplashScreen.this, ActivityLogIn.class));
+                    finish();
+                }
             }
         }, 2000);
     }

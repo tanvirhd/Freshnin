@@ -12,7 +12,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.adapter.AdapterCanFoodListRecy;
@@ -34,6 +36,7 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private ImageView btnCloseNavDrawer;
+    private TextView tvPreOrderSeeAll;
 
     private RecyclerView preOrderRecy;
     private List<ModelPreOrderFood> preOrderFoodList;
@@ -74,6 +77,7 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
 
         drawerLayout=findViewById(R.id.ah_home_drawer_layout);
         navigationView=findViewById(R.id.ah_home_nav_view);
+        tvPreOrderSeeAll=findViewById(R.id.ah_preOrder_seeAll);
 
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
                 this,
@@ -142,6 +146,14 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
 
             }
         });*/
+
+        // all onClick action
+        tvPreOrderSeeAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ActivityHome.this,ActivityPreOrderFoodList.class));
+            }
+        });
 
     }
 

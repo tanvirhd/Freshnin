@@ -1,8 +1,10 @@
 package com.freshnin.userapplication.activity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +19,7 @@ import com.freshnin.userapplication.adapter.AdapterPreOrderFoodRecy;
 import com.freshnin.userapplication.callbacks.AdapterPreOrderFoodRecycCallBacks;
 import com.freshnin.userapplication.model.ModelPreOrderFood;
 import com.freshnin.userapplication.model.ModelPreOrderItem;
+import com.freshnin.userapplication.tools.Utils;
 import com.freshnin.userapplication.viewmodel.ViewModelPreOrderItem;
 
 import java.util.ArrayList;
@@ -28,6 +31,7 @@ public class ActivityPreOrderFoodList extends AppCompatActivity implements Adapt
     private RecyclerView preOrderFoodRecy;
     private AdapterPreOrderFoodRecy adapterPreOrderFoodRecy;
     private List<ModelPreOrderItem> preOrderFoodList;
+    private Dialog loadingDialog;
 
     ViewModelPreOrderItem viewModelPreOrderItem;
 
@@ -65,9 +69,12 @@ public class ActivityPreOrderFoodList extends AppCompatActivity implements Adapt
 
         adapterPreOrderFoodRecy=new AdapterPreOrderFoodRecy(preOrderFoodList,ActivityPreOrderFoodList.this,ActivityPreOrderFoodList.this);
         preOrderFoodRecy.setAdapter(adapterPreOrderFoodRecy);
+
+        loadingDialog= Utils.setupLoadingDialog(ActivityPreOrderFoodList.this);
     }
 
     void  getAllPreOrderActiveSession(){
+        loadingDialog.show();
         viewModelPreOrderItem.getAllActivePreOrderSession().observe(this, new Observer<List<ModelPreOrderItem>>() {
             @Override
             public void onChanged(List<ModelPreOrderItem> modelPreOrderItems) {
@@ -75,6 +82,10 @@ public class ActivityPreOrderFoodList extends AppCompatActivity implements Adapt
                     preOrderFoodList.clear();
                     preOrderFoodList.addAll(modelPreOrderItems);
                     adapterPreOrderFoodRecy.notifyDataSetChanged();
+                    loadingDialog.dismiss();
+                }else{
+                    loadingDialog.dismiss();
+                    Toast.makeText(ActivityPreOrderFoodList.this, "Something went wrong!!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
