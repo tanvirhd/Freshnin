@@ -115,7 +115,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="2dp"
-                    android:text="330 Taka / Sora"
+                    android:text="330 Taka"
                     android:textColor="@color/black"
                     android:textSize="24dp"
                     android:textStyle="bold"

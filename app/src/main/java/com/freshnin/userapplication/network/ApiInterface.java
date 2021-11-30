@@ -1,5 +1,6 @@
 package com.freshnin.userapplication.network;
 
+import com.freshnin.userapplication.model.ModelCreateNewPreOrder;
 import com.freshnin.userapplication.model.ModelLogIn;
 import com.freshnin.userapplication.model.ModelNewUserRegistration;
 import com.freshnin.userapplication.model.ModelPreOrderItem;
@@ -29,5 +30,8 @@ public interface ApiInterface {
     // pre order item related
     @POST ("getPreorderActiveSession.php")
     Observable<List<ModelPreOrderItem>> getAllActivePreOrderSession();
+
+    @POST("createNewPreOrder.php")
+    Observable<List<ModelCreateNewPreOrder>> createNewPreOrder(@Body ModelUser modelUser);
 
 }

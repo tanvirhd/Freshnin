@@ -2,16 +2,22 @@ package com.freshnin.userapplication.repository;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.freshnin.userapplication.model.ModelCreateNewPreOrder;
 import com.freshnin.userapplication.model.ModelPreOrderItem;
+import com.freshnin.userapplication.model.ModelUser;
 import com.freshnin.userapplication.network.ApiClient;
 import com.freshnin.userapplication.network.ApiInterface;
 
 import java.util.List;
 
+import io.reactivex.Observer;
+import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
@@ -47,4 +53,29 @@ public  class RepositoryPreOrderItem {
 
         return result;
     }
+
+    public LiveData<List<ModelCreateNewPreOrder>> createNewPreOrder(ModelUser user){
+        MutableLiveData<List<ModelCreateNewPreOrder>> result=new MutableLiveData<>();
+
+        apiInterface.createNewPreOrder(user).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<List<ModelCreateNewPreOrder>>() {
+                    @Override
+                    public void accept(List<ModelCreateNewPreOrder> modelCreateNewPreOrders) throws Exception {
+                        if(modelCreateNewPreOrders !=null){
+                            result.postValue(modelCreateNewPreOrders);
+                        }else{
+                            result.postValue(null);
+                        }
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        result.postValue(null);
+                        Log.d(TAG, "createNewPreOrder: error"+throwable.getMessage());
+                    }
+                });
+        return result;
+    }
+
 }

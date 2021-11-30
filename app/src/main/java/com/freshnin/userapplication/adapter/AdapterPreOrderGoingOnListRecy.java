@@ -10,16 +10,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.freshnin.userapplication.R;
-import com.freshnin.userapplication.model.ModelPreOrderFood;
+import com.freshnin.userapplication.model.ModelPreOrderItem;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class AdapterPreOrderGoingOnListRecy extends RecyclerView.Adapter<AdapterPreOrderGoingOnListRecy.ViewHolderAdapterPreOrderGoingOnRecy>{
 
-    List<ModelPreOrderFood> preOrderFoodList;
+    List<ModelPreOrderItem> preOrderFoodList;
     Context context;
 
-    public AdapterPreOrderGoingOnListRecy(List<ModelPreOrderFood> preOrderFoodList, Context context) {
+    public AdapterPreOrderGoingOnListRecy(List<ModelPreOrderItem> preOrderFoodList, Context context) {
         this.preOrderFoodList = preOrderFoodList;
         this.context = context;
     }
@@ -35,7 +36,10 @@ public class AdapterPreOrderGoingOnListRecy extends RecyclerView.Adapter<Adapter
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderAdapterPreOrderGoingOnRecy holder, int position) {
-        holder.ivPreOrderFoodImage.setImageResource(preOrderFoodList.get(position).getPreOrderFoodImage());
+       // holder.ivPreOrderFoodImage.setImageResource(preOrderFoodList.get(position).getPreOrderFoodImage());
+        Picasso.with(context)
+                .load(preOrderFoodList.get(position).getProductPicUrl())
+                .into(holder.ivPreOrderFoodImage);
     }
 
     @Override

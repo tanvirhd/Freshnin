@@ -1,6 +1,7 @@
 package com.freshnin.userapplication.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +18,14 @@ import com.freshnin.userapplication.model.ModelPreOrderFood;
 import com.freshnin.userapplication.model.ModelPreOrderItem;
 import com.squareup.picasso.Picasso;
 
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class AdapterPreOrderFoodRecy extends RecyclerView.Adapter<AdapterPreOrderFoodRecy.ViewHolderAdapterPreOrderFoodRecy>{
-
+    private static final String TAG = "AdapterPreOrderFoodRecy";
     List<ModelPreOrderItem> preOrderFoodList;
     Context context;
     AdapterPreOrderFoodRecycCallBacks adapterPreOrderFoodRecycCallBacks;
@@ -48,7 +53,13 @@ public class AdapterPreOrderFoodRecy extends RecyclerView.Adapter<AdapterPreOrde
                 .into( holder.ivPreOrderFoodImage );
 
         holder.tvPreOrderFoodTitle.setText(preOrderFoodList.get(position).getPreOrderProductName());
-        holder.tvOrderGoingOnTillDay.setText(preOrderFoodList.get(position).getProductShortDes());
+        //holder.tvOrderGoingOnTillDay.setText(preOrderFoodList.get(position).getProductShortDes());
+
+        try {
+            holder.tvOrderGoingOnTillDay.setText(getDayName(preOrderFoodList.get(position).getSessionEndDate()));
+        } catch (ParseException e) {
+            Log.d(TAG, "AdapterPreOrderFoodRecy: error"+e.getMessage());;
+        }
 
         holder.itemDetailsOnClick.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,4 +91,13 @@ public class AdapterPreOrderFoodRecy extends RecyclerView.Adapter<AdapterPreOrde
         }
     }
 
+
+    private String getDayName(String sessionEndDate) throws ParseException {
+        SimpleDateFormat inFormat = new SimpleDateFormat("dd-MM-yyyy");
+        Date date = inFormat.parse(sessionEndDate);
+        SimpleDateFormat outFormat = new SimpleDateFormat("EEEE");
+        String dayName = outFormat.format(date);
+
+        return dayName;
+    }
 }

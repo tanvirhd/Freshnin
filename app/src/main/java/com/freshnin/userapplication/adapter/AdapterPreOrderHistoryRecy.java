@@ -11,17 +11,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.callbacks.AdapterPreOrderHistoryRecycCallbacks;
-import com.freshnin.userapplication.model.ModelPreOrderHistory;
+import com.freshnin.userapplication.model.ModelCreateNewPreOrder;
 
 import java.util.List;
 
 public class AdapterPreOrderHistoryRecy extends RecyclerView.Adapter<AdapterPreOrderHistoryRecy.ViewHolderAdapterPreOrderHistoryRecy> {
 
-    List<ModelPreOrderHistory> preOrderHistoryList;
+    List<ModelCreateNewPreOrder> preOrderHistoryList;
     Context context;
     AdapterPreOrderHistoryRecycCallbacks callbacks;
 
-    public AdapterPreOrderHistoryRecy(List<ModelPreOrderHistory> preOrderHistoryList, Context context,AdapterPreOrderHistoryRecycCallbacks callbacks) {
+    public AdapterPreOrderHistoryRecy(List<ModelCreateNewPreOrder> preOrderHistoryList, Context context, AdapterPreOrderHistoryRecycCallbacks callbacks) {
         this.preOrderHistoryList = preOrderHistoryList;
         this.context = context;
         this.callbacks=callbacks;
@@ -38,11 +38,11 @@ public class AdapterPreOrderHistoryRecy extends RecyclerView.Adapter<AdapterPreO
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderAdapterPreOrderHistoryRecy holder, int position) {
-        holder.tvPreOrderId.setText(preOrderHistoryList.get(position).getPreOrdrId());
+      /*  holder.tvPreOrderId.setText(preOrderHistoryList.get(position).getPreOrdrId());
         holder.tvPreOrderProductName.setText(preOrderHistoryList.get(position).getPreOrderProductName());
         holder.tvPreOrderDeliveryDate.setText(preOrderHistoryList.get(position).getPreOrderProductDeliverDate());
         holder.tvPreOrderPaymentStatus.setText(preOrderHistoryList.get(position).getPreOrderPaymentStatus());
-
+*/
         holder.btnDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -33,7 +33,7 @@
             android:id="@+id/apofl_tvFoodTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="24dp"
             android:layout_marginTop="100dp"
             android:text="Masala Pasta"
             android:textColor="@color/black"
@@ -43,21 +43,21 @@
             android:id="@+id/apofl_tvPreOrderDateLine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="24dp"
             android:layout_marginTop="125dp"
             android:text="Order going on till"
             android:textColor="@color/black"
-            android:textSize="14dp" />
+            android:textSize="18dp" />
 
         <TextView
             android:id="@+id/apofl_tvOrderRemainday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="130dp"
+            android:layout_marginLeft="150dp"
             android:layout_marginTop="125dp"
             android:text="WednessDay"
             android:textColor="@color/black"
-            android:textSize="14dp" />
+            android:textSize="18dp" />
 
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

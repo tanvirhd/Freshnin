@@ -5,6 +5,8 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.adapter.AdapterCanFoodListRecy;
@@ -24,7 +27,8 @@ import com.freshnin.userapplication.adapter.AdapterHerbalItemRecy;
 import com.freshnin.userapplication.adapter.AdapterHoneyAndGheeListRecy;
 import com.freshnin.userapplication.adapter.AdapterPreOrderGoingOnListRecy;
 import com.freshnin.userapplication.model.ModelFoodItem;
-import com.freshnin.userapplication.model.ModelPreOrderFood;
+import com.freshnin.userapplication.model.ModelPreOrderItem;
+import com.freshnin.userapplication.viewmodel.ViewModelPreOrderItem;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -39,8 +43,10 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
     private TextView tvPreOrderSeeAll;
 
     private RecyclerView preOrderRecy;
-    private List<ModelPreOrderFood> preOrderFoodList;
+    private List<ModelPreOrderItem> preOrderFoodList;
     private AdapterPreOrderGoingOnListRecy adapterPreOrderGoingOnListRecy;
+    private ViewModelPreOrderItem viewModelPreOrderOnGoingItem;
+
 
     private RecyclerView dryFoodRecy;
     private List<ModelFoodItem> dryFoodItemList;
@@ -61,6 +67,8 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
     private RecyclerView honeyAndGheeItemRecy;
     private List<ModelFoodItem> honeyAndGheeItemList;
     private AdapterHoneyAndGheeListRecy adapterHoneyAndGheeListRecy;
+
+
 
 
     @Override
@@ -157,10 +165,40 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getFirstFivePreOrderActiveSession();
+    }
+
+    void getFirstFivePreOrderActiveSession() {
+        viewModelPreOrderOnGoingItem.getAllActivePreOrderSession().observe(this, new Observer<List<ModelPreOrderItem>>() {
+            @Override
+            public void onChanged(List<ModelPreOrderItem> modelPreOrderItems) {
+                if(modelPreOrderItems!=null){
+                    if(modelPreOrderItems.size()>=5) {
+                        preOrderFoodList.clear();
+                        for (int i = 1; i <= 5; i++) {
+                            preOrderFoodList.set(i, modelPreOrderItems.get(i));
+                            adapterPreOrderGoingOnListRecy.notifyDataSetChanged();
+                        }
+
+                    }else{
+                        preOrderFoodList.clear();
+                        preOrderFoodList.addAll(modelPreOrderItems);
+                        adapterPreOrderGoingOnListRecy.notifyDataSetChanged();
+                    }
+                }else{
+                    Toast.makeText(ActivityHome.this, "Something went wrong!!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
 
     public void init(){
         preOrderRecy=findViewById(R.id.ah_preOrder_recyclerView);
         adapterPreOrderGoingOnListRecy =new AdapterPreOrderGoingOnListRecy(preOrderFoodList,this);
+        viewModelPreOrderOnGoingItem=new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(ViewModelPreOrderItem.class);
 
         dryFoodRecy=findViewById(R.id.ah_dryFood_recyclerView);
         adapterDryFoodListRecy =new AdapterDryFoodListRecy(dryFoodItemList,this);
@@ -179,8 +217,8 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
     }
 
     public void initList(){
-        preOrderFoodList=new ArrayList<>();
-        preOrderFoodList.add(new ModelPreOrderFood(
+       preOrderFoodList=new ArrayList<>();
+        /* preOrderFoodList.add(new ModelPreOrderFood(
                 R.drawable.food_bogurar_doi
         ));
         preOrderFoodList.add(new ModelPreOrderFood(
@@ -204,7 +242,7 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
         preOrderFoodList.add(new ModelPreOrderFood(
                 R.drawable.food_bogurar_khirsha
         ));
-
+*/
 
 
         dryFoodItemList=new ArrayList<>();

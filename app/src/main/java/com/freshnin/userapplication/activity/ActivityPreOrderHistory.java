@@ -13,17 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.adapter.AdapterPreOrderHistoryRecy;
 import com.freshnin.userapplication.callbacks.AdapterPreOrderHistoryRecycCallbacks;
-import com.freshnin.userapplication.model.ModelPreOrderHistory;
+import com.freshnin.userapplication.model.ModelCreateNewPreOrder;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class  ActivityPreOrderHistory extends AppCompatActivity implements AdapterPreOrderHistoryRecycCallbacks {
+public class ActivityPreOrderHistory extends AppCompatActivity implements AdapterPreOrderHistoryRecycCallbacks {
 
     private Toolbar toolbar;
     private RecyclerView preOrderHistoryRecy;
     private AdapterPreOrderHistoryRecy adapterPreOrderHistoryRecy;
-    private List<ModelPreOrderHistory> preOrderHistoryList;
+    private List<ModelCreateNewPreOrder> preOrderHistoryList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,17 +43,17 @@ public class  ActivityPreOrderHistory extends AppCompatActivity implements Adapt
 
 
 
-        initList();
+        //initList();
 
         preOrderHistoryRecy=findViewById(R.id.apoh_preOrderHistoryRecy);
         preOrderHistoryRecy.setLayoutManager(new LinearLayoutManager(ActivityPreOrderHistory.this));
 
         adapterPreOrderHistoryRecy=new AdapterPreOrderHistoryRecy(
-                preOrderHistoryList,ActivityPreOrderHistory.this,ActivityPreOrderHistory.this);
+                preOrderHistoryList, ActivityPreOrderHistory.this, ActivityPreOrderHistory.this);
         preOrderHistoryRecy.setAdapter(adapterPreOrderHistoryRecy);
     }
 
-    private void initList() {
+    /*private void initList() {
         preOrderHistoryList=new ArrayList<>();
 
         preOrderHistoryList.add(new ModelPreOrderHistory(
@@ -128,7 +127,7 @@ public class  ActivityPreOrderHistory extends AppCompatActivity implements Adapt
         ));
 
 
-    }
+    }*/
 
 
     @Override
