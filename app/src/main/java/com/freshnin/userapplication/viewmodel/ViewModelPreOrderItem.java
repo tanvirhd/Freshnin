@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 
 import com.freshnin.userapplication.model.ModelCreateNewPreOrder;
 import com.freshnin.userapplication.model.ModelPreOrderItem;
+import com.freshnin.userapplication.model.ModelResponse;
 import com.freshnin.userapplication.model.ModelUser;
 import com.freshnin.userapplication.repository.RepositoryPreOrderItem;
 
@@ -28,7 +29,7 @@ public class ViewModelPreOrderItem extends AndroidViewModel {
         return repositoryPreOrderItem.getAllActivePreOrderSession();
     }
 
-    public LiveData<List<ModelCreateNewPreOrder>> createNewPreOrder(ModelUser modelUser){
-        return repositoryPreOrderItem.createNewPreOrder(modelUser);
+    public LiveData<ModelResponse> createNewPreOrder(ModelCreateNewPreOrder order){
+        return repositoryPreOrderItem.createNewPreOrder(order);
     }
 }

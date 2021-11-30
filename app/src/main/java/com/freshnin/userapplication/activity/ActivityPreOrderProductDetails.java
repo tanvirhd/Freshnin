@@ -3,7 +3,6 @@ package com.freshnin.userapplication.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,13 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.model.ModelPreOrderItem;
-import com.freshnin.userapplication.tools.Utils;
 import com.squareup.picasso.Picasso;
-
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class ActivityPreOrderProductDetails extends AppCompatActivity {
     private static final String TAG = "ActivityProductDetails";
@@ -48,7 +41,7 @@ public class ActivityPreOrderProductDetails extends AppCompatActivity {
         btnOrderNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ActivityPreOrderProductDetails.this, ActivityPreOrderItemCart.class);
+                Intent intent = new Intent(ActivityPreOrderProductDetails.this, ActivityPreOrderCheckout.class);
                 intent.putExtra("parcel",itemDetails);
                 startActivity(intent);
             }

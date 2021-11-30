@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class Utils {
 
@@ -93,5 +94,12 @@ public class Utils {
         //window.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);  //this prevents dimming effect
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         return dialog;
+    }
+
+
+    public static String generate9DigitDeliveryID(String leadingPart) {
+        Random random = new Random();
+        int min=000000,max=999999;
+        return leadingPart.substring(0,2).replaceAll("\\s+","")+random.nextInt(max-min) + min;
     }
 }

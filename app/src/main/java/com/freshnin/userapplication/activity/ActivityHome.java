@@ -69,8 +69,6 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
     private AdapterHoneyAndGheeListRecy adapterHoneyAndGheeListRecy;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

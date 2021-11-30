@@ -4,6 +4,7 @@ import com.freshnin.userapplication.model.ModelCreateNewPreOrder;
 import com.freshnin.userapplication.model.ModelLogIn;
 import com.freshnin.userapplication.model.ModelNewUserRegistration;
 import com.freshnin.userapplication.model.ModelPreOrderItem;
+import com.freshnin.userapplication.model.ModelResponse;
 import com.freshnin.userapplication.model.ModelUser;
 import com.freshnin.userapplication.model.ModelUserVerify;
 
@@ -32,6 +33,6 @@ public interface ApiInterface {
     Observable<List<ModelPreOrderItem>> getAllActivePreOrderSession();
 
     @POST("createNewPreOrder.php")
-    Observable<List<ModelCreateNewPreOrder>> createNewPreOrder(@Body ModelUser modelUser);
+    Observable<ModelResponse> createNewPreOrder(@Body ModelCreateNewPreOrder order);
 
 }

@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.freshnin.userapplication.model.ModelCreateNewPreOrder;
 import com.freshnin.userapplication.model.ModelPreOrderItem;
+import com.freshnin.userapplication.model.ModelResponse;
 import com.freshnin.userapplication.model.ModelUser;
 import com.freshnin.userapplication.network.ApiClient;
 import com.freshnin.userapplication.network.ApiInterface;
@@ -54,16 +55,16 @@ public  class RepositoryPreOrderItem {
         return result;
     }
 
-    public LiveData<List<ModelCreateNewPreOrder>> createNewPreOrder(ModelUser user){
-        MutableLiveData<List<ModelCreateNewPreOrder>> result=new MutableLiveData<>();
+    public LiveData<ModelResponse> createNewPreOrder(ModelCreateNewPreOrder order){
+        MutableLiveData<ModelResponse> result=new MutableLiveData<>();
 
-        apiInterface.createNewPreOrder(user).subscribeOn(Schedulers.io())
+        apiInterface.createNewPreOrder(order).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<List<ModelCreateNewPreOrder>>() {
+                .subscribe(new Consumer<ModelResponse>() {
                     @Override
-                    public void accept(List<ModelCreateNewPreOrder> modelCreateNewPreOrders) throws Exception {
-                        if(modelCreateNewPreOrders !=null){
-                            result.postValue(modelCreateNewPreOrders);
+                    public void accept(ModelResponse response) throws Exception {
+                        if(response != null){
+                            result.postValue(response);
                         }else{
                             result.postValue(null);
                         }
@@ -72,7 +73,7 @@ public  class RepositoryPreOrderItem {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
                         result.postValue(null);
-                        Log.d(TAG, "createNewPreOrder: error"+throwable.getMessage());
+                        Log.d(TAG, "createNewPreOrder: error" + throwable.getMessage());
                     }
                 });
         return result;

@@ -48,8 +48,7 @@ public class ActivityPreOrderHistory extends AppCompatActivity implements Adapte
         preOrderHistoryRecy=findViewById(R.id.apoh_preOrderHistoryRecy);
         preOrderHistoryRecy.setLayoutManager(new LinearLayoutManager(ActivityPreOrderHistory.this));
 
-        adapterPreOrderHistoryRecy=new AdapterPreOrderHistoryRecy(
-                preOrderHistoryList, ActivityPreOrderHistory.this, ActivityPreOrderHistory.this);
+        adapterPreOrderHistoryRecy=new AdapterPreOrderHistoryRecy(preOrderHistoryList, ActivityPreOrderHistory.this, ActivityPreOrderHistory.this);
         preOrderHistoryRecy.setAdapter(adapterPreOrderHistoryRecy);
     }
 
