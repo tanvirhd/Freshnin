@@ -3,6 +3,7 @@ package com.freshnin.userapplication.activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ import java.util.List;
 
 public class ActivityPreOrderHistory extends AppCompatActivity implements AdapterPreOrderHistoryRecycCallbacks {
 
+    private static final String TAG = "ActivityPreOrderHistory";
     private Toolbar toolbar;
     private RecyclerView preOrderHistoryRecy;
     private AdapterPreOrderHistoryRecy adapterPreOrderHistoryRecy;
@@ -65,17 +67,17 @@ public class ActivityPreOrderHistory extends AppCompatActivity implements Adapte
     }
 
     private void getAllPreOrder() {
+        Log.d(TAG, "getAllPreOrder: called");
         dialogLoading.show();
         viewModelPreOrderItem.getOngoingPreOrderInformationByUser(userId).observe(this, new Observer<List<ModelOngoingOrder>>() {
             @Override
             public void onChanged(List<ModelOngoingOrder> modelOngoingOrders) {
+                Log.d(TAG, "onChanged: with size="+modelOngoingOrders.size());
                 if(modelOngoingOrders!=null){
-
                     preOrderHistoryList.clear();
                     preOrderHistoryList.addAll(modelOngoingOrders);
                     adapterPreOrderHistoryRecy.notifyDataSetChanged();
                     dialogLoading.dismiss();
-
                 }else{
                     dialogLoading.dismiss();
                     Toast.makeText(ActivityPreOrderHistory.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
@@ -98,7 +100,7 @@ public class ActivityPreOrderHistory extends AppCompatActivity implements Adapte
 
 
 
-        userId=new ModelUser(GlobalKey.USER_ID);
+        userId=new ModelUser(Utils.getPref(GlobalKey.USER_ID, ""));
 
         viewModelPreOrderItem= new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(ViewModelPreOrderItem.class);
         dialogLoading= Utils.setupLoadingDialog(ActivityPreOrderHistory.this);
@@ -112,7 +114,5 @@ public class ActivityPreOrderHistory extends AppCompatActivity implements Adapte
         //gotoHLogin.putExtra("key_int_value",152);
         gotoPreOrderDetails.putExtra("parcel",preOrderHistoryList.get(index));
         startActivity(gotoPreOrderDetails);
-
-
     }
 }
