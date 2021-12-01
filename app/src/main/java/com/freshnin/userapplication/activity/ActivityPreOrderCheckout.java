@@ -181,7 +181,7 @@ public class ActivityPreOrderCheckout extends AppCompatActivity {
     }
 
     private void updateUi() {
-        tvOrderId.setText(Utils.generate9DigitDeliveryID("abc"));
+        tvOrderId.setText(Utils.generate9DigitDeliveryID(itemDetails.getPreOrderProductName().substring(0,3)));
         Picasso.with(this).load(itemDetails.getProductPicUrl()).into(ivItemImage);
         tvItemName.setText(itemDetails.getPreOrderProductName());
 

@@ -85,7 +85,7 @@ public class ActivityPreOrderProductDetails extends AppCompatActivity {
         Picasso.with(this).load(modelPreOrderItem.getProductPicUrl()).into(ivItem);
         getSupportActionBar().setTitle(modelPreOrderItem.getPreOrderProductName());
         tvShortDescription.setText(modelPreOrderItem.getProductShortDes());
-        tvItemPrice.setText(modelPreOrderItem.getProductUnitPrice());
+        tvItemPrice.setText(modelPreOrderItem.getProductUnitPrice()+" Taka");
         tvItemWeight.setText(modelPreOrderItem.getProductUnitWeight());
 
 

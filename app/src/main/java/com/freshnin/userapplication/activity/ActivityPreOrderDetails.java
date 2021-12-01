@@ -13,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.model.ModelOngoingOrder;
+import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -88,14 +89,18 @@ public class ActivityPreOrderDetails extends AppCompatActivity {
 
     private void updateUi() throws ParseException {
         tvOrderId.setText("OrderId: "+orderDetails.getOrderId());
-        //Picasso.with(this).load()
+        Picasso.with(this).load(orderDetails.getUrl()).into(ivItemImage);
         tvItemName.setText(orderDetails.getItemName());
         tvTotalQuantity.setText(orderDetails.getOrderQuantity());
         tvTransactionId.setText(orderDetails.getTransactionId());
 
         tvAdvencedOrderStatus.setText(getOrderStatus(orderDetails.getOrderStatus()));
         tvBillingItemName.setText(orderDetails.getItemName());
-        //tvItemPrice.setText(orderDetails.get);
+
+        int itemPrice=Integer.parseInt(orderDetails.getTotalBill())
+                -Integer.parseInt(orderDetails.getDeliveryCharge());
+        tvItemPrice.setText(String.valueOf(itemPrice));
+
         tvDeliveryCharge.setText(orderDetails.getDeliveryCharge());
         tvDeliveryAddress.setText(orderDetails.getDeliveryAddress());
         tvPaidAmount.setText(orderDetails.getAdvancePyamentAmount());
@@ -110,7 +115,7 @@ public class ActivityPreOrderDetails extends AppCompatActivity {
         SimpleDateFormat month_date = new SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH);
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
-        String actualDate = "20-05-2016";
+        String actualDate = orderDetails.getOrderDeliveryDate();
 
         Date date = sdf.parse(actualDate);
 

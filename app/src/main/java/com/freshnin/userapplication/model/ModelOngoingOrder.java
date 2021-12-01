@@ -59,13 +59,19 @@ public class ModelOngoingOrder implements Parcelable {
     @SerializedName("orderStatus")
     @Expose
     private String orderStatus;
+    @SerializedName("url")
+    @Expose
+    private String url;
 
-    public ModelOngoingOrder(String orderId, String itemId, String userId, String itemName,
-                             String orderPlaceDate, String orderDeliveryDate, String orderQuantity,
-                             String deliveryAddress, String inTownDelivery, String deliveryCharge,
-                             String totalBill, String advancePyamentAmount, String advancePaymentStatus,
-                             String transactionId, String paymnetMethod, String advancePaymentMethod,
-                             String orderStatus) {
+    public ModelOngoingOrder(String orderId, String itemId, String userId,
+                             String itemName, String orderPlaceDate,
+                             String orderDeliveryDate, String orderQuantity,
+                             String deliveryAddress, String inTownDelivery,
+                             String deliveryCharge, String totalBill,
+                             String advancePyamentAmount, String advancePaymentStatus,
+                             String transactionId, String paymnetMethod,
+                             String advancePaymentMethod, String orderStatus,
+                             String url) {
         this.orderId = orderId;
         this.itemId = itemId;
         this.userId = userId;
@@ -83,10 +89,13 @@ public class ModelOngoingOrder implements Parcelable {
         this.paymnetMethod = paymnetMethod;
         this.advancePaymentMethod = advancePaymentMethod;
         this.orderStatus = orderStatus;
+        this.url = url;
     }
 
     public ModelOngoingOrder() {
     }
+
+
 
 
     public String getOrderId() {
@@ -225,32 +234,38 @@ public class ModelOngoingOrder implements Parcelable {
         this.orderStatus = orderStatus;
     }
 
+    public String getUrl() {
+        return url;
+    }
 
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
 
 
 
 //================================
-
-    protected ModelOngoingOrder(Parcel in) {
-        orderId = in.readString();
-        itemId = in.readString();
-        userId = in.readString();
-        itemName = in.readString();
-        orderPlaceDate = in.readString();
-        orderDeliveryDate = in.readString();
-        orderQuantity = in.readString();
-        deliveryAddress = in.readString();
-        inTownDelivery = in.readString();
-        deliveryCharge = in.readString();
-        totalBill = in.readString();
-        advancePyamentAmount = in.readString();
-        advancePaymentStatus = in.readString();
-        transactionId = in.readString();
-        paymnetMethod = in.readString();
-        advancePaymentMethod = in.readString();
-        orderStatus = in.readString();
-    }
+protected ModelOngoingOrder(Parcel in) {
+    orderId = in.readString();
+    itemId = in.readString();
+    userId = in.readString();
+    itemName = in.readString();
+    orderPlaceDate = in.readString();
+    orderDeliveryDate = in.readString();
+    orderQuantity = in.readString();
+    deliveryAddress = in.readString();
+    inTownDelivery = in.readString();
+    deliveryCharge = in.readString();
+    totalBill = in.readString();
+    advancePyamentAmount = in.readString();
+    advancePaymentStatus = in.readString();
+    transactionId = in.readString();
+    paymnetMethod = in.readString();
+    advancePaymentMethod = in.readString();
+    orderStatus = in.readString();
+    url = in.readString();
+}
 
     public static final Creator<ModelOngoingOrder> CREATOR = new Creator<ModelOngoingOrder>() {
         @Override
@@ -263,8 +278,6 @@ public class ModelOngoingOrder implements Parcelable {
             return new ModelOngoingOrder[size];
         }
     };
-
-
 
     @Override
     public int describeContents() {
@@ -290,5 +303,6 @@ public class ModelOngoingOrder implements Parcelable {
         dest.writeString(paymnetMethod);
         dest.writeString(advancePaymentMethod);
         dest.writeString(orderStatus);
+        dest.writeString(url);
     }
 }
