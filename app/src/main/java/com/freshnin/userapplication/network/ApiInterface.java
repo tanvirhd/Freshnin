@@ -3,6 +3,7 @@ package com.freshnin.userapplication.network;
 import com.freshnin.userapplication.model.ModelCreateNewPreOrder;
 import com.freshnin.userapplication.model.ModelLogIn;
 import com.freshnin.userapplication.model.ModelNewUserRegistration;
+import com.freshnin.userapplication.model.ModelOngoingOrder;
 import com.freshnin.userapplication.model.ModelPreOrderItem;
 import com.freshnin.userapplication.model.ModelResponse;
 import com.freshnin.userapplication.model.ModelUser;
@@ -35,4 +36,6 @@ public interface ApiInterface {
     @POST("createNewPreOrder.php")
     Observable<ModelResponse> createNewPreOrder(@Body ModelCreateNewPreOrder order);
 
+    @POST("getOngoingPreOrderInformationByUser.php")
+    Observable<List<ModelOngoingOrder>> getOngoingPreOrderInformationByUser(@Body ModelUser modelUser);
 }

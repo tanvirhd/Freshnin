@@ -7,9 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.freshnin.userapplication.R;
+import com.freshnin.userapplication.callbacks.AdapterPreOrderGoingOnListRecyCallBacks;
 import com.freshnin.userapplication.model.ModelPreOrderItem;
 import com.squareup.picasso.Picasso;
 
@@ -19,10 +21,12 @@ public class AdapterPreOrderGoingOnListRecy extends RecyclerView.Adapter<Adapter
 
     List<ModelPreOrderItem> preOrderFoodList;
     Context context;
+    AdapterPreOrderGoingOnListRecyCallBacks adapterPreOrderGoingOnListRecyCallBacks;
 
-    public AdapterPreOrderGoingOnListRecy(List<ModelPreOrderItem> preOrderFoodList, Context context) {
+    public AdapterPreOrderGoingOnListRecy(List<ModelPreOrderItem> preOrderFoodList, Context context, AdapterPreOrderGoingOnListRecyCallBacks adapterPreOrderGoingOnListRecyCallBacks) {
         this.preOrderFoodList = preOrderFoodList;
         this.context = context;
+        this.adapterPreOrderGoingOnListRecyCallBacks = adapterPreOrderGoingOnListRecyCallBacks;
     }
 
     @NonNull
@@ -40,6 +44,14 @@ public class AdapterPreOrderGoingOnListRecy extends RecyclerView.Adapter<Adapter
         Picasso.with(context)
                 .load(preOrderFoodList.get(position).getProductPicUrl())
                 .into(holder.ivPreOrderFoodImage);
+
+        holder.cvPreOrderItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adapterPreOrderGoingOnListRecyCallBacks.onPreOrderItemClick(holder.getAdapterPosition());
+            }
+        });
+
     }
 
     @Override
@@ -49,10 +61,12 @@ public class AdapterPreOrderGoingOnListRecy extends RecyclerView.Adapter<Adapter
 
     public class ViewHolderAdapterPreOrderGoingOnRecy extends RecyclerView.ViewHolder{
         ImageView ivPreOrderFoodImage;
+        CardView cvPreOrderItem;
 
         public ViewHolderAdapterPreOrderGoingOnRecy(@NonNull View itemView) {
             super(itemView);
             ivPreOrderFoodImage=itemView.findViewById(R.id.ah_preOrder_item_image);
+            cvPreOrderItem=itemView.findViewById(R.id.ah_preOrder);
         }
     }
 }

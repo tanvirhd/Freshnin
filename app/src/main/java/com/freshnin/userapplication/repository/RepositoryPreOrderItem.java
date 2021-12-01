@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.freshnin.userapplication.model.ModelCreateNewPreOrder;
+import com.freshnin.userapplication.model.ModelOngoingOrder;
 import com.freshnin.userapplication.model.ModelPreOrderItem;
 import com.freshnin.userapplication.model.ModelResponse;
 import com.freshnin.userapplication.model.ModelUser;
@@ -78,5 +79,32 @@ public  class RepositoryPreOrderItem {
                 });
         return result;
     }
+
+
+
+    public LiveData<List<ModelOngoingOrder>> getOngoingPreOrderInformationByUser(ModelUser modelUser){
+        MutableLiveData<List<ModelOngoingOrder>> result =new MutableLiveData<>();
+
+        apiInterface.getOngoingPreOrderInformationByUser(modelUser).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<List<ModelOngoingOrder>>() {
+                    @Override
+                    public void accept(List<ModelOngoingOrder> modelOngoingOrders) throws Exception {
+                        if(modelOngoingOrders!=null){
+                            result.postValue(modelOngoingOrders);
+                        }else{
+                            result.postValue(null);
+                        }
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        result.postValue(null);
+                        Log.d(TAG, "getOngoingPreOrderInformationByUser: error"+throwable.getMessage());
+                    }
+                });
+        return result;
+    }
+
 
 }

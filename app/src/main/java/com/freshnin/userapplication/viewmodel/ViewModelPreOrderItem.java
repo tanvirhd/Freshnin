@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.freshnin.userapplication.model.ModelCreateNewPreOrder;
+import com.freshnin.userapplication.model.ModelOngoingOrder;
 import com.freshnin.userapplication.model.ModelPreOrderItem;
 import com.freshnin.userapplication.model.ModelResponse;
 import com.freshnin.userapplication.model.ModelUser;
@@ -31,5 +32,9 @@ public class ViewModelPreOrderItem extends AndroidViewModel {
 
     public LiveData<ModelResponse> createNewPreOrder(ModelCreateNewPreOrder order){
         return repositoryPreOrderItem.createNewPreOrder(order);
+    }
+
+    public LiveData<List<ModelOngoingOrder>> getOngoingPreOrderInformationByUser(ModelUser modelUser){
+        return repositoryPreOrderItem.getOngoingPreOrderInformationByUser(modelUser);
     }
 }

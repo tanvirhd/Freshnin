@@ -2,6 +2,7 @@ package com.freshnin.userapplication.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,7 +12,12 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.model.ModelPreOrderItem;
+import com.freshnin.userapplication.tools.Utils;
 import com.squareup.picasso.Picasso;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ActivityPreOrderProductDetails extends AppCompatActivity {
     private static final String TAG = "ActivityProductDetails";
@@ -29,7 +35,11 @@ public class ActivityPreOrderProductDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preorder_product_details);
 
-        init();
+        try {
+            init();
+        } catch (ParseException e) {
+            Log.d(TAG, "init: error"+e.getMessage());
+        }
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,7 +59,7 @@ public class ActivityPreOrderProductDetails extends AppCompatActivity {
     }
 
 
-    void init(){
+    void init() throws ParseException {
         toolbar=findViewById(R.id.apopd_toolbarActivityProfuctDetails);
         toolbar.setTitleTextColor(getResources().getColor(R.color.white,null));
         setSupportActionBar(toolbar);
@@ -71,7 +81,7 @@ public class ActivityPreOrderProductDetails extends AppCompatActivity {
 
     }
 
-    void updateUI(ModelPreOrderItem modelPreOrderItem){
+    void updateUI(ModelPreOrderItem modelPreOrderItem) throws ParseException {
         Picasso.with(this).load(modelPreOrderItem.getProductPicUrl()).into(ivItem);
         getSupportActionBar().setTitle(modelPreOrderItem.getPreOrderProductName());
         tvShortDescription.setText(modelPreOrderItem.getProductShortDes());
@@ -79,15 +89,19 @@ public class ActivityPreOrderProductDetails extends AppCompatActivity {
         tvItemWeight.setText(modelPreOrderItem.getProductUnitWeight());
 
 
-        //tvPreOrderOngoingRemainingDay.setText();
+        tvPreOrderOngoingRemainingDay.setText(remainingDay(modelPreOrderItem.getSessionEndDate()));
     }
 
-     // todo pre order remaining date calculation
-    /*String remainingDay(String endDate) throws ParseException {
-       String result = null;
-       String currentDate[] =Utils.getCurrentDateArray();
-       currentDate[]
 
-       return result;
-    }*/
+    String remainingDay(String endDate) throws ParseException {
+
+
+        SimpleDateFormat dateFormat=new SimpleDateFormat("dd-mm-yyyy");
+        Date sessionEndDate=dateFormat.parse(endDate);
+        Date currentDate=dateFormat.parse(Utils.getCurrentDate());
+        long diff = Math.abs(sessionEndDate.getTime() - currentDate.getTime());
+        long remainDay = diff / (24 * 60 * 60 * 1000);
+
+        return String.valueOf(remainDay);
+    }
 }

@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -26,15 +27,21 @@ import com.freshnin.userapplication.adapter.AdapterEdibleOilFoodListRecy;
 import com.freshnin.userapplication.adapter.AdapterHerbalItemRecy;
 import com.freshnin.userapplication.adapter.AdapterHoneyAndGheeListRecy;
 import com.freshnin.userapplication.adapter.AdapterPreOrderGoingOnListRecy;
+import com.freshnin.userapplication.callbacks.AdapterPreOrderGoingOnListRecyCallBacks;
 import com.freshnin.userapplication.model.ModelFoodItem;
+import com.freshnin.userapplication.model.ModelOngoingOrder;
 import com.freshnin.userapplication.model.ModelPreOrderItem;
+import com.freshnin.userapplication.model.ModelUser;
+import com.freshnin.userapplication.tools.GlobalKey;
+import com.freshnin.userapplication.tools.Utils;
 import com.freshnin.userapplication.viewmodel.ViewModelPreOrderItem;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActivityHome extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class ActivityHome extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
+        AdapterPreOrderGoingOnListRecyCallBacks {
 
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
@@ -67,6 +74,9 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
     private RecyclerView honeyAndGheeItemRecy;
     private List<ModelFoodItem> honeyAndGheeItemList;
     private AdapterHoneyAndGheeListRecy adapterHoneyAndGheeListRecy;
+
+
+
 
 
     @Override
@@ -195,7 +205,7 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
 
     public void init(){
         preOrderRecy=findViewById(R.id.ah_preOrder_recyclerView);
-        adapterPreOrderGoingOnListRecy =new AdapterPreOrderGoingOnListRecy(preOrderFoodList,this);
+        adapterPreOrderGoingOnListRecy =new AdapterPreOrderGoingOnListRecy(preOrderFoodList,this, (AdapterPreOrderGoingOnListRecyCallBacks) this);
         viewModelPreOrderOnGoingItem=new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(ViewModelPreOrderItem.class);
 
         dryFoodRecy=findViewById(R.id.ah_dryFood_recyclerView);
@@ -212,6 +222,8 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
 
         honeyAndGheeItemRecy=findViewById(R.id.ah_HoneyAndGhee_recyclerView);
         adapterHoneyAndGheeListRecy=new AdapterHoneyAndGheeListRecy(honeyAndGheeItemList,this);
+
+
     }
 
     public void initList(){
@@ -382,6 +394,7 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
             case R.id.nav_goto_onGoingOrder:
                 Intent intentOnGoingOrder = new Intent(ActivityHome.this, ActivityOnGoingOrders.class);
                 startActivity(intentOnGoingOrder);
+
                 break;
 
             case R.id.nav_goto_oldOrder:
@@ -429,5 +442,13 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+
+    @Override
+    public void onPreOrderItemClick(int index) {
+        Intent intent=new Intent(this, ActivityPreOrderProductDetails.class);
+        intent.putExtra("parcel",preOrderFoodList.get(index));
+        startActivity(intent);;
     }
 }

@@ -11,18 +11,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.callbacks.AdapterPreOrderHistoryRecycCallbacks;
-import com.freshnin.userapplication.model.ModelCreateNewPreOrder;
+import com.freshnin.userapplication.model.ModelOngoingOrder;
 
 import java.util.List;
 
 public class AdapterPreOrderHistoryRecy extends RecyclerView.Adapter<AdapterPreOrderHistoryRecy.ViewHolderAdapterPreOrderHistoryRecy> {
 
-    List<ModelCreateNewPreOrder> preOrderHistoryList;
+    List<ModelOngoingOrder> onGoingPreOrder;
     Context context;
     AdapterPreOrderHistoryRecycCallbacks callbacks;
 
-    public AdapterPreOrderHistoryRecy(List<ModelCreateNewPreOrder> preOrderHistoryList, Context context, AdapterPreOrderHistoryRecycCallbacks callbacks) {
-        this.preOrderHistoryList = preOrderHistoryList;
+    public AdapterPreOrderHistoryRecy(List<ModelOngoingOrder> onGoingPreOrder, Context context, AdapterPreOrderHistoryRecycCallbacks callbacks) {
+        this.onGoingPreOrder = onGoingPreOrder;
         this.context = context;
         this.callbacks=callbacks;
     }
@@ -38,11 +38,23 @@ public class AdapterPreOrderHistoryRecy extends RecyclerView.Adapter<AdapterPreO
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderAdapterPreOrderHistoryRecy holder, int position) {
-      /*  holder.tvPreOrderId.setText(preOrderHistoryList.get(position).getPreOrdrId());
-        holder.tvPreOrderProductName.setText(preOrderHistoryList.get(position).getPreOrderProductName());
-        holder.tvPreOrderDeliveryDate.setText(preOrderHistoryList.get(position).getPreOrderProductDeliverDate());
-        holder.tvPreOrderPaymentStatus.setText(preOrderHistoryList.get(position).getPreOrderPaymentStatus());
-*/
+        holder.tvPreOrderId.setText(onGoingPreOrder.get(position).getOrderId());
+        holder.tvPreOrderProductName.setText(onGoingPreOrder.get(position).getItemName());
+        holder.tvPreOrderDeliveryDate.setText(onGoingPreOrder.get(position).getOrderDeliveryDate());
+
+        switch (onGoingPreOrder.get(position).getAdvancePaymentStatus()){
+            case "1":
+                holder.tvPreOrderPaymentStatus.setText("Verification Pending");
+                break;
+            case "2":
+                holder.tvPreOrderPaymentStatus.setText("Verified");
+                break;
+            case "3":
+                holder.tvPreOrderPaymentStatus.setText("Declined");
+                break;
+
+
+        }
         holder.btnDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,7 +65,7 @@ public class AdapterPreOrderHistoryRecy extends RecyclerView.Adapter<AdapterPreO
 
     @Override
     public int getItemCount() {
-        return preOrderHistoryList.size();
+        return onGoingPreOrder.size();
     }
 
     public class ViewHolderAdapterPreOrderHistoryRecy extends RecyclerView.ViewHolder{

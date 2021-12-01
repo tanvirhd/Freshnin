@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/appbg"
@@ -23,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Order id: Pre9445"
+                android:text="Pre9445"
                 android:textSize="22dp" />
 
         </androidx.appcompat.widget.Toolbar>
@@ -120,17 +121,102 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
+                android:id="@+id/apod_textView29"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Advance Payment Info"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/apod_constraintLayout2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/apod_constraintLayout2"
+                app:layout_constraintTop_toBottomOf="@+id/apod_constraintLayout2" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/apod_constraintLayout10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="@color/fade_ash"
+                android:padding="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/apod_constraintLayout2"
+                app:layout_constraintStart_toStartOf="@+id/apod_textView29"
+                app:layout_constraintTop_toBottomOf="@+id/apod_textView29">
+
+
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:maxLines="2"
+                    android:text="Transaction ID: "
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/apod_transaction_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:text="#nklac"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/tv1"
+                    app:layout_constraintTop_toTopOf="@+id/tv1" />
+
+                <TextView
+                    android:id="@+id/tv22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:maxLines="2"
+                    android:text="Status: "
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/tv1"
+                    app:layout_constraintTop_toBottomOf="@+id/tv1" />
+
+
+                <TextView
+                    android:id="@+id/apod_order_satus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:text="In review"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv22"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/tv22"
+                    app:layout_constraintTop_toTopOf="@+id/tv22"
+                    app:layout_constraintVertical_bias="0.0" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
                 android:id="@+id/apod_textView16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="16dp"
                 android:text="Billing"
                 android:textSize="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/apod_constraintLayout2"
-                app:layout_constraintTop_toBottomOf="@+id/apod_constraintLayout2"
+                app:layout_constraintTop_toBottomOf="@+id/apod_constraintLayout10"
                 app:layout_constraintVertical_bias="0.0" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -148,7 +234,7 @@
 
 
                 <TextView
-                    android:id="@+id/apod_tv_item_name"
+                    android:id="@+id/apod_tv_billing_item_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Bogura Doi"
@@ -173,8 +259,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/apod_tv_item_name"
-                    app:layout_constraintTop_toBottomOf="@+id/apod_tv_item_name"
+                    app:layout_constraintStart_toStartOf="@+id/apod_tv_billing_item_name"
+                    app:layout_constraintTop_toBottomOf="@+id/apod_tv_billing_item_name"
                     app:layout_constraintVertical_bias="0.0" />
 
 
@@ -201,11 +287,11 @@
                     android:text="900 Tk"
                     android:textColor="@color/black"
                     android:textSize="18dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/apod_tv_item_name"
+                    app:layout_constraintBottom_toBottomOf="@+id/apod_tv_billing_item_name"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toEndOf="@+id/apod_tv_item_name"
-                    app:layout_constraintTop_toTopOf="@+id/apod_tv_item_name" />
+                    app:layout_constraintStart_toEndOf="@+id/apod_tv_billing_item_name"
+                    app:layout_constraintTop_toTopOf="@+id/apod_tv_billing_item_name" />
 
                 <TextView
                     android:id="@+id/apod_tvItemDeliveryCharge"
@@ -263,6 +349,7 @@
                     app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
+                    android:id="@+id/apod_tvTotalBill"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="630 Tk"

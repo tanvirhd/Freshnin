@@ -5,4 +5,7 @@
 
     <string name="openNavDrawer">Navigation Drawer Open</string>
     <string name="closeNavDrawer">Navigation Drawer Close</string>
+    <string name="verificationPending">Verification Pending</string>
+    <string name="verified">Verified</string>
+    <string name="declined">Declined</string>
 </resources>

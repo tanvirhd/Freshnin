@@ -20,6 +20,7 @@ import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.model.ModelCreateNewPreOrder;
 import com.freshnin.userapplication.model.ModelPreOrderItem;
 import com.freshnin.userapplication.model.ModelResponse;
+import com.freshnin.userapplication.tools.GlobalKey;
 import com.freshnin.userapplication.tools.Utils;
 import com.freshnin.userapplication.viewmodel.ViewModelPreOrderItem;
 import com.squareup.picasso.Picasso;
@@ -225,7 +226,7 @@ public class ActivityPreOrderCheckout extends AppCompatActivity {
         ModelCreateNewPreOrder newPreOrder=new ModelCreateNewPreOrder(
                 tvOrderId.getText().toString(),
                 itemDetails.getProductId(),
-                "user id",//todo get user id
+                GlobalKey.USER_ID,
                 itemDetails.getPreOrderProductName(),
                 Utils.getCurrentDate(),
                 itemDetails.getSessionEndDate(),
