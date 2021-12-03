@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Display;
 import android.view.View;
 import android.widget.TextView;
 
@@ -34,12 +33,13 @@ public class ActivityCheckOut extends AppCompatActivity {
     private TextView btnPlaceOrder;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_out);
 
-        intiList();
+        init();
 
         toolbar=findViewById(R.id.aco_preOrder_list_toolbar);
         setSupportActionBar(toolbar);
@@ -54,20 +54,13 @@ public class ActivityCheckOut extends AppCompatActivity {
             }
         });
 
-        // For check Out Food Item
-        checkOutProductListRecyc=findViewById(R.id.aco_product_recyclerView);
-        checkOutProductListRecyc.setLayoutManager(new LinearLayoutManager(ActivityCheckOut.this));
-        adapterCheckOutFoodItemRecy =new AdapterCheckOutFoodItemRecy(checkOutFoodItemList,ActivityCheckOut.this);
-        checkOutProductListRecyc.setAdapter(adapterCheckOutFoodItemRecy);
 
 
-        // For Check Out Billing
-        checkOutBillingRecy=findViewById(R.id.aco_product_billing_recyclerView);
-        checkOutBillingRecy.setLayoutManager(new LinearLayoutManager(ActivityCheckOut.this));
-        adapterCheckOutBillingRecy=new AdapterCheckOutBillingRecy(checkOutBillingFoodItemList,ActivityCheckOut.this);
-        checkOutBillingRecy.setAdapter(adapterCheckOutBillingRecy);
 
-        btnPlaceOrder=findViewById(R.id.aco_btn_placeOrder);
+
+
+
+
         btnPlaceOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,42 +73,25 @@ public class ActivityCheckOut extends AppCompatActivity {
 
     }
 
-    private void intiList() {
+    private void init() {
+
+
         checkOutFoodItemList=new ArrayList<>();
-        checkOutFoodItemList.add(new ModelFoodItem(
-                "Bogurar Doi",
-                "330 Tk",
-                "03"
-        ));
-
-        checkOutFoodItemList.add(new ModelFoodItem(
-                "Bogurar Khirsha",
-                "400 Tk",
-                "01"
-        ));
-
-        checkOutFoodItemList.add(new ModelFoodItem(
-                "Chomchom",
-                "220 Tk",
-                "04"
-        ));
-
-
         checkOutBillingFoodItemList=new ArrayList<>();
-        checkOutBillingFoodItemList.add(new ModelFoodItem(
-                "Bogurar Doi",
-                "330 Tk"
-        ));
 
-        checkOutBillingFoodItemList.add(new ModelFoodItem(
-                "Bogurar Khirsha",
-                "400 Tk"
-        ));
-        checkOutBillingFoodItemList.add(new ModelFoodItem(
-                "Chomchom",
-                "500 Tk"
-        ));
+        btnPlaceOrder=findViewById(R.id.aco_btn_placeOrder);
 
+        // For check Out Food Item
+        checkOutProductListRecyc=findViewById(R.id.aco_product_recyclerView);
+        checkOutProductListRecyc.setLayoutManager(new LinearLayoutManager(ActivityCheckOut.this));
+        adapterCheckOutFoodItemRecy =new AdapterCheckOutFoodItemRecy(checkOutFoodItemList,ActivityCheckOut.this);
+        checkOutProductListRecyc.setAdapter(adapterCheckOutFoodItemRecy);
+
+        // For Check Out Billing
+        checkOutBillingRecy=findViewById(R.id.aco_product_billing_recyclerView);
+        checkOutBillingRecy.setLayoutManager(new LinearLayoutManager(ActivityCheckOut.this));
+        adapterCheckOutBillingRecy=new AdapterCheckOutBillingRecy(checkOutBillingFoodItemList,ActivityCheckOut.this);
+        checkOutBillingRecy.setAdapter(adapterCheckOutBillingRecy);
     }
 
 }

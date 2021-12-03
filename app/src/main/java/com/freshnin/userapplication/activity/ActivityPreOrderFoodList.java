@@ -39,9 +39,8 @@ public class ActivityPreOrderFoodList extends AppCompatActivity implements Adapt
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preorder_item_list);
+        init();
 
-        toolbar=findViewById(R.id.apofl_preOrder_list_toolbar);
-        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +50,7 @@ public class ActivityPreOrderFoodList extends AppCompatActivity implements Adapt
         });
 
 
-        init();
+
     }
 
     @Override
@@ -61,6 +60,8 @@ public class ActivityPreOrderFoodList extends AppCompatActivity implements Adapt
     }
 
     private void init() {
+        toolbar=findViewById(R.id.apofl_preOrder_list_toolbar);
+        setSupportActionBar(toolbar);
         viewModelPreOrderItem=new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(ViewModelPreOrderItem.class);
 
         preOrderFoodList=new ArrayList<>();

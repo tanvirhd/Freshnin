@@ -2,39 +2,53 @@ package com.freshnin.userapplication.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Toast;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.adapter.AdapterFoodItemListRecy;
+import com.freshnin.userapplication.callbacks.AdapterDryFoodListRecyCallBacks;
 import com.freshnin.userapplication.callbacks.AdapterFoodItemListRecycCallBacks;
-import com.freshnin.userapplication.model.ModelFoodItem;
+import com.freshnin.userapplication.model.ModelRegularItem;
+import com.freshnin.userapplication.tools.Utils;
+import com.freshnin.userapplication.viewmodel.ViewModelRegularItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ActivityFoodItemList extends AppCompatActivity implements AdapterFoodItemListRecycCallBacks{
 
-    private List<ModelFoodItem> foodItems;
+    private static final String TAG = "ActivityFoodItemList";
+    private List<ModelRegularItem> foodItems;
     private RecyclerView recyclerViewFoodItem;
     private AdapterFoodItemListRecy adapterFoodItemListRecy;
-
     private Toolbar toolbar;
+
+    private ViewModelRegularItem viewModelRegularItem;
+
+    private ModelRegularItem itemId;
+
+
+    private Dialog dialogLoading;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_item_list);
 
-        intList();
+        init();
 
-        toolbar=findViewById(R.id.afil_toolbar_activity_food_item_list);
-        setSupportActionBar(toolbar);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,14 +58,37 @@ public class ActivityFoodItemList extends AppCompatActivity implements AdapterFo
         });
 
 
-        recyclerViewFoodItem=findViewById(R.id.afil_foodItemRecy);
-        recyclerViewFoodItem.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
-
-        adapterFoodItemListRecy=new AdapterFoodItemListRecy(foodItems,ActivityFoodItemList.this, (AdapterFoodItemListRecycCallBacks) ActivityFoodItemList.this);
-        recyclerViewFoodItem.setAdapter(adapterFoodItemListRecy);
 
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getItemsByCategory();
+    }
+
+    private void getItemsByCategory(){
+        dialogLoading.show();
+
+        viewModelRegularItem.getAllItemsByCategory(itemId).observe(this, new Observer<List<ModelRegularItem>>() {
+            @Override
+            public void onChanged(List<ModelRegularItem> modelRegularItems) {
+                dialogLoading.show();
+                if(modelRegularItems!=null){
+                    foodItems.clear();
+                    foodItems.addAll(modelRegularItems);
+                    adapterFoodItemListRecy.notifyDataSetChanged();
+                    dialogLoading.dismiss();
+                }else{
+                    dialogLoading.dismiss();
+                    Toast.makeText(ActivityFoodItemList.this, "Something went wrong!!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -60,134 +97,31 @@ public class ActivityFoodItemList extends AppCompatActivity implements AdapterFo
         return true;
     }
 
-    void intList(){
+    void init(){
+        Log.d(TAG, "init: called");
         foodItems=new ArrayList<>();
-        foodItems.add(new ModelFoodItem(
-                "Bogurar Doi",
-                "230 Tk",
-                "200 gm",
-                true,
-                R.drawable.food_bogurar_doi
-        ));
 
-        foodItems.add(new ModelFoodItem(
-                "Bogurar Khirsha",
-                "400 Tk",
-                "800 gm",
-                true,
-                R.drawable.food_bogurar_doi
-        ));
+        toolbar=findViewById(R.id.afil_toolbar_activity_food_item_list);
 
-        foodItems.add(new ModelFoodItem(
-                "Krishna Kebiner MalaiKari",
-                "370 Tk",
-                "600 gm",
-                false,
-                R.drawable.food_bogurar_doi
-        ));
+        recyclerViewFoodItem=findViewById(R.id.afil_foodItemRecy);
+        recyclerViewFoodItem.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
+        adapterFoodItemListRecy=new AdapterFoodItemListRecy(foodItems,ActivityFoodItemList.this, (AdapterFoodItemListRecycCallBacks) ActivityFoodItemList.this);
+        recyclerViewFoodItem.setAdapter(adapterFoodItemListRecy);
 
-        foodItems.add(new ModelFoodItem(
-                "Bogurar Doi",
-                "230 Tk",
-                "200 gm",
-                true,
-                R.drawable.food_bogurar_doi
-        ));
+        viewModelRegularItem= new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(ViewModelRegularItem.class);
 
-        foodItems.add(new ModelFoodItem(
-                "Porabarir Chomchom",
-                "330 Tk",
-                "700 gm",
-                true,
-                R.drawable.food_bogurar_doi
-        ));
-
-        foodItems=new ArrayList<>();
-        foodItems.add(new ModelFoodItem(
-                "Bogurar Doi",
-                "230 Tk",
-                "200 gm",
-                true,
-                R.drawable.food_bogurar_doi
-        ));
-
-        foodItems.add(new ModelFoodItem(
-                "Bogurar Khirsha",
-                "400 Tk",
-                "800 gm",
-                true,
-                R.drawable.food_bogurar_doi
-        ));
-
-        foodItems.add(new ModelFoodItem(
-                "Krishna Kebiner MalaiKari",
-                "370 Tk",
-                "600 gm",
-                false,
-                R.drawable.food_bogurar_doi
-        ));
-
-        foodItems.add(new ModelFoodItem(
-                "Bogurar Doi",
-                "230 Tk",
-                "200 gm",
-                true,
-                R.drawable.food_bogurar_doi
-        ));
-
-        foodItems.add(new ModelFoodItem(
-                "Porabarir Chomchom",
-                "330 Tk",
-                "700 gm",
-                true,
-                R.drawable.food_bogurar_doi
-        ));
-
-        foodItems.add(new ModelFoodItem(
-                "Bogurar Doisdfsdb svdjnvsnsdv  sdjs sjdkssdjs smvl",
-                "230 Tk",
-                "200 gm",
-                true,
-                R.drawable.food_bogurar_doi
-        ));
-
-        foodItems.add(new ModelFoodItem(
-                "Bogurar Khirsha",
-                "400 Tk",
-                "800 gm",
-                true,
-                R.drawable.food_bogurar_doi
-        ));
-
-        foodItems.add(new ModelFoodItem(
-                "Krishna Kebiner MalaiKari",
-                "370 Tk",
-                "600 gm",
-                false,
-                R.drawable.food_bogurar_doi
-        ));
-
-        foodItems.add(new ModelFoodItem(
-                "Bogurar Doi jhkabsdsk sjvnsvn asdfnsv dsb sjvksj sduhfsj sdvsjkb isdnjk",
-                "230 Tk",
-                "200 gm",
-                true,
-                R.drawable.food_bogurar_doi
-        ));
-
-        foodItems.add(new ModelFoodItem(
-                "Porabarir Chomchom",
-                "330 Tk",
-                "700 gm",
-                true,
-                R.drawable.food_bogurar_doi
-        ));
-
+        dialogLoading= Utils.setupLoadingDialog(this);
+        itemId=new ModelRegularItem(getIntent().getExtras().getString("foodId"));
+        Log.d(TAG, "init: "+itemId);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(itemId.getProductCategory());
     }
 
     @Override
     public void onItemClick(int index) {
         Intent intent=new Intent(ActivityFoodItemList.this,ActivityFoodItemDetails.class);
+        intent.putExtra("parcel",foodItems.get(index));
         startActivity(intent);
     }
+
 }

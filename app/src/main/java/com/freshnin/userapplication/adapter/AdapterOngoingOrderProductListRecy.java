@@ -32,8 +32,8 @@ public class AdapterOngoingOrderProductListRecy extends RecyclerView.Adapter<Ada
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderAdapterOngoingOrderProductListRecy holder, int position) {
-        holder.tvProductName.setText(onGoingOrderProductList.get(position).getOrderedFoodName());
-        holder.tvQuantityOfProduct.setText(onGoingOrderProductList.get(position).getOrderedFoodQuantity());
+        //holder.tvProductName.setText(onGoingOrderProductList.get(position).getOrderedFoodName());
+       // holder.tvQuantityOfProduct.setText(onGoingOrderProductList.get(position).getOrderedFoodQuantity());
     }
 
     @Override

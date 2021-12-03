@@ -42,7 +42,7 @@ public class AdapterOldOrderHistoryRecy extends RecyclerView.Adapter<AdapterOldO
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderAdapterOldOrderHistoryRecy holder, int position) {
-        holder.tvOrderId.setText(oldOrderList.get(position).getOrderId());
+        //holder.tvOrderId.setText(oldOrderList.get(position).getOrderId());
 
         AdapterOldOrderHistoryProductListRecy adapterOldOrderHistoryProductListRecy=new AdapterOldOrderHistoryProductListRecy(oldOrderProductList);
         LinearLayoutManager linearLayoutManager= new LinearLayoutManager(context);

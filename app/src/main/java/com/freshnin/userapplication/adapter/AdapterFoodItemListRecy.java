@@ -13,17 +13,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.callbacks.AdapterFoodItemListRecycCallBacks;
-import com.freshnin.userapplication.model.ModelFoodItem;
+import com.freshnin.userapplication.model.ModelRegularItem;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class AdapterFoodItemListRecy extends RecyclerView.Adapter<AdapterFoodItemListRecy.ViewHolderAdapterFoodItemListRecy> {
 
-    List<ModelFoodItem> foodItemList;
+    List<ModelRegularItem> foodItemList;
     Context context;
     AdapterFoodItemListRecycCallBacks adapterFoodItemListRecycCallBacks;
 
-    public AdapterFoodItemListRecy(List<ModelFoodItem> foodItemList, Context context, AdapterFoodItemListRecycCallBacks adapterFoodItemListRecycCallBacks) {
+    public AdapterFoodItemListRecy(List<ModelRegularItem> foodItemList, Context context, AdapterFoodItemListRecycCallBacks adapterFoodItemListRecycCallBacks) {
         this.foodItemList = foodItemList;
         this.context = context;
         this.adapterFoodItemListRecycCallBacks = adapterFoodItemListRecycCallBacks;
@@ -40,18 +41,18 @@ public class AdapterFoodItemListRecy extends RecyclerView.Adapter<AdapterFoodIte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderAdapterFoodItemListRecy holder, int position) {
-        holder.ivFoodImage.setImageResource(foodItemList.get(position).getFoodImage());
 
-        holder.tvFoodName.setText(foodItemList.get(position).getFoodName());
-        holder.tvFoodPrice.setText(foodItemList.get(position).getFoodPrice());
+        Picasso.with(context).load(foodItemList.get(position).getProductPicUrl()).into(holder.ivFoodImage);
+        holder.tvFoodName.setText(foodItemList.get(position).getProductName());
+        holder.tvFoodPrice.setText(foodItemList.get(position).getProductUnitPrice());
 
-        if(foodItemList.get(position).isFavourite()){
+        /*if(foodItemList.get(position).isFavourite()){
             holder.favouriteIcon.setVisibility(View.VISIBLE);
             holder.notFavouriteIcon.setVisibility(View.GONE);
         }else{
             holder.favouriteIcon.setVisibility(View.GONE);
             holder.notFavouriteIcon.setVisibility(View.VISIBLE);
-        }
+        }*/
 
 
         holder.onClickDetailsView.setOnClickListener(new View.OnClickListener() {

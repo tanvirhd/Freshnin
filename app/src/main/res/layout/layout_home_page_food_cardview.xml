@@ -6,6 +6,7 @@
     android:layout_margin="8dp">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/ah_regularFood_onClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardCornerRadius="8dp"

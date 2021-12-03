@@ -19,7 +19,7 @@
             app:titleTextColor="@color/black"
             app:navigationIcon="@drawable/icon_back_button"
             android:background="@color/appbg"
-            app:title="Dry Food"
+
             />
 
     </com.google.android.material.appbar.AppBarLayout>

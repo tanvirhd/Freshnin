@@ -1,10 +1,12 @@
 package com.freshnin.userapplication.network;
 
 import com.freshnin.userapplication.model.ModelCreateNewPreOrder;
+import com.freshnin.userapplication.model.ModelCreateNewRegularOrder;
 import com.freshnin.userapplication.model.ModelLogIn;
 import com.freshnin.userapplication.model.ModelNewUserRegistration;
 import com.freshnin.userapplication.model.ModelOngoingOrder;
 import com.freshnin.userapplication.model.ModelPreOrderItem;
+import com.freshnin.userapplication.model.ModelRegularItem;
 import com.freshnin.userapplication.model.ModelResponse;
 import com.freshnin.userapplication.model.ModelUser;
 import com.freshnin.userapplication.model.ModelUserVerify;
@@ -38,4 +40,15 @@ public interface ApiInterface {
 
     @POST("getOngoingPreOrderInformationByUser.php")
     Observable<List<ModelOngoingOrder>> getOngoingPreOrderInformationByUser(@Body ModelUser modelUser);
+
+
+    // Regular order related
+    @POST("getAllItem.php")
+    Observable<List<ModelRegularItem>> getAllItem();
+
+    @POST("getAllItemByCategory.php")
+    Observable<List<ModelRegularItem>> getAllItemsByCategory(@Body ModelRegularItem modelRegularItem);
+
+    @POST ("createNewRegularOrder.php")
+    Observable<ModelResponse> createNewRegularOrder(@Body ModelCreateNewRegularOrder modelCreateNewRegularOrder);
 }

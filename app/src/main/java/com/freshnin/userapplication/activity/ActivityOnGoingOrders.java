@@ -58,7 +58,7 @@ public class ActivityOnGoingOrders extends AppCompatActivity implements AdapterO
 
     void initList(){
         onGoingOrderList=new ArrayList<>();
-        onGoingOrderList.add(new ModelOrder(
+        /*onGoingOrderList.add(new ModelOrder(
                 "Pre1231"
         ));
 
@@ -76,10 +76,10 @@ public class ActivityOnGoingOrders extends AppCompatActivity implements AdapterO
 
         onGoingOrderList.add(new ModelOrder(
                 "Pre3457"
-        ));
+        ));*/
 
         onGoingOrderProductList=new ArrayList<>();
-        onGoingOrderProductList.add(new ModelOrder(
+        /*onGoingOrderProductList.add(new ModelOrder(
                 "Bogurar Doi",
                 "03"
         ));
@@ -87,7 +87,7 @@ public class ActivityOnGoingOrders extends AppCompatActivity implements AdapterO
         onGoingOrderProductList.add(new ModelOrder(
                 "Bogurar Khirsha",
                 "06"
-        ));
+        ));*/
 
     }
 

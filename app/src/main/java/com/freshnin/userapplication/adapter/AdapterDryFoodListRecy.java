@@ -7,22 +7,27 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.freshnin.userapplication.R;
-import com.freshnin.userapplication.model.ModelFoodItem;
+import com.freshnin.userapplication.callbacks.AdapterDryFoodListRecyCallBacks;
+import com.freshnin.userapplication.model.ModelRegularItem;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class AdapterDryFoodListRecy extends RecyclerView.Adapter<AdapterDryFoodListRecy.ViewHolderAdapterDryFoodRecy> {
 
 
-    List<ModelFoodItem> foodItemList;
+    List<ModelRegularItem> foodItemList;
     Context context;
+    AdapterDryFoodListRecyCallBacks adapterDryFoodListRecyCallBacks;
 
-    public AdapterDryFoodListRecy(List<ModelFoodItem> foodItemList, Context context) {
+    public AdapterDryFoodListRecy(List<ModelRegularItem> foodItemList, Context context, AdapterDryFoodListRecyCallBacks adapterDryFoodListRecyCallBacks) {
         this.foodItemList = foodItemList;
         this.context = context;
+        this.adapterDryFoodListRecyCallBacks = adapterDryFoodListRecyCallBacks;
     }
 
     @NonNull
@@ -35,7 +40,14 @@ public class AdapterDryFoodListRecy extends RecyclerView.Adapter<AdapterDryFoodL
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderAdapterDryFoodRecy holder, int position) {
-        holder.ivDryFood.setImageResource(foodItemList.get(position).getFoodImage());
+        Picasso.with(context).load(foodItemList.get(position).getProductPicUrl()).into(holder.ivDryFood);
+
+        holder.cdDryFood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adapterDryFoodListRecyCallBacks.onDryFoodItemClick(holder.getAdapterPosition());
+            }
+        });
     }
 
     @Override
@@ -45,10 +57,13 @@ public class AdapterDryFoodListRecy extends RecyclerView.Adapter<AdapterDryFoodL
 
     public class ViewHolderAdapterDryFoodRecy extends RecyclerView.ViewHolder{
         ImageView ivDryFood;
+        CardView cdDryFood;
 
         public ViewHolderAdapterDryFoodRecy(@NonNull View itemView) {
             super(itemView);
+
             ivDryFood=itemView.findViewById(R.id.ah_normal_item_image);
+            cdDryFood=itemView.findViewById(R.id.ah_regularFood_onClick);
         }
     }
 }

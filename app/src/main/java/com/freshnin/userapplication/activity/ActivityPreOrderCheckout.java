@@ -226,7 +226,7 @@ public class ActivityPreOrderCheckout extends AppCompatActivity {
         ModelCreateNewPreOrder newPreOrder=new ModelCreateNewPreOrder(
                 tvOrderId.getText().toString(),
                 itemDetails.getProductId(),
-                GlobalKey.USER_ID,
+                Utils.getPref(GlobalKey.USER_ID,""),
                 itemDetails.getPreOrderProductName(),
                 Utils.getCurrentDate(),
                 itemDetails.getSessionEndDate(),

@@ -54,7 +54,7 @@ public class ActivityOldOrderHistory extends AppCompatActivity implements Adapte
 
     void initList(){
         oldOrderHistoryList=new ArrayList<>();
-        oldOrderHistoryList.add(new ModelOrder(
+        /*oldOrderHistoryList.add(new ModelOrder(
                 "Pre1231"
         ));
 
@@ -72,10 +72,10 @@ public class ActivityOldOrderHistory extends AppCompatActivity implements Adapte
 
         oldOrderHistoryList.add(new ModelOrder(
                 "Pre3457"
-        ));
+        ));*/
 
         oldOrderHistoryProductList=new ArrayList<>();
-        oldOrderHistoryProductList.add(new ModelOrder(
+        /*oldOrderHistoryProductList.add(new ModelOrder(
                 "Bogurar Doi",
                 "03"
         ));
@@ -88,7 +88,7 @@ public class ActivityOldOrderHistory extends AppCompatActivity implements Adapte
         oldOrderHistoryProductList.add(new ModelOrder(
                 "Chomchom",
                 "02"
-        ));
+        ));*/
     }
 
     @Override

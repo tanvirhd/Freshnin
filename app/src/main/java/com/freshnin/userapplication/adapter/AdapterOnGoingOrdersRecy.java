@@ -41,7 +41,7 @@ public class AdapterOnGoingOrdersRecy extends RecyclerView.Adapter<AdapterOnGoin
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderAdapterOnGoingOrdersRecy holder, int position) {
-        holder.tvOnGoingOrderId.setText(onGoingOrderList.get(position).getOrderId());
+        //holder.tvOnGoingOrderId.setText(onGoingOrderList.get(position).getOrderId());
 
         AdapterOngoingOrderProductListRecy adapterOngoingOrderProductListRecy = new AdapterOngoingOrderProductListRecy(onGoingOrderProductList);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);

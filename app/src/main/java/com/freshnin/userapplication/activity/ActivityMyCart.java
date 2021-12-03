@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.freshnin.userapplication.R;
@@ -21,7 +22,9 @@ import com.freshnin.userapplication.viewmodel.ViewModelMyCartItem;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActivityMyCart extends AppCompatActivity implements AdapterMyCartItemListRecyCallBacks{
+public class  ActivityMyCart extends AppCompatActivity implements AdapterMyCartItemListRecyCallBacks{
+    private static final String TAG = "ActivityMyCart";
+
 
     private Toolbar toolbar;
     private RecyclerView myCartRecyclerView;
@@ -58,7 +61,25 @@ public class ActivityMyCart extends AppCompatActivity implements AdapterMyCartIt
         btnCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String itemIds=""; //example 0001,0002,0003,
+                String itemPrices="";
+                String quantities="";
+                int totalBill=0;
+
+                for(ModelMyCartItem cartItem:myCartItemList){
+                    itemIds=itemIds+cartItem.getFoodId()+",";
+                    itemPrices+=cartItem.getFoodPrice()+",";
+                    quantities+=cartItem.getFoodQuantity()+",";
+                    totalBill+=(Integer.parseInt(cartItem.getFoodPrice()) * Integer.parseInt(cartItem.getFoodQuantity()));
+                }
+
                 Intent intent=new Intent(ActivityMyCart.this,ActivityCheckOut.class);
+                intent.putExtra("data-1",itemIds);
+                intent.putExtra("data-2",itemPrices);
+                intent.putExtra("data-3",quantities);
+                intent.putExtra("data-4",totalBill);
+                intent.putExtra("caller","ActivityMyCart");
                 startActivity(intent);
             }
         });

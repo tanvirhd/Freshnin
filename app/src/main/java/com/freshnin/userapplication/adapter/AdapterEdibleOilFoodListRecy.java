@@ -7,21 +7,27 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.freshnin.userapplication.R;
+import com.freshnin.userapplication.callbacks.AdapterEdibleOilFoodListRecyCallBacks;
 import com.freshnin.userapplication.model.ModelFoodItem;
+import com.freshnin.userapplication.model.ModelRegularItem;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class AdapterEdibleOilFoodListRecy extends RecyclerView.Adapter<AdapterEdibleOilFoodListRecy.ViewHolderAdapterEdibleOilFoodListRecy>{
 
-    List<ModelFoodItem> edibleFoodItemList;
+    List<ModelRegularItem> edibleFoodItemList;
     Context context;
+    AdapterEdibleOilFoodListRecyCallBacks adapterEdibleOilFoodListRecyCallBacks;
 
-    public AdapterEdibleOilFoodListRecy(List<ModelFoodItem> edibleFoodItemList, Context context) {
+    public AdapterEdibleOilFoodListRecy(List<ModelRegularItem> edibleFoodItemList, Context context, AdapterEdibleOilFoodListRecyCallBacks adapterEdibleOilFoodListRecyCallBacks) {
         this.edibleFoodItemList = edibleFoodItemList;
         this.context = context;
+        this.adapterEdibleOilFoodListRecyCallBacks = adapterEdibleOilFoodListRecyCallBacks;
     }
 
     @NonNull
@@ -34,7 +40,15 @@ public class AdapterEdibleOilFoodListRecy extends RecyclerView.Adapter<AdapterEd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderAdapterEdibleOilFoodListRecy holder, int position) {
-        holder.ivEdibleOil.setImageResource(edibleFoodItemList.get(position).getFoodImage());
+        //holder.ivEdibleOil.setImageResource(edibleFoodItemList.get(position).getFoodImage());
+        Picasso.with(context).load(edibleFoodItemList.get(position).getProductPicUrl()).into(holder.ivEdibleOil);
+
+        holder.cdEdibleOil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adapterEdibleOilFoodListRecyCallBacks.onEdibleItemClick(holder.getAdapterPosition());
+            }
+        });
     }
 
     @Override
@@ -45,10 +59,12 @@ public class AdapterEdibleOilFoodListRecy extends RecyclerView.Adapter<AdapterEd
     public class ViewHolderAdapterEdibleOilFoodListRecy extends RecyclerView.ViewHolder{
 
         ImageView ivEdibleOil;
+        CardView cdEdibleOil;
 
         public ViewHolderAdapterEdibleOilFoodListRecy(@NonNull View itemView) {
             super(itemView);
             ivEdibleOil=itemView.findViewById(R.id.ah_normal_item_image);
+            cdEdibleOil=itemView.findViewById(R.id.ah_regularFood_onClick);
         }
     }
 }

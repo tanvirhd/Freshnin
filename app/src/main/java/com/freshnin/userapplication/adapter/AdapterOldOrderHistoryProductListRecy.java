@@ -34,8 +34,8 @@ public class AdapterOldOrderHistoryProductListRecy extends RecyclerView.Adapter<
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderAdapterOldOrderHistoryProductListRecy holder, int position) {
-        holder.tvProductName.setText(oldOrderProductList.get(position).getOrderedFoodName());
-        holder.tvQuantityOfOrderedProduct.setText(oldOrderProductList.get(position).getOrderedFoodQuantity());
+        //holder.tvProductName.setText(oldOrderProductList.get(position).getOrderedFoodName());
+        //holder.tvQuantityOfOrderedProduct.setText(oldOrderProductList.get(position).getOrderedFoodQuantity());
     }
 
     @Override
