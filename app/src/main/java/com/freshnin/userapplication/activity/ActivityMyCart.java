@@ -23,8 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class  ActivityMyCart extends AppCompatActivity implements AdapterMyCartItemListRecyCallBacks{
-    private static final String TAG = "ActivityMyCart";
 
+    private static final String TAG = "ActivityMyCart";
 
     private Toolbar toolbar;
     private RecyclerView myCartRecyclerView;
