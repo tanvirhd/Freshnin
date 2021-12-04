@@ -1,14 +1,20 @@
 package com.freshnin.userapplication.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.freshnin.userapplication.R;
+import com.freshnin.userapplication.model.ModelNewUserRegistration;
+import com.freshnin.userapplication.model.ModelUser;
+import com.freshnin.userapplication.tools.GlobalKey;
+import com.freshnin.userapplication.tools.Utils;
 import com.freshnin.userapplication.viewmodel.ViewModelUser;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -20,6 +26,8 @@ public class ActivityRegistrationWithDetails extends AppCompatActivity {
     private TextInputEditText tietReTypePassword;
     private ViewModelUser viewModelUser;
 
+    String userPhoneNumber="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,15 +35,17 @@ public class ActivityRegistrationWithDetails extends AppCompatActivity {
 
         init();
 
-        btnRegiConfirm.setOnClickListener(new View.OnClickListener() {
+       /* btnRegiConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Utils.savePrefBoolean(GlobalKey.IS_LOGGED_IN,true);
+                Utils.savePref(GlobalKey.USER_ID,userPhoneNumber);
                 Intent intent=new Intent(ActivityRegistrationWithDetails.this,  ActivityHome.class);
-                startActivity(intent);
+                startActivity(intent); finish();
             }
-        });
+        });*/
 
-        /*btnRegiConfirm.setOnClickListener(new View.OnClickListener() {
+        btnRegiConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(tietUserName.getText().toString()==null || tietUserPassWord.getText().toString()==null
@@ -43,7 +53,7 @@ public class ActivityRegistrationWithDetails extends AppCompatActivity {
                     Toast.makeText(ActivityRegistrationWithDetails.this, "Fill up all fields", Toast.LENGTH_SHORT).show();
                 }else{
                     if(tietUserPassWord.getText().toString().contentEquals(tietReTypePassword.getText().toString())){
-                        viewModelNewUserRegistration.newUserRegistration(new ModelUser(
+                        viewModelUser.newUserRegistration(new ModelUser(
                                 tietUserName.getText().toString(),
                                 getIntent().getStringExtra("userPhoneNumber"),
                                 tietUserPassWord.getText().toString(),
@@ -55,6 +65,11 @@ public class ActivityRegistrationWithDetails extends AppCompatActivity {
                                     Toast.makeText(ActivityRegistrationWithDetails.this, "Something Went Wrong!", Toast.LENGTH_SHORT).show();
                                 }else{
                                     Toast.makeText(ActivityRegistrationWithDetails.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+
+
+
+                                    Utils.savePrefBoolean(GlobalKey.IS_LOGGED_IN,true);
+                                    Utils.savePref(GlobalKey.USER_ID,userPhoneNumber);
                                     Intent intent=new Intent(ActivityRegistrationWithDetails.this,  ActivityHome.class);
                                     startActivity(intent);
                                 }
@@ -66,7 +81,7 @@ public class ActivityRegistrationWithDetails extends AppCompatActivity {
                     }
                 }
             }
-        });*/
+        });
 
     }
 
@@ -76,5 +91,7 @@ public class ActivityRegistrationWithDetails extends AppCompatActivity {
         tietReTypePassword=findViewById(R.id.arwd_ReTypePassword);
         viewModelUser =new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(ViewModelUser.class);
         btnRegiConfirm=findViewById(R.id.arwd_btnRegConfirm);
+
+        userPhoneNumber= getIntent().getStringExtra("userPhoneNumber");
     }
 }

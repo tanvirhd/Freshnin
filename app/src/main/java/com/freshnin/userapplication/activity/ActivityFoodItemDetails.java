@@ -16,11 +16,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.freshnin.userapplication.R;
+import com.freshnin.userapplication.model.ModelCartItemWrapper;
 import com.freshnin.userapplication.model.ModelMyCartItem;
 import com.freshnin.userapplication.model.ModelRegularItem;
 import com.freshnin.userapplication.tools.Utils;
 import com.freshnin.userapplication.viewmodel.ViewModelMyCartItem;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ActivityFoodItemDetails extends AppCompatActivity {
 
@@ -60,12 +64,13 @@ public class ActivityFoodItemDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(ActivityFoodItemDetails.this, ActivityCheckOut.class);
-                intent.putExtra("data-1",itemDetails.getProductId()+",");
-                intent.putExtra("data-2",itemDetails.getProductUnitPrice()+",");
-                intent.putExtra("data-3",1+",");
-                intent.putExtra("data-4",itemDetails.getProductUnitPrice()+",");
-                intent.putExtra("caller","ActivityFoodItemDetails");
+                ModelMyCartItem cartItem=new ModelMyCartItem(itemDetails.getProductName(),itemDetails.getProductUnitPrice(),"1",itemDetails.getProductId());
+                List<ModelMyCartItem> tempList=new ArrayList<>();
+                tempList.add(cartItem);
+                ModelCartItemWrapper wrapper=new ModelCartItemWrapper(tempList);
+
+                Intent intent=new Intent(ActivityFoodItemDetails.this,ActivityCheckOut.class);
+                intent.putExtra("cart-data",wrapper);
                 startActivity(intent);
             }
         });

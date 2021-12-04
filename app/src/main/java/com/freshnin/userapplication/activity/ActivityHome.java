@@ -35,6 +35,8 @@ import com.freshnin.userapplication.callbacks.AdapterHoneyAndGheeListRecyCallBac
 import com.freshnin.userapplication.callbacks.AdapterPreOrderGoingOnListRecyCallBacks;
 import com.freshnin.userapplication.model.ModelPreOrderItem;
 import com.freshnin.userapplication.model.ModelRegularItem;
+import com.freshnin.userapplication.tools.GlobalKey;
+import com.freshnin.userapplication.tools.Utils;
 import com.freshnin.userapplication.viewmodel.ViewModelPreOrderItem;
 import com.freshnin.userapplication.viewmodel.ViewModelRegularItem;
 import com.google.android.material.navigation.NavigationView;
@@ -425,6 +427,12 @@ public class ActivityHome extends AppCompatActivity implements NavigationView.On
                         break;
 
                     case R.id.nav_goto_aboutUs:
+                        break;
+
+                    case R.id.ic_logout:
+                        Utils.savePrefBoolean(GlobalKey.IS_LOGGED_IN,false);
+                        Utils.savePref(GlobalKey.USER_ID,"");
+                        startActivity(new Intent(ActivityHome.this,ActivityLogIn.class));finish();
                         break;
 
                 }

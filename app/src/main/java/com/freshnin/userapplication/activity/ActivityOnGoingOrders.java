@@ -87,8 +87,8 @@ public class ActivityOnGoingOrders extends AppCompatActivity implements AdapterO
         viewModelRegularItem.getOngoingOrderInformationByUser(modelUser).observe(this, new Observer<List<ModelOnGoingOrder>>() {
             @Override
             public void onChanged(List<ModelOnGoingOrder> modelOnGoingOrders) {
-                if(modelOnGoingOrders!=null){
-                    Log.d(TAG, "onChanged: "+modelOnGoingOrders.get(0).getItems().get(0).getProductName());
+                if(modelOnGoingOrders!=null || !modelOnGoingOrders.isEmpty()){
+                    //Log.d(TAG, "onChanged: "+modelOnGoingOrders.get(0).getItems().get(0).getProductName());
                     dialogLoading.dismiss();
                     onGoingOrderList.clear();
                     //onGoingOrderProductList.clear();

@@ -29,6 +29,7 @@ public class ActivityOTPVerification extends AppCompatActivity {
     private Button btnVerifyOtp;
     private PinView otpPinView;
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,6 +112,7 @@ public class ActivityOTPVerification extends AppCompatActivity {
         mOtpTimeCountdown=findViewById(R.id.aotpv_tv_otp_countdown);
         btnVerifyOtp=findViewById(R.id.aotpv_btnVarify);
         otpPinView=findViewById(R.id.aotpv_pinViewOTP);
+
     }
 
 

@@ -113,7 +113,7 @@ public class ActivityPreOrderCheckout extends AppCompatActivity {
                 if(checkedId == R.id.apoic_rbtn_inside_chittagong){
                     deliveryCharge=80;
                     tvDeliveryCharge.setText(String.valueOf(deliveryCharge));
-                }else if(checkedId == R.id.apoic_rbtn_outside_chittagong){
+                }else if(checkedId == R.id.apoic_rbtn_outside_chittagong) {
                     deliveryCharge=120;
                     tvDeliveryCharge.setText(String.valueOf(deliveryCharge));
                 }

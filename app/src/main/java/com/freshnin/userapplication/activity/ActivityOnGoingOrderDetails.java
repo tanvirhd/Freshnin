@@ -84,7 +84,7 @@ public class ActivityOnGoingOrderDetails extends AppCompatActivity {
 
         if(onGoingOrderDetails!=null){
             Log.d(TAG, "init: not null");
-            getSupportActionBar().setTitle(onGoingOrderDetails.getOrderId());
+            getSupportActionBar().setTitle("Order ID: "+onGoingOrderDetails.getOrderId());
             updateUi(onGoingOrderDetails);
         }else {
             Log.d(TAG, "init: yes null");

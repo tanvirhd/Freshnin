@@ -11,15 +11,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.model.ModelFoodItem;
+import com.freshnin.userapplication.model.ModelMyCartItem;
 
 import java.util.List;
 
 public class AdapterCheckOutFoodItemRecy extends RecyclerView.Adapter<AdapterCheckOutFoodItemRecy.ViewHolderAdapterCheckOutFoodInCart> {
 
-    List<ModelFoodItem> checkOutFoodItemList;
+    List<ModelMyCartItem> checkOutFoodItemList;
     Context context;
 
-    public AdapterCheckOutFoodItemRecy(List<ModelFoodItem> checkOutFoodItemList, Context context) {
+    public AdapterCheckOutFoodItemRecy(List<ModelMyCartItem> checkOutFoodItemList, Context context) {
         this.checkOutFoodItemList = checkOutFoodItemList;
         this.context = context;
     }
@@ -37,7 +38,7 @@ public class AdapterCheckOutFoodItemRecy extends RecyclerView.Adapter<AdapterChe
     public void onBindViewHolder(@NonNull ViewHolderAdapterCheckOutFoodInCart holder, int position) {
         holder.tvProdectName.setText(checkOutFoodItemList.get(position).getFoodName());
         holder.tvProductPrice.setText(checkOutFoodItemList.get(position).getFoodPrice());
-        holder.tvProductQuantity.setText(checkOutFoodItemList.get(position).getQuantityOfFood());
+        holder.tvProductQuantity.setText(checkOutFoodItemList.get(position).getFoodQuantity());
     }
 
     @Override

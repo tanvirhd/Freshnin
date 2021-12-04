@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.adapter.AdapterMyCartItemListRecy;
 import com.freshnin.userapplication.callbacks.AdapterMyCartItemListRecyCallBacks;
+import com.freshnin.userapplication.model.ModelCartItemWrapper;
 import com.freshnin.userapplication.model.ModelMyCartItem;
 import com.freshnin.userapplication.viewmodel.ViewModelMyCartItem;
 
@@ -64,24 +65,11 @@ public class  ActivityMyCart extends AppCompatActivity implements AdapterMyCartI
             @Override
             public void onClick(View v) {
 
-                String itemIds=""; //example 0001,0002,0003,
-                String itemPrices="";
-                String quantities="";
-                int totalBill=0;
-
-                for(ModelMyCartItem cartItem:myCartItemList){
-                    itemIds=itemIds+cartItem.getFoodId()+",";
-                    itemPrices+=cartItem.getFoodPrice()+",";
-                    quantities+=cartItem.getFoodQuantity()+",";
-                    totalBill+=(Integer.parseInt(cartItem.getFoodPrice()) * Integer.parseInt(cartItem.getFoodQuantity()));
-                }
-
+                ModelCartItemWrapper wrapper=new ModelCartItemWrapper(myCartItemList);
                 Intent intent=new Intent(ActivityMyCart.this,ActivityCheckOut.class);
-                intent.putExtra("data-1",itemIds);
-                intent.putExtra("data-2",itemPrices);
-                intent.putExtra("data-3",quantities);
-                intent.putExtra("data-4",totalBill);
-                intent.putExtra("caller","ActivityMyCart");
+                intent.putExtra("cart-data",wrapper);
+
+                myCartItemViewModel.deleteAllItemFromMyCart();
                 startActivity(intent);
             }
         });
@@ -109,19 +97,27 @@ public class  ActivityMyCart extends AppCompatActivity implements AdapterMyCartI
     @Override
     public void onIncreaseClicked(int index) {
         int tempQuantity= Integer.parseInt(myCartItemList.get(index).getFoodQuantity());
+        int price=Integer.parseInt(myCartItemList.get(index).getFoodPrice());
+        price=price/tempQuantity;
+
         myCartItemList.get(index).setFoodQuantity((++tempQuantity)+"");
+        myCartItemList.get(index).setFoodPrice((price*tempQuantity)+"");
         adapterMyCartItemListRecy.notifyDataSetChanged();
     }
 
     @Override
     public void onDecreaseClicked(int index) {
         int tempQuantity= Integer.parseInt(myCartItemList.get(index).getFoodQuantity());
-
+        int price=Integer.parseInt(myCartItemList.get(index).getFoodPrice());
+        price=price/tempQuantity;
+        
         if(tempQuantity<=1){
             myCartItemList.get(index).setFoodQuantity(1+"");
             adapterMyCartItemListRecy.notifyDataSetChanged();
         }else{
+
             myCartItemList.get(index).setFoodQuantity((--tempQuantity)+"");
+            myCartItemList.get(index).setFoodPrice((price*tempQuantity)+"");
             adapterMyCartItemListRecy.notifyDataSetChanged();
         }
     }

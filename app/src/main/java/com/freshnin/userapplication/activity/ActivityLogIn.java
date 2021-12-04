@@ -53,14 +53,14 @@ public class ActivityLogIn extends AppCompatActivity {
         mLogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ActivityLogIn.this,ActivityHome.class));
 
                 //todo delete next 2 line
                 Utils.savePrefBoolean(GlobalKey.IS_LOGGED_IN,true);
                 Utils.savePref(GlobalKey.USER_ID,tietUserPhoneNumber.getText().toString());
 
+
                 //todo revert
-                /*viewModelUser.checkValidLogIn(new ModelUser(tietUserPhoneNumber.getText().toString(), tietUserPassword.getText().toString()))
+                viewModelUser.checkValidLogIn(new ModelUser(tietUserPhoneNumber.getText().toString(), tietUserPassword.getText().toString()))
                         .observe(ActivityLogIn.this, new Observer<ModelLogIn>() {
                             @Override
                             public void onChanged(ModelLogIn modelLogIn) {
@@ -70,13 +70,14 @@ public class ActivityLogIn extends AppCompatActivity {
                                     if (modelLogIn.isValidUser()) {
                                         Utils.savePrefBoolean(GlobalKey.IS_LOGGED_IN,true);
                                         Utils.savePref(GlobalKey.USER_ID,tietUserPhoneNumber.getText().toString());
+                                        startActivity(new Intent(ActivityLogIn.this,ActivityHome.class));finish();
                                         Toast.makeText(ActivityLogIn.this, "Successfully Loged in", Toast.LENGTH_SHORT).show();
                                     } else {
                                         Toast.makeText(ActivityLogIn.this, "Wrong userid or password", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             }
-                        });*/
+                        });
             }
         });
     }

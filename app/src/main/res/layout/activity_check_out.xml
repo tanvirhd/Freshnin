@@ -164,7 +164,6 @@
                     android:id="@+id/aco_tvTotalBill"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="12000 Tk"
                     android:textColor="@color/black"
                     android:textSize="16dp"
                     app:layout_constraintBottom_toBottomOf="@+id/textView19"

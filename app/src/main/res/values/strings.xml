@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Freshnin</string>
     <string name="password">Password</string>
-    <string name="phone_number_email">Phone Number / Email</string>
+    <string name="phone_number_email">Phone Number</string>
 
     <string name="openNavDrawer">Navigation Drawer Open</string>
     <string name="closeNavDrawer">Navigation Drawer Close</string>
