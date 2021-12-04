@@ -78,6 +78,7 @@ public class ActivityFoodItemDetails extends AppCompatActivity {
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dialogLoading.show();
                 viewModelMyCartItem.insertNewMyCartItem(
                         new ModelMyCartItem(
                                 itemDetails.getProductName(),
@@ -85,7 +86,7 @@ public class ActivityFoodItemDetails extends AppCompatActivity {
                                 1+"",
                                 itemDetails.getProductId()
                         )
-                );
+                );dialogLoading.dismiss();
                 Toast.makeText(ActivityFoodItemDetails.this, "Item added", Toast.LENGTH_SHORT).show();
             }
         });

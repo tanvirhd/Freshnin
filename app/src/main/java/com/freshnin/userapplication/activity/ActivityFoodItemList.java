@@ -19,8 +19,10 @@ import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.adapter.AdapterFoodItemListRecy;
 import com.freshnin.userapplication.callbacks.AdapterDryFoodListRecyCallBacks;
 import com.freshnin.userapplication.callbacks.AdapterFoodItemListRecycCallBacks;
+import com.freshnin.userapplication.model.ModelMyCartItem;
 import com.freshnin.userapplication.model.ModelRegularItem;
 import com.freshnin.userapplication.tools.Utils;
+import com.freshnin.userapplication.viewmodel.ViewModelMyCartItem;
 import com.freshnin.userapplication.viewmodel.ViewModelRegularItem;
 
 import java.util.ArrayList;
@@ -37,6 +39,7 @@ public class ActivityFoodItemList extends AppCompatActivity implements AdapterFo
     private ViewModelRegularItem viewModelRegularItem;
 
     private ModelRegularItem itemId;
+    private ViewModelMyCartItem viewModelMyCartItem;
 
 
     private Dialog dialogLoading;
@@ -56,10 +59,6 @@ public class ActivityFoodItemList extends AppCompatActivity implements AdapterFo
                 onBackPressed();
             }
         });
-
-
-
-
     }
 
     @Override
@@ -109,6 +108,7 @@ public class ActivityFoodItemList extends AppCompatActivity implements AdapterFo
         recyclerViewFoodItem.setAdapter(adapterFoodItemListRecy);
 
         viewModelRegularItem= new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(ViewModelRegularItem.class);
+        viewModelMyCartItem=new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(ViewModelMyCartItem.class);
 
         dialogLoading= Utils.setupLoadingDialog(this);
         itemId=new ModelRegularItem(getIntent().getExtras().getString("foodId"));
@@ -122,6 +122,19 @@ public class ActivityFoodItemList extends AppCompatActivity implements AdapterFo
         Intent intent=new Intent(ActivityFoodItemList.this,ActivityFoodItemDetails.class);
         intent.putExtra("parcel",foodItems.get(index));
         startActivity(intent);
+    }
+
+    @Override
+    public void onAddToCartClicked(int index) {
+        viewModelMyCartItem.insertNewMyCartItem(
+                new ModelMyCartItem(
+                        foodItems.get(index).getProductName(),
+                        foodItems.get(index).getProductUnitPrice(),
+                        1+"",
+                        foodItems.get(index).getProductId()
+                )
+        );
+        Toast.makeText(this, "Item added to cart", Toast.LENGTH_SHORT).show();
     }
 
 }

@@ -9,11 +9,13 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.callbacks.AdapterFoodItemListRecycCallBacks;
 import com.freshnin.userapplication.model.ModelRegularItem;
+import com.freshnin.userapplication.viewmodel.ViewModelMyCartItem;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -23,6 +25,7 @@ public class AdapterFoodItemListRecy extends RecyclerView.Adapter<AdapterFoodIte
     List<ModelRegularItem> foodItemList;
     Context context;
     AdapterFoodItemListRecycCallBacks adapterFoodItemListRecycCallBacks;
+
 
     public AdapterFoodItemListRecy(List<ModelRegularItem> foodItemList, Context context, AdapterFoodItemListRecycCallBacks adapterFoodItemListRecycCallBacks) {
         this.foodItemList = foodItemList;
@@ -61,6 +64,13 @@ public class AdapterFoodItemListRecy extends RecyclerView.Adapter<AdapterFoodIte
                 adapterFoodItemListRecycCallBacks.onItemClick(holder.getAdapterPosition());
             }
         });
+
+        holder.btnAddToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adapterFoodItemListRecycCallBacks.onAddToCartClicked(holder.getAdapterPosition());
+            }
+        });
     }
 
     @Override
@@ -70,7 +80,7 @@ public class AdapterFoodItemListRecy extends RecyclerView.Adapter<AdapterFoodIte
 
     public class ViewHolderAdapterFoodItemListRecy extends RecyclerView.ViewHolder{
         ImageView ivFoodImage, notFavouriteIcon, favouriteIcon;
-        TextView tvFoodName, tvFoodPrice,btnAddtoCart,priceWord;
+        TextView tvFoodName, tvFoodPrice, btnAddToCart,priceWord;
         ConstraintLayout onClickDetailsView;
 
         public ViewHolderAdapterFoodItemListRecy(@NonNull View itemView) {
@@ -82,7 +92,7 @@ public class AdapterFoodItemListRecy extends RecyclerView.Adapter<AdapterFoodIte
             notFavouriteIcon=itemView.findViewById(R.id.afil_ivNotFavouriteFood);
             favouriteIcon =itemView.findViewById(R.id.afil_ivFavouriteFood);
 
-            btnAddtoCart=itemView.findViewById(R.id.afil_btn_add_to_cart);
+            btnAddToCart =itemView.findViewById(R.id.afil_btn_add_to_cart);
             priceWord=itemView.findViewById(R.id.afil_priceWord);
 
 
