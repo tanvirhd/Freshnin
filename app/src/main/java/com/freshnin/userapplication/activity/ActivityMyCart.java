@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.adapter.AdapterMyCartItemListRecy;
@@ -31,6 +32,7 @@ public class  ActivityMyCart extends AppCompatActivity implements AdapterMyCartI
     private AdapterMyCartItemListRecy adapterMyCartItemListRecy;
     private List<ModelMyCartItem> myCartItemList;
     private ConstraintLayout btnCheckOut;
+
 
     private ViewModelMyCartItem myCartItemViewModel;
 
@@ -104,12 +106,34 @@ public class  ActivityMyCart extends AppCompatActivity implements AdapterMyCartI
         myCartItemViewModel.getAllMyCartItem();
     }
 
+    @Override
+    public void onIncreaseClicked(int index) {
+        int tempQuantity= Integer.parseInt(myCartItemList.get(index).getFoodQuantity());
+        myCartItemList.get(index).setFoodQuantity((++tempQuantity)+"");
+        adapterMyCartItemListRecy.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onDecreaseClicked(int index) {
+        int tempQuantity= Integer.parseInt(myCartItemList.get(index).getFoodQuantity());
+
+        if(tempQuantity<=1){
+            myCartItemList.get(index).setFoodQuantity(1+"");
+            adapterMyCartItemListRecy.notifyDataSetChanged();
+        }else{
+            myCartItemList.get(index).setFoodQuantity((--tempQuantity)+"");
+            adapterMyCartItemListRecy.notifyDataSetChanged();
+        }
+    }
+
 
     private void init() {
         myCartRecyclerView=findViewById(R.id.amc_myCart_recyclerView);
         btnCheckOut=findViewById(R.id.amc_btnConstrain);
         myCartItemViewModel = new ViewModelProvider(this).get(ViewModelMyCartItem.class);
         myCartItemList = new ArrayList<>();
+
+
         /*myCartItemViewModel.insertNewMyCartItem(new ModelMyCartItem(
                 "Bogurar Doi",
                 "200 Tk",

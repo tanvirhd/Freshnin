@@ -54,6 +54,20 @@ public class AdapterMyCartItemListRecy extends RecyclerView.Adapter<AdapterMyCar
             }
         });
 
+        holder.btnIncreaseItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adapterMyCartItemListRecyCallBacks.onIncreaseClicked(index);
+            }
+        });
+
+        holder.btnDecreaseItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adapterMyCartItemListRecyCallBacks.onDecreaseClicked(index);
+            }
+        });
+
     }
 
     @Override
@@ -73,8 +87,8 @@ public class AdapterMyCartItemListRecy extends RecyclerView.Adapter<AdapterMyCar
             tvCartProductQuantity=itemView.findViewById(R.id.amc_tv_cart_food_quantity);
 
             btnRemoveItem=itemView.findViewById(R.id.amc_btn_cart_cancle_item);
-//            btnIncreaseItem=itemView.findViewById(R.id.btn_cart_quantity_increment);
-//            btnDecreaseItem=itemView.findViewById(R.id.btn_cart_quantity_decrement);
+            btnIncreaseItem=itemView.findViewById(R.id.amc_btn_cart_quantity_increment);
+            btnDecreaseItem=itemView.findViewById(R.id.amc_btn_cart_quantity_decrement);
         }
     }
 }
