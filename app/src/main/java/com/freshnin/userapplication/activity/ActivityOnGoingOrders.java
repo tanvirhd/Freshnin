@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -28,9 +29,10 @@ import java.util.List;
 
 public class ActivityOnGoingOrders extends AppCompatActivity implements AdapterOnGoingOrdersRecycCallBacks{
 
+    private static final String TAG = "ActivityOnGoingOrders";
     private Toolbar toolbar;
     private List<ModelOnGoingOrder> onGoingOrderList;
-    private List<ModelRegularItem> onGoingOrderProductList;
+    //private List<ModelRegularItem> onGoingOrderProductList;
     private RecyclerView onGoingOrderRecy;
     private AdapterOnGoingOrdersRecy adapterOnGoingOrdersRecy;
 
@@ -66,13 +68,13 @@ public class ActivityOnGoingOrders extends AppCompatActivity implements AdapterO
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         onGoingOrderList=new ArrayList<>();
-        onGoingOrderProductList=new ArrayList<>();
+        //onGoingOrderProductList=new ArrayList<>();
 
         onGoingOrderRecy=findViewById(R.id.aogo_on_oging_order_recy);
 
         onGoingOrderRecy.setLayoutManager(new LinearLayoutManager(ActivityOnGoingOrders.this));
         adapterOnGoingOrdersRecy=new AdapterOnGoingOrdersRecy(
-                onGoingOrderList,onGoingOrderProductList,ActivityOnGoingOrders.this, (AdapterOnGoingOrdersRecycCallBacks) ActivityOnGoingOrders.this);
+                onGoingOrderList,ActivityOnGoingOrders.this, (AdapterOnGoingOrdersRecycCallBacks) ActivityOnGoingOrders.this);
         onGoingOrderRecy.setAdapter(adapterOnGoingOrdersRecy);
 
         viewModelRegularItem=new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(ViewModelRegularItem.class);
@@ -86,12 +88,13 @@ public class ActivityOnGoingOrders extends AppCompatActivity implements AdapterO
             @Override
             public void onChanged(List<ModelOnGoingOrder> modelOnGoingOrders) {
                 if(modelOnGoingOrders!=null){
+                    Log.d(TAG, "onChanged: "+modelOnGoingOrders.get(0).getItems().get(0).getProductName());
                     dialogLoading.dismiss();
                     onGoingOrderList.clear();
-                    onGoingOrderProductList.clear();
+                    //onGoingOrderProductList.clear();
 
                     onGoingOrderList.addAll(modelOnGoingOrders);
-                    //onGoingOrderProductList.addAll(modelOnGoingOrders.);
+                    //onGoingOrderProductList.addAll(modelOnGoingOrders);
 
                     adapterOnGoingOrdersRecy.notifyDataSetChanged();
                 }else{
@@ -107,7 +110,7 @@ public class ActivityOnGoingOrders extends AppCompatActivity implements AdapterO
     public void onDetailsClicked(int index) {
         Intent intent=new Intent(ActivityOnGoingOrders.this,ActivityOnGoingOrderDetails.class);
         intent.putExtra("parcel-1",onGoingOrderList.get(index));
-        intent.putExtra("parcel-2",onGoingOrderProductList.get(index));
+        //intent.putExtra("parcel-2",onGoingOrderProductList.get(index));
         startActivity(intent);
     }
 

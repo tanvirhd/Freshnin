@@ -1,5 +1,6 @@
 package com.freshnin.userapplication.repository;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
@@ -19,6 +20,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
+@SuppressLint("CheckResult")
 public class RepositoryRegularOrder {
     private static final String TAG = "RepositoryRegularOrder";
 
@@ -27,6 +29,7 @@ public class RepositoryRegularOrder {
     public RepositoryRegularOrder(){
         apiInterface= ApiClient.getApiInterface();
     }
+
 
 
     public LiveData<List<ModelRegularItem>> getAllItem(){

@@ -21,13 +21,13 @@ import java.util.List;
 public class AdapterOnGoingOrdersRecy extends RecyclerView.Adapter<AdapterOnGoingOrdersRecy.ViewHolderAdapterOnGoingOrdersRecy>{
 
     List<ModelOnGoingOrder> onGoingOrderList;
-    List<ModelRegularItem> onGoingOrderProductList;
+    //List<ModelRegularItem> onGoingOrderProductList;
     Context context;
     AdapterOnGoingOrdersRecycCallBacks adapterOnGoingOrdersRecycCallBacks;
 
-    public AdapterOnGoingOrdersRecy(List<ModelOnGoingOrder> onGoingOrderList, List<ModelRegularItem> onGoingOrderProductList, Context context, AdapterOnGoingOrdersRecycCallBacks adapterOnGoingOrdersRecycCallBacks) {
+    public AdapterOnGoingOrdersRecy(List<ModelOnGoingOrder> onGoingOrderList, /*List<ModelRegularItem> onGoingOrderProductList,*/ Context context, AdapterOnGoingOrdersRecycCallBacks adapterOnGoingOrdersRecycCallBacks) {
         this.onGoingOrderList = onGoingOrderList;
-        this.onGoingOrderProductList = onGoingOrderProductList;
+        //this.onGoingOrderProductList = onGoingOrderProductList;
         this.context = context;
         this.adapterOnGoingOrdersRecycCallBacks = adapterOnGoingOrdersRecycCallBacks;
     }
@@ -47,7 +47,8 @@ public class AdapterOnGoingOrdersRecy extends RecyclerView.Adapter<AdapterOnGoin
 
         holder.tvOnGoingOrderId.setText(onGoingOrderList.get(position).getOrderId());
 
-        AdapterOngoingOrderProductListRecy adapterOngoingOrderProductListRecy = new AdapterOngoingOrderProductListRecy(onGoingOrderProductList);
+        AdapterOngoingOrderProductListRecy adapterOngoingOrderProductListRecy =
+                new AdapterOngoingOrderProductListRecy(onGoingOrderList.get(position).getItems());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         holder.nestedRecyOnGoingOrderProductList.setLayoutManager(linearLayoutManager);
         holder.nestedRecyOnGoingOrderProductList.setAdapter(adapterOngoingOrderProductListRecy);

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ActivityOnGoingOrderDetails extends AppCompatActivity {
-
+    private static final String TAG = "ActivityOnGoingOrderDetails";
     private Toolbar toolbar;
     private TextView tvDeliveryCharge;
     private TextView tvTotalBill;
@@ -35,8 +36,6 @@ public class ActivityOnGoingOrderDetails extends AppCompatActivity {
     private AdapterOnGoingOrderDetailsBillingRecy adapterOnGoingOrderDetailsBillingRecy;
     private List<ModelRegularItem> billingFoodList;
 
-
-    private ModelRegularItem regularItemDetails;
     private ModelOnGoingOrder onGoingOrderDetails;
 
 
@@ -62,7 +61,11 @@ public class ActivityOnGoingOrderDetails extends AppCompatActivity {
         toolbar=findViewById(R.id.aogod_onGOingOrder_details_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("");
+
+
+        tvDeliveryCharge=findViewById(R.id.aogod_deliveryCharge);
+        tvTotalBill=findViewById(R.id.aogod_total_bill);
+        tvDeliveryAddress=findViewById(R.id.aogod_tv_delivery_address);
 
         foodItemList=new ArrayList<>();
         billingFoodList=new ArrayList<>();
@@ -77,24 +80,24 @@ public class ActivityOnGoingOrderDetails extends AppCompatActivity {
         adapterOnGoingOrderDetailsBillingRecy=new AdapterOnGoingOrderDetailsBillingRecy(billingFoodList,ActivityOnGoingOrderDetails.this);
         onGoingOrderBillingRecy.setAdapter(adapterOnGoingOrderDetailsBillingRecy);
 
-
-        tvDeliveryCharge=findViewById(R.id.aogod_deliveryCharge);
-        tvTotalBill=findViewById(R.id.aogod_total_bill);
-        tvDeliveryCharge=findViewById(R.id.aogod_tv_delivery_address);
-
         onGoingOrderDetails=getIntent().getExtras().getParcelable("parcel-1");
-        regularItemDetails=getIntent().getExtras().getParcelable("parcel-2");
-        if(onGoingOrderDetails!=null && regularItemDetails!=null){
-            updateUi();
-        }
 
+        if(onGoingOrderDetails!=null){
+            Log.d(TAG, "init: not null");
+            getSupportActionBar().setTitle(onGoingOrderDetails.getOrderId());
+            updateUi(onGoingOrderDetails);
+        }else {
+            Log.d(TAG, "init: yes null");
+        }
     }
 
-    private void updateUi() {
-        foodItemList.addAll(onGoingOrderDetails.getItems());
-        billingFoodList.addAll(onGoingOrderDetails.getItems());
-        tvDeliveryCharge.setText(onGoingOrderDetails.getDeliveryCharge());
-        tvTotalBill.setText(onGoingOrderDetails.getTotalBill());
-        tvDeliveryAddress.setText(onGoingOrderDetails.getDeliveryAddress());
+    private void updateUi(ModelOnGoingOrder order) {
+        foodItemList.addAll(order.getItems());
+        billingFoodList.addAll(order.getItems());
+        tvDeliveryCharge.setText(order.getDeliveryCharge());
+        tvTotalBill.setText(order.getTotalBill());
+        tvDeliveryAddress.setText(order.getDeliveryAddress());
+
+        //list
     }
 }
