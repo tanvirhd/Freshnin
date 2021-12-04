@@ -12,7 +12,7 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
 
 import com.freshnin.userapplication.R;
-import com.freshnin.userapplication.model.ModelOngoingOrder;
+import com.freshnin.userapplication.model.ModelOngoingPreOrder;
 import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
@@ -38,7 +38,7 @@ public class ActivityPreOrderDetails extends AppCompatActivity {
     private TextView tvPaymentType;
 
 
-    private ModelOngoingOrder orderDetails;
+    private ModelOngoingPreOrder orderDetails;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

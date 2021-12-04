@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ModelOngoingOrder implements Parcelable {
+public class ModelOngoingPreOrder implements Parcelable {
 
     @SerializedName("orderId")
     @Expose
@@ -63,15 +63,15 @@ public class ModelOngoingOrder implements Parcelable {
     @Expose
     private String url;
 
-    public ModelOngoingOrder(String orderId, String itemId, String userId,
-                             String itemName, String orderPlaceDate,
-                             String orderDeliveryDate, String orderQuantity,
-                             String deliveryAddress, String inTownDelivery,
-                             String deliveryCharge, String totalBill,
-                             String advancePyamentAmount, String advancePaymentStatus,
-                             String transactionId, String paymnetMethod,
-                             String advancePaymentMethod, String orderStatus,
-                             String url) {
+    public ModelOngoingPreOrder(String orderId, String itemId, String userId,
+                                String itemName, String orderPlaceDate,
+                                String orderDeliveryDate, String orderQuantity,
+                                String deliveryAddress, String inTownDelivery,
+                                String deliveryCharge, String totalBill,
+                                String advancePyamentAmount, String advancePaymentStatus,
+                                String transactionId, String paymnetMethod,
+                                String advancePaymentMethod, String orderStatus,
+                                String url) {
         this.orderId = orderId;
         this.itemId = itemId;
         this.userId = userId;
@@ -92,7 +92,7 @@ public class ModelOngoingOrder implements Parcelable {
         this.url = url;
     }
 
-    public ModelOngoingOrder() {
+    public ModelOngoingPreOrder() {
     }
 
 
@@ -246,7 +246,7 @@ public class ModelOngoingOrder implements Parcelable {
 
 
 //================================
-protected ModelOngoingOrder(Parcel in) {
+protected ModelOngoingPreOrder(Parcel in) {
     orderId = in.readString();
     itemId = in.readString();
     userId = in.readString();
@@ -267,15 +267,15 @@ protected ModelOngoingOrder(Parcel in) {
     url = in.readString();
 }
 
-    public static final Creator<ModelOngoingOrder> CREATOR = new Creator<ModelOngoingOrder>() {
+    public static final Creator<ModelOngoingPreOrder> CREATOR = new Creator<ModelOngoingPreOrder>() {
         @Override
-        public ModelOngoingOrder createFromParcel(Parcel in) {
-            return new ModelOngoingOrder(in);
+        public ModelOngoingPreOrder createFromParcel(Parcel in) {
+            return new ModelOngoingPreOrder(in);
         }
 
         @Override
-        public ModelOngoingOrder[] newArray(int size) {
-            return new ModelOngoingOrder[size];
+        public ModelOngoingPreOrder[] newArray(int size) {
+            return new ModelOngoingPreOrder[size];
         }
     };
 

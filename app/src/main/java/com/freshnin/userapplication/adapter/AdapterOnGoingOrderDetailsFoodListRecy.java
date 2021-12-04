@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.model.ModelFoodItem;
+import com.freshnin.userapplication.model.ModelRegularItem;
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
@@ -19,10 +21,10 @@ import java.util.List;
 
 public class AdapterOnGoingOrderDetailsFoodListRecy extends RecyclerView.Adapter<AdapterOnGoingOrderDetailsFoodListRecy.ViewHolderAdapterOnGoingOrderDetailsFoodListRecy> {
 
-    List<ModelFoodItem> foodItemList;
+    List<ModelRegularItem> foodItemList;
     Context context;
 
-    public AdapterOnGoingOrderDetailsFoodListRecy(List<ModelFoodItem> foodItemList, Context context) {
+    public AdapterOnGoingOrderDetailsFoodListRecy(List<ModelRegularItem> foodItemList, Context context) {
         this.foodItemList = foodItemList;
         this.context = context;
     }
@@ -38,10 +40,13 @@ public class AdapterOnGoingOrderDetailsFoodListRecy extends RecyclerView.Adapter
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderAdapterOnGoingOrderDetailsFoodListRecy holder, int position) {
-        holder.tvFoodName.setText(foodItemList.get(position).getFoodName());
-        holder.tvQuantityOfFood.setText(foodItemList.get(position).getQuantityOfFood());
+        holder.tvFoodName.setText(foodItemList.get(position).getProductName());
 
-        holder.ivFoodImage.setImageResource(foodItemList.get(position).getFoodImage());
+        //todo need to fix
+        //holder.tvQuantityOfFood.setText(foodItemList.get(position).get);
+
+        Picasso.with(context).load(foodItemList.get(position).getProductPicUrl()).into(holder.ivFoodImage);
+
     }
 
     @Override

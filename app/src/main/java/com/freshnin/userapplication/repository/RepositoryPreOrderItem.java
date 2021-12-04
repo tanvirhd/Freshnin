@@ -2,12 +2,11 @@ package com.freshnin.userapplication.repository;
 
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.freshnin.userapplication.model.ModelCreateNewPreOrder;
-import com.freshnin.userapplication.model.ModelOngoingOrder;
+import com.freshnin.userapplication.model.ModelOngoingPreOrder;
 import com.freshnin.userapplication.model.ModelPreOrderItem;
 import com.freshnin.userapplication.model.ModelResponse;
 import com.freshnin.userapplication.model.ModelUser;
@@ -16,10 +15,7 @@ import com.freshnin.userapplication.network.ApiInterface;
 
 import java.util.List;
 
-import io.reactivex.Observer;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
@@ -82,16 +78,16 @@ public  class RepositoryPreOrderItem {
 
 
 
-    public LiveData<List<ModelOngoingOrder>> getOngoingPreOrderInformationByUser(ModelUser modelUser){
-        MutableLiveData<List<ModelOngoingOrder>> result =new MutableLiveData<>();
+    public LiveData<List<ModelOngoingPreOrder>> getOngoingPreOrderInformationByUser(ModelUser modelUser){
+        MutableLiveData<List<ModelOngoingPreOrder>> result =new MutableLiveData<>();
 
         apiInterface.getOngoingPreOrderInformationByUser(modelUser).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<List<ModelOngoingOrder>>() {
+                .subscribe(new Consumer<List<ModelOngoingPreOrder>>() {
                     @Override
-                    public void accept(List<ModelOngoingOrder> modelOngoingOrders) throws Exception {
-                        if(modelOngoingOrders!=null){
-                            result.postValue(modelOngoingOrders);
+                    public void accept(List<ModelOngoingPreOrder> modelOngoingPreOrders) throws Exception {
+                        if(modelOngoingPreOrders !=null){
+                            result.postValue(modelOngoingPreOrders);
                         }else{
                             result.postValue(null);
                         }

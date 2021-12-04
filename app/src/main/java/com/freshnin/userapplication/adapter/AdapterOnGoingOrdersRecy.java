@@ -12,18 +12,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.callbacks.AdapterOnGoingOrdersRecycCallBacks;
+import com.freshnin.userapplication.model.ModelOnGoingOrder;
 import com.freshnin.userapplication.model.ModelOrder;
+import com.freshnin.userapplication.model.ModelRegularItem;
 
 import java.util.List;
 
 public class AdapterOnGoingOrdersRecy extends RecyclerView.Adapter<AdapterOnGoingOrdersRecy.ViewHolderAdapterOnGoingOrdersRecy>{
 
-    List<ModelOrder> onGoingOrderList;
-    List<ModelOrder> onGoingOrderProductList;
+    List<ModelOnGoingOrder> onGoingOrderList;
+    List<ModelRegularItem> onGoingOrderProductList;
     Context context;
     AdapterOnGoingOrdersRecycCallBacks adapterOnGoingOrdersRecycCallBacks;
 
-    public AdapterOnGoingOrdersRecy(List<ModelOrder> onGoingOrderList, List<ModelOrder> onGoingOrderProductList, Context context, AdapterOnGoingOrdersRecycCallBacks adapterOnGoingOrdersRecycCallBacks) {
+    public AdapterOnGoingOrdersRecy(List<ModelOnGoingOrder> onGoingOrderList, List<ModelRegularItem> onGoingOrderProductList, Context context, AdapterOnGoingOrdersRecycCallBacks adapterOnGoingOrdersRecycCallBacks) {
         this.onGoingOrderList = onGoingOrderList;
         this.onGoingOrderProductList = onGoingOrderProductList;
         this.context = context;
@@ -42,6 +44,8 @@ public class AdapterOnGoingOrdersRecy extends RecyclerView.Adapter<AdapterOnGoin
     @Override
     public void onBindViewHolder(@NonNull ViewHolderAdapterOnGoingOrdersRecy holder, int position) {
         //holder.tvOnGoingOrderId.setText(onGoingOrderList.get(position).getOrderId());
+
+        holder.tvOnGoingOrderId.setText(onGoingOrderList.get(position).getOrderId());
 
         AdapterOngoingOrderProductListRecy adapterOngoingOrderProductListRecy = new AdapterOngoingOrderProductListRecy(onGoingOrderProductList);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);

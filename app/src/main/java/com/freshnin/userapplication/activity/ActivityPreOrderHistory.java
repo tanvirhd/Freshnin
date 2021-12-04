@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.adapter.AdapterPreOrderHistoryRecy;
 import com.freshnin.userapplication.callbacks.AdapterPreOrderHistoryRecycCallbacks;
-import com.freshnin.userapplication.model.ModelOngoingOrder;
+import com.freshnin.userapplication.model.ModelOngoingPreOrder;
 import com.freshnin.userapplication.model.ModelUser;
 import com.freshnin.userapplication.tools.GlobalKey;
 import com.freshnin.userapplication.tools.Utils;
@@ -33,7 +33,7 @@ public class ActivityPreOrderHistory extends AppCompatActivity implements Adapte
     private Toolbar toolbar;
     private RecyclerView preOrderHistoryRecy;
     private AdapterPreOrderHistoryRecy adapterPreOrderHistoryRecy;
-    private List<ModelOngoingOrder> preOrderHistoryList;
+    private List<ModelOngoingPreOrder> preOrderHistoryList;
 
     private ViewModelPreOrderItem viewModelPreOrderItem;
     private ModelUser userId;
@@ -48,7 +48,6 @@ public class ActivityPreOrderHistory extends AppCompatActivity implements Adapte
         setContentView(R.layout.activity_preorder_history);
 
         init();
-
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,13 +68,13 @@ public class ActivityPreOrderHistory extends AppCompatActivity implements Adapte
     private void getAllPreOrder() {
         Log.d(TAG, "getAllPreOrder: called");
         dialogLoading.show();
-        viewModelPreOrderItem.getOngoingPreOrderInformationByUser(userId).observe(this, new Observer<List<ModelOngoingOrder>>() {
+        viewModelPreOrderItem.getOngoingPreOrderInformationByUser(userId).observe(this, new Observer<List<ModelOngoingPreOrder>>() {
             @Override
-            public void onChanged(List<ModelOngoingOrder> modelOngoingOrders) {
-                Log.d(TAG, "onChanged: with size="+modelOngoingOrders.size());
-                if(modelOngoingOrders!=null){
+            public void onChanged(List<ModelOngoingPreOrder> modelOngoingPreOrders) {
+                Log.d(TAG, "onChanged: with size="+ modelOngoingPreOrders.size());
+                if(modelOngoingPreOrders !=null){
                     preOrderHistoryList.clear();
-                    preOrderHistoryList.addAll(modelOngoingOrders);
+                    preOrderHistoryList.addAll(modelOngoingPreOrders);
                     adapterPreOrderHistoryRecy.notifyDataSetChanged();
                     dialogLoading.dismiss();
                 }else{

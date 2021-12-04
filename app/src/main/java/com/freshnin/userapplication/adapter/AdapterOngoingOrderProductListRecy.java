@@ -10,14 +10,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.model.ModelOrder;
+import com.freshnin.userapplication.model.ModelRegularItem;
 
 import java.util.List;
 
 public class AdapterOngoingOrderProductListRecy extends RecyclerView.Adapter<AdapterOngoingOrderProductListRecy.ViewHolderAdapterOngoingOrderProductListRecy> {
 
-    List<ModelOrder> onGoingOrderProductList;
+    List<ModelRegularItem> onGoingOrderProductList;
 
-    public AdapterOngoingOrderProductListRecy(List<ModelOrder> onGoingOrderProductList) {
+    public AdapterOngoingOrderProductListRecy(List<ModelRegularItem> onGoingOrderProductList) {
         this.onGoingOrderProductList = onGoingOrderProductList;
     }
 
@@ -34,6 +35,8 @@ public class AdapterOngoingOrderProductListRecy extends RecyclerView.Adapter<Ada
     public void onBindViewHolder(@NonNull ViewHolderAdapterOngoingOrderProductListRecy holder, int position) {
         //holder.tvProductName.setText(onGoingOrderProductList.get(position).getOrderedFoodName());
        // holder.tvQuantityOfProduct.setText(onGoingOrderProductList.get(position).getOrderedFoodQuantity());
+
+        holder.tvProductName.setText(onGoingOrderProductList.get(position).getProductName());
     }
 
     @Override

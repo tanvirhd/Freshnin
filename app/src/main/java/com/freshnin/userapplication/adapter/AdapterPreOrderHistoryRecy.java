@@ -11,17 +11,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.callbacks.AdapterPreOrderHistoryRecycCallbacks;
-import com.freshnin.userapplication.model.ModelOngoingOrder;
+import com.freshnin.userapplication.model.ModelOngoingPreOrder;
 
 import java.util.List;
 
 public class AdapterPreOrderHistoryRecy extends RecyclerView.Adapter<AdapterPreOrderHistoryRecy.ViewHolderAdapterPreOrderHistoryRecy> {
 
-    List<ModelOngoingOrder> onGoingPreOrder;
+    List<ModelOngoingPreOrder> onGoingPreOrder;
     Context context;
     AdapterPreOrderHistoryRecycCallbacks callbacks;
 
-    public AdapterPreOrderHistoryRecy(List<ModelOngoingOrder> onGoingPreOrder, Context context, AdapterPreOrderHistoryRecycCallbacks callbacks) {
+    public AdapterPreOrderHistoryRecy(List<ModelOngoingPreOrder> onGoingPreOrder, Context context, AdapterPreOrderHistoryRecycCallbacks callbacks) {
         this.onGoingPreOrder = onGoingPreOrder;
         this.context = context;
         this.callbacks=callbacks;

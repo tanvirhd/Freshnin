@@ -6,8 +6,10 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.freshnin.userapplication.model.ModelCreateNewRegularOrder;
+import com.freshnin.userapplication.model.ModelOnGoingOrder;
 import com.freshnin.userapplication.model.ModelRegularItem;
 import com.freshnin.userapplication.model.ModelResponse;
+import com.freshnin.userapplication.model.ModelUser;
 import com.freshnin.userapplication.network.ApiClient;
 import com.freshnin.userapplication.network.ApiInterface;
 
@@ -93,6 +95,31 @@ public class RepositoryRegularOrder {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
                         Log.d(TAG, "createNewRegularOrder: error"+throwable.getMessage());
+                        result.postValue(null);
+                    }
+                });
+        return result;
+    }
+
+
+    public LiveData<List<ModelOnGoingOrder>> getOngoingOrderInformationByUser(ModelUser modelUser){
+        MutableLiveData<List<ModelOnGoingOrder>> result= new MutableLiveData<>();
+
+        apiInterface.getOngoingOrderInformationByUser(modelUser).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<List<ModelOnGoingOrder>>() {
+                    @Override
+                    public void accept(List<ModelOnGoingOrder> modelOnGoingOrders) throws Exception {
+                        if(modelOnGoingOrders!=null){
+                            result.postValue(modelOnGoingOrders);
+                        }else{
+                            result.postValue(null);
+                        }
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        Log.d(TAG, "getOngoingOrderInformationByUser: error"+throwable.getMessage());
                         result.postValue(null);
                     }
                 });

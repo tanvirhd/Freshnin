@@ -4,7 +4,8 @@ import com.freshnin.userapplication.model.ModelCreateNewPreOrder;
 import com.freshnin.userapplication.model.ModelCreateNewRegularOrder;
 import com.freshnin.userapplication.model.ModelLogIn;
 import com.freshnin.userapplication.model.ModelNewUserRegistration;
-import com.freshnin.userapplication.model.ModelOngoingOrder;
+import com.freshnin.userapplication.model.ModelOnGoingOrder;
+import com.freshnin.userapplication.model.ModelOngoingPreOrder;
 import com.freshnin.userapplication.model.ModelPreOrderItem;
 import com.freshnin.userapplication.model.ModelRegularItem;
 import com.freshnin.userapplication.model.ModelResponse;
@@ -39,7 +40,7 @@ public interface ApiInterface {
     Observable<ModelResponse> createNewPreOrder(@Body ModelCreateNewPreOrder order);
 
     @POST("getOngoingPreOrderInformationByUser.php")
-    Observable<List<ModelOngoingOrder>> getOngoingPreOrderInformationByUser(@Body ModelUser modelUser);
+    Observable<List<ModelOngoingPreOrder>> getOngoingPreOrderInformationByUser(@Body ModelUser modelUser);
 
 
     // Regular order related
@@ -49,6 +50,10 @@ public interface ApiInterface {
     @POST("getAllItemByCategory.php")
     Observable<List<ModelRegularItem>> getAllItemsByCategory(@Body ModelRegularItem modelRegularItem);
 
-    @POST ("createNewRegularOrder.php")
+    @POST("createNewRegularOrder.php")
     Observable<ModelResponse> createNewRegularOrder(@Body ModelCreateNewRegularOrder modelCreateNewRegularOrder);
+
+    @POST("getOngoingOrderInformationByUser.php")
+    Observable<List<ModelOnGoingOrder>> getOngoingOrderInformationByUser(@Body ModelUser modelUser);
+
 }

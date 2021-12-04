@@ -7,15 +7,13 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.freshnin.userapplication.model.ModelCreateNewPreOrder;
-import com.freshnin.userapplication.model.ModelOngoingOrder;
+import com.freshnin.userapplication.model.ModelOngoingPreOrder;
 import com.freshnin.userapplication.model.ModelPreOrderItem;
 import com.freshnin.userapplication.model.ModelResponse;
 import com.freshnin.userapplication.model.ModelUser;
 import com.freshnin.userapplication.repository.RepositoryPreOrderItem;
 
 import java.util.List;
-
-import retrofit2.http.Body;
 
 public class ViewModelPreOrderItem extends AndroidViewModel {
 
@@ -34,7 +32,7 @@ public class ViewModelPreOrderItem extends AndroidViewModel {
         return repositoryPreOrderItem.createNewPreOrder(order);
     }
 
-    public LiveData<List<ModelOngoingOrder>> getOngoingPreOrderInformationByUser(ModelUser modelUser){
+    public LiveData<List<ModelOngoingPreOrder>> getOngoingPreOrderInformationByUser(ModelUser modelUser){
         return repositoryPreOrderItem.getOngoingPreOrderInformationByUser(modelUser);
     }
 }

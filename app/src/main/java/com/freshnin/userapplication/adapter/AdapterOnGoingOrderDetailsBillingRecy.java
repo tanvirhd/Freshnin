@@ -11,15 +11,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.model.ModelFoodItem;
+import com.freshnin.userapplication.model.ModelRegularItem;
 
 import java.util.List;
 
 public class AdapterOnGoingOrderDetailsBillingRecy extends RecyclerView.Adapter<AdapterOnGoingOrderDetailsBillingRecy.ViewHolderAdapterOnGoingOrderDetailsBillingRecy>{
 
-    List<ModelFoodItem> itemBillingList;
+    List<ModelRegularItem> itemBillingList;
     Context context;
 
-    public AdapterOnGoingOrderDetailsBillingRecy(List<ModelFoodItem> itemBillingList, Context context) {
+    public AdapterOnGoingOrderDetailsBillingRecy(List<ModelRegularItem> itemBillingList, Context context) {
         this.itemBillingList = itemBillingList;
         this.context = context;
     }
@@ -35,8 +36,8 @@ public class AdapterOnGoingOrderDetailsBillingRecy extends RecyclerView.Adapter<
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderAdapterOnGoingOrderDetailsBillingRecy holder, int position) {
-        holder.tvFoodName.setText(itemBillingList.get(position).getFoodName());
-        holder.tvFoodPrice.setText(itemBillingList.get(position).getFoodPrice());
+        holder.tvFoodName.setText(itemBillingList.get(position).getProductName());
+        holder.tvFoodPrice.setText(itemBillingList.get(position).getProductUnitPrice());
     }
 
     @Override
