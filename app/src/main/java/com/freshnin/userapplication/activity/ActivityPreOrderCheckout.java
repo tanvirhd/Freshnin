@@ -45,9 +45,8 @@ public class ActivityPreOrderCheckout extends AppCompatActivity {
     private RadioGroup radioGroupPaymentMethod;
     private RadioButton radioInTown;
 
-    private Random randomNumber;
-    private String randOne,randTwo;
-    private int orderQuantity=1,deliveryCharge=0;
+    private int orderQuantity=1,deliveryCharge=0,totalBill=0;
+    private double advanceBillAmount=0;
     boolean inTownDelivery=false,isAdvancePaymentMethodSelected=false;
     private String advancePaymentMethod="";
 
@@ -70,28 +69,6 @@ public class ActivityPreOrderCheckout extends AppCompatActivity {
             }
         });
 
-
-        ivQuantityIncrease.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                orderQuantity++;
-                onQuantityChanged(orderQuantity);
-            }
-        });
-
-        ivQuantityDecrease.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(orderQuantity>=2){
-                    orderQuantity--;
-                    onQuantityChanged(orderQuantity);
-                }else{
-                    Toast.makeText(ActivityPreOrderCheckout.this, "Minimum Quantity 1", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-
         btnPlaceOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,13 +90,26 @@ public class ActivityPreOrderCheckout extends AppCompatActivity {
                 if(checkedId == R.id.apoic_rbtn_inside_chittagong){
                     deliveryCharge=80;
                     tvDeliveryCharge.setText(String.valueOf(deliveryCharge));
+
+                    int unitPrice=Integer.parseInt(itemDetails.getProductUnitPrice());
+                    int tBill=(orderQuantity*unitPrice)+deliveryCharge;
+                    tvBillingTotalBill.setText((tBill)+"");
+
+                    double advanceBill=tBill*(30/100.00);
+                    tvBillThirtyPercent.setText(String.valueOf(advanceBill));
                 }else if(checkedId == R.id.apoic_rbtn_outside_chittagong) {
                     deliveryCharge=120;
                     tvDeliveryCharge.setText(String.valueOf(deliveryCharge));
+
+                    int unitPrice=Integer.parseInt(itemDetails.getProductUnitPrice());
+                    int tBill=(orderQuantity*unitPrice)+deliveryCharge;
+                    tvBillingTotalBill.setText((tBill)+"");
+
+                    double advanceBill=tBill*(30/100.00);
+                    tvBillThirtyPercent.setText(String.valueOf(advanceBill));
                 }
             }
         });
-
 
         radioGroupPaymentMethod.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -137,6 +127,26 @@ public class ActivityPreOrderCheckout extends AppCompatActivity {
                         isAdvancePaymentMethodSelected=true;
                         advancePaymentMethod="Rocket";
                         break;
+                }
+            }
+        });
+
+        ivQuantityIncrease.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                orderQuantity++;
+                onQuantityChanged(orderQuantity);
+            }
+        });
+
+        ivQuantityDecrease.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(orderQuantity>=2){
+                    orderQuantity--;
+                    onQuantityChanged(orderQuantity);
+                }else{
+                    Toast.makeText(ActivityPreOrderCheckout.this, "Minimum Quantity 1", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -181,25 +191,24 @@ public class ActivityPreOrderCheckout extends AppCompatActivity {
     }
 
     private void updateUi() {
+        inTownDelivery=true; //default inTownDelivery true;
+        radioInTown.setChecked(true);
+
+
+        deliveryCharge=80;
+        totalBill=Integer.valueOf(itemDetails.getProductUnitPrice());
+        advanceBillAmount=(Integer.parseInt(itemDetails.getProductUnitPrice())) *(30/100.00);
+
+        tvTotalQuantity.setText(String.valueOf(orderQuantity));
+        tvBillingTotalBill.setText((totalBill+deliveryCharge)+"");
+        tvDeliveryCharge.setText(String.valueOf(deliveryCharge));
+        tvBillThirtyPercent.setText(String.valueOf(advanceBillAmount));
+        tvBillingItemPrice.setText(totalBill+"");
+
         tvOrderId.setText(Utils.generate9DigitDeliveryID(itemDetails.getPreOrderProductName().substring(0,3)));
         Picasso.with(this).load(itemDetails.getProductPicUrl()).into(ivItemImage);
         tvItemName.setText(itemDetails.getPreOrderProductName());
-
-        tvTotalQuantity.setText(String.valueOf(orderQuantity));
-
         tvBillingItemName.setText(itemDetails.getPreOrderProductName());
-        tvBillingItemPrice.setText(itemDetails.getProductUnitPrice());
-
-        tvBillingTotalBill.setText(itemDetails.getProductUnitPrice());
-        double advanceBillAmount=(Integer.parseInt(itemDetails.getProductUnitPrice())) *(30/100.00);
-        tvBillThirtyPercent.setText(String.valueOf(advanceBillAmount));
-
-
-        inTownDelivery=true; //default inTownDelivery true;
-        deliveryCharge=80;
-        radioInTown.setChecked(true);
-        tvDeliveryCharge.setText(String.valueOf(deliveryCharge));
-
     }
 
 
@@ -209,11 +218,10 @@ public class ActivityPreOrderCheckout extends AppCompatActivity {
         int totalBil=(orderQuantity*unitPrice)+deliveryCharge;
         double advanceBill=totalBil*(30/100.00);
 
-
-        tvBillingItemPrice.setText(String.valueOf(netPrice));
         tvTotalQuantity.setText(String.valueOf(orderQuantity));
         tvBillingTotalBill.setText(String.valueOf(totalBil));
         tvBillThirtyPercent.setText(String.valueOf(advanceBill));
+        tvBillingItemPrice.setText(String.valueOf(netPrice));
 
     }
 

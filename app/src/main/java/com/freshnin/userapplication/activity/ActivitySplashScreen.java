@@ -1,12 +1,10 @@
 package com.freshnin.userapplication.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.tools.GlobalKey;
 import com.freshnin.userapplication.tools.Utils;
