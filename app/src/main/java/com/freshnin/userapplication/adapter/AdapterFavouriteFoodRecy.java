@@ -8,21 +8,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.callbacks.AdapterFavouriteFoodRecyCallBacks;
 import com.freshnin.userapplication.model.ModelFoodItem;
+import com.freshnin.userapplication.model.ModelRegularItem;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class AdapterFavouriteFoodRecy extends RecyclerView.Adapter<AdapterFavouriteFoodRecy.ViewHolderAdapterFavouriteItemRecy>{
 
-    List<ModelFoodItem> favouriteFoodList;
+    List<ModelRegularItem> favouriteFoodList;
     Context context;
     AdapterFavouriteFoodRecyCallBacks favouriteFoodRecyCallBacks;
 
-    public AdapterFavouriteFoodRecy(List<ModelFoodItem> favouriteFoodList, Context context, AdapterFavouriteFoodRecyCallBacks favouriteFoodRecyCallBacks) {
+    public AdapterFavouriteFoodRecy(List<ModelRegularItem> favouriteFoodList, Context context, AdapterFavouriteFoodRecyCallBacks favouriteFoodRecyCallBacks) {
         this.favouriteFoodList = favouriteFoodList;
         this.context = context;
         this.favouriteFoodRecyCallBacks = favouriteFoodRecyCallBacks;
@@ -39,12 +42,14 @@ public class AdapterFavouriteFoodRecy extends RecyclerView.Adapter<AdapterFavour
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderAdapterFavouriteItemRecy holder, int position) {
-        ModelFoodItem favouriteFood=favouriteFoodList.get(position);
+        ModelRegularItem favouriteFood=favouriteFoodList.get(position);
         int index=position;
 
-        holder.ivFavFoodImage.setImageResource(favouriteFoodList.get(position).getFoodImage());
-        holder.tvFavFoobName.setText(favouriteFoodList.get(position).getFoodName());
-        holder.tvFavFoodPrice.setText(favouriteFoodList.get(position).getFoodPrice());
+       // holder.ivFavFoodImage.setImageResource(favouriteFoodList.get(position).get);
+
+        Picasso.with(context).load(favouriteFoodList.get(position).getProductPicUrl()).into(holder.ivFavFoodImage);
+        holder.tvFavFoobName.setText(favouriteFoodList.get(position).getProductName());
+        holder.tvFavFoodPrice.setText(favouriteFoodList.get(position).getProductUnitPrice());
 
         holder.btnRemoveFromFavouriteFood.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +58,19 @@ public class AdapterFavouriteFoodRecy extends RecyclerView.Adapter<AdapterFavour
             }
         });
 
+        holder.favouriteItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                favouriteFoodRecyCallBacks.onItemClicked(index);
+            }
+        });
+
+        holder.btnAddToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                favouriteFoodRecyCallBacks.onAddToCartClicked(index);
+            }
+        });
     }
 
     @Override
@@ -63,7 +81,8 @@ public class AdapterFavouriteFoodRecy extends RecyclerView.Adapter<AdapterFavour
     public class ViewHolderAdapterFavouriteItemRecy extends RecyclerView.ViewHolder{
 
         ImageView ivFavFoodImage, btnRemoveFromFavouriteFood;
-        TextView tvFavFoobName, tvFavFoodPrice;
+        TextView tvFavFoobName, tvFavFoodPrice, btnAddToCart;
+        ConstraintLayout favouriteItem;
 
         public ViewHolderAdapterFavouriteItemRecy(@NonNull View itemView) {
             super(itemView);
@@ -74,6 +93,8 @@ public class AdapterFavouriteFoodRecy extends RecyclerView.Adapter<AdapterFavour
             tvFavFoodPrice=itemView.findViewById(R.id.aff_tvFoodPrice);
             btnRemoveFromFavouriteFood =itemView.findViewById(R.id.aff_ivFavouriteFood);
 
+            favouriteItem=itemView.findViewById(R.id.aff_item);
+            btnAddToCart=itemView.findViewById(R.id.aff_btn_add_to_cart);
         }
     }
 }

@@ -2,6 +2,7 @@ package com.freshnin.userapplication.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,6 +23,7 @@ import com.freshnin.userapplication.callbacks.AdapterFoodItemListRecycCallBacks;
 import com.freshnin.userapplication.model.ModelMyCartItem;
 import com.freshnin.userapplication.model.ModelRegularItem;
 import com.freshnin.userapplication.tools.Utils;
+import com.freshnin.userapplication.viewmodel.ViewModelFavouriteFood;
 import com.freshnin.userapplication.viewmodel.ViewModelMyCartItem;
 import com.freshnin.userapplication.viewmodel.ViewModelRegularItem;
 
@@ -41,6 +43,7 @@ public class ActivityFoodItemList extends AppCompatActivity implements AdapterFo
     private ModelRegularItem itemId;
     private ViewModelMyCartItem viewModelMyCartItem;
 
+    private ViewModelFavouriteFood viewModelFavouriteFood;
 
     private Dialog dialogLoading;
 
@@ -65,10 +68,15 @@ public class ActivityFoodItemList extends AppCompatActivity implements AdapterFo
     protected void onResume() {
         super.onResume();
         getItemsByCategory();
+        //getAllFavouriteItems();
     }
+
+
 
     private void getItemsByCategory(){
         dialogLoading.show();
+
+        //LiveData<List<ModelRegularItem>> favouriteItemList = viewModelFavouriteFood.getAllFavouriteFood();
 
         viewModelRegularItem.getAllItemsByCategory(itemId).observe(this, new Observer<List<ModelRegularItem>>() {
             @Override
@@ -87,6 +95,15 @@ public class ActivityFoodItemList extends AppCompatActivity implements AdapterFo
             }
         });
     }
+
+/*    private void getAllFavouriteItems() {
+        viewModelFavouriteFood.getAllFavouriteFood().observe(this, new Observer<List<ModelRegularItem>>() {
+            @Override
+            public void onChanged(List<ModelRegularItem> modelRegularItems) {
+                // Todo need to work
+            }
+        });
+    }*/
 
 
     @Override
@@ -109,6 +126,8 @@ public class ActivityFoodItemList extends AppCompatActivity implements AdapterFo
 
         viewModelRegularItem= new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(ViewModelRegularItem.class);
         viewModelMyCartItem=new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(ViewModelMyCartItem.class);
+        viewModelFavouriteFood=new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(ViewModelFavouriteFood.class);
+
 
         dialogLoading= Utils.setupLoadingDialog(this);
         itemId=new ModelRegularItem(getIntent().getExtras().getString("foodId"));
@@ -135,6 +154,24 @@ public class ActivityFoodItemList extends AppCompatActivity implements AdapterFo
                 )
         );
         Toast.makeText(this, "Item added to cart", Toast.LENGTH_SHORT).show();
+    }
+
+
+    @Override
+    public void onFavouriteClicked(int position) {
+        viewModelFavouriteFood.insertFavouriteFood(
+                new ModelRegularItem(
+                        foodItems.get(position).getProductId(),
+                        foodItems.get(position).getProductName(),
+                        foodItems.get(position).getProductDes(),
+                        foodItems.get(position).getProductPicUrl(),
+                        foodItems.get(position).getProductUnitPrice(),
+                        foodItems.get(position).getProductUnitWeight(),
+                        foodItems.get(position).getInStock(),
+                        foodItems.get(position).getProductCategory()
+                )
+        );
+        Toast.makeText(this, "Item Added to favourite", Toast.LENGTH_SHORT).show();
     }
 
 }

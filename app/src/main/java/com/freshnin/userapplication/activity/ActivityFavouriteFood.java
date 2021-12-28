@@ -7,15 +7,22 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Toast;
 
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.adapter.AdapterFavouriteFoodRecy;
 import com.freshnin.userapplication.callbacks.AdapterFavouriteFoodRecyCallBacks;
 import com.freshnin.userapplication.model.ModelFoodItem;
+import com.freshnin.userapplication.model.ModelMyCartItem;
+import com.freshnin.userapplication.model.ModelRegularItem;
+import com.freshnin.userapplication.tools.Utils;
 import com.freshnin.userapplication.viewmodel.ViewModelFavouriteFood;
+import com.freshnin.userapplication.viewmodel.ViewModelMyCartItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +32,12 @@ public class ActivityFavouriteFood extends AppCompatActivity implements AdapterF
     private Toolbar toolbar;
     private RecyclerView favouriteFoodRecy;
     private AdapterFavouriteFoodRecy adapterFavouriteFoodRecy;
-    private List<ModelFoodItem> favouriteFoodList;
+    private List<ModelRegularItem> favouriteFoodList;
 
     private ViewModelFavouriteFood viewModelFavouriteFood;
+    private ViewModelMyCartItem viewModelMyCartItem;
+
+    private Dialog dialogLoading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +46,7 @@ public class ActivityFavouriteFood extends AppCompatActivity implements AdapterF
 
         init();
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,13 +61,16 @@ public class ActivityFavouriteFood extends AppCompatActivity implements AdapterF
 
     @Override
     protected void onResume() {
+        dialogLoading.show();
         super.onResume();
-        viewModelFavouriteFood.getAllFavouriteFood().observe(this, new Observer<List<ModelFoodItem>>() {
+        viewModelFavouriteFood.getAllFavouriteFood().observe(this, new Observer<List<ModelRegularItem>>() {
             @Override
-            public void onChanged(List<ModelFoodItem> modelFoodItems) {
+            public void onChanged(List<ModelRegularItem> modelRegularItems) {
                 favouriteFoodList.clear();
-                favouriteFoodList.addAll(modelFoodItems);
+                favouriteFoodList.addAll(modelRegularItems);
                 adapterFavouriteFoodRecy.notifyDataSetChanged();
+
+                dialogLoading.dismiss();
             }
         });
     }
@@ -69,10 +82,32 @@ public class ActivityFavouriteFood extends AppCompatActivity implements AdapterF
         return true;
     }
 
+
     @Override
-    public void onUnFavouriteClicked(ModelFoodItem modelFoodItem, int position) {
-        viewModelFavouriteFood.deleteFavouriteFoodById(modelFoodItem.id);
+    public void onUnFavouriteClicked(ModelRegularItem regularItem, int position) {
+        viewModelFavouriteFood.deleteFavouriteFoodById(regularItem.getId());
         viewModelFavouriteFood.getAllFavouriteFood();
+        Toast.makeText(this, "item deleted from favourite", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onItemClicked(int index) {
+        Intent intent=new Intent(this,ActivityFoodItemDetails.class);
+        intent.putExtra("parcel",favouriteFoodList.get(index));
+        startActivity(intent);
+    }
+
+    @Override
+    public void onAddToCartClicked(int index) {
+        viewModelMyCartItem.insertNewMyCartItem(
+                new ModelMyCartItem(
+                        favouriteFoodList.get(index).getProductName(),
+                        favouriteFoodList.get(index).getProductUnitPrice(),
+                        1+"",
+                        favouriteFoodList.get(index).getProductId()
+                )
+        );
+        Toast.makeText(this, "added to cart", Toast.LENGTH_SHORT).show();
     }
 
     private void init() {
@@ -84,31 +119,8 @@ public class ActivityFavouriteFood extends AppCompatActivity implements AdapterF
         adapterFavouriteFoodRecy =new AdapterFavouriteFoodRecy(favouriteFoodList, ActivityFavouriteFood.this, (AdapterFavouriteFoodRecyCallBacks) ActivityFavouriteFood.this);
 
         viewModelFavouriteFood=new ViewModelProvider(this).get(ViewModelFavouriteFood.class);
-        viewModelFavouriteFood.insertFavouriteFood(new ModelFoodItem(
-                "Bogurar Doi",
-                "230 Tk",
-                "300 gm",
-                "f1",
-                true,
-                R.drawable.food_bogurar_doi
-        ));
+        viewModelMyCartItem=new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(ViewModelMyCartItem.class);
 
-        viewModelFavouriteFood.insertFavouriteFood(new ModelFoodItem(
-                "Bogurar Khirsha",
-                "330 Tk",
-                "300 gm",
-                "f2",
-                true,
-                R.drawable.food_bogurar_khirsha
-        ));
-
-        viewModelFavouriteFood.insertFavouriteFood(new ModelFoodItem(
-                "Bogurar Doi",
-                "230 Tk",
-                "300 gm",
-                "f3",
-                true,
-                R.drawable.food_bogurar_doi
-        ));
+        dialogLoading= Utils.setupLoadingDialog(this);
     }
 }

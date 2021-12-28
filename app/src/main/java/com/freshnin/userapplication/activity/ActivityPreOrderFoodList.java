@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.freshnin.userapplication.R;
 import com.freshnin.userapplication.adapter.AdapterPreOrderFoodRecy;
 import com.freshnin.userapplication.callbacks.AdapterPreOrderFoodRecycCallBacks;
-import com.freshnin.userapplication.model.ModelPreOrderFood;
 import com.freshnin.userapplication.model.ModelPreOrderItem;
 import com.freshnin.userapplication.tools.Utils;
 import com.freshnin.userapplication.viewmodel.ViewModelPreOrderItem;

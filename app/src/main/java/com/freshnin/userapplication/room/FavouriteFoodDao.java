@@ -6,6 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 
 import com.freshnin.userapplication.model.ModelFoodItem;
+import com.freshnin.userapplication.model.ModelRegularItem;
 
 import java.util.List;
 
@@ -13,12 +14,12 @@ import java.util.List;
 public interface FavouriteFoodDao {
 
     @Insert
-    void insertFavouriteFood(ModelFoodItem foodItem);
+    void insertFavouriteFood(ModelRegularItem regularItem);
 
-    @Query("delete from food_table where id=:favouriteFoodId")
+    @Query("delete from myCartItem_table where id=:favouriteFoodId")
     void deleteFavouriteFoodById(int favouriteFoodId);
 
-    @Query("select * from food_table")
-    LiveData<List<ModelFoodItem>> getAllFavouriteFood();
+    @Query("select * from myCartItem_table")
+    LiveData<List<ModelRegularItem>> getAllFavouriteFood();
 
 }

@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.Expose;
@@ -44,6 +45,10 @@ public class ModelRegularItem implements Parcelable {
     @Expose
     private String productCategory;
 
+    private boolean isFavourite;
+
+
+    @Ignore
     public ModelRegularItem(String productId, String productName, String productDes, String productPicUrl,
                             String productUnitPrice, String productUnitWeight, String inStock, String productCategory) {
         this.productId = productId;
@@ -56,7 +61,8 @@ public class ModelRegularItem implements Parcelable {
         this.productCategory = productCategory;
     }
 
-    public ModelRegularItem(int id, String productId, String productName, String productDes, String productPicUrl, String productUnitPrice, String productUnitWeight, String inStock, String productCategory) {
+    public ModelRegularItem(String productId, String productName, String productDes, String productPicUrl, String productUnitPrice,
+                            String productUnitWeight, String inStock, String productCategory, boolean isFavourite) {
         this.id = id;
         this.productId = productId;
         this.productName = productName;
@@ -66,6 +72,7 @@ public class ModelRegularItem implements Parcelable {
         this.productUnitWeight = productUnitWeight;
         this.inStock = inStock;
         this.productCategory = productCategory;
+        this.isFavourite = isFavourite;
     }
 
     public ModelRegularItem() {
@@ -193,4 +200,11 @@ public class ModelRegularItem implements Parcelable {
     }
 
 
+    public boolean isFavourite() {
+        return isFavourite;
+    }
+
+    public void setFavourite(boolean favourite) {
+        isFavourite = favourite;
+    }
 }

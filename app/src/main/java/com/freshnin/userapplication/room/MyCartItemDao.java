@@ -15,15 +15,15 @@ public interface MyCartItemDao {
     @Insert
     void insertNewItemInMyCart(ModelMyCartItem myCartItem);
 
-    @Query("delete from myCartItem_table where id=:myCartItemID")
+    @Query("delete from myCartItems_table where id=:myCartItemID")
     void deleteMyCartItemByID(int myCartItemID);
 
-    @Query("select * from myCartItem_table")
+    @Query("select * from myCartItems_table")
     LiveData<List<ModelMyCartItem>> getAllMyCartItem();
 
-    @Query("update myCartItem_table set foodName=:foodName, foodPrice=:foodPrice, foodQuantity=:foodQuantity,foodId=:foodId where id=:id")
+    @Query("update myCartItems_table set foodName=:foodName, foodPrice=:foodPrice, foodQuantity=:foodQuantity,foodId=:foodId where id=:id")
     void updateMyCartItem(int id, String foodName, String foodPrice, String foodQuantity,String foodId);
 
-    @Query("delete from myCartItem_table")
+    @Query("delete from myCartItems_table")
     void deleteAllItemFromMyCart();
 }

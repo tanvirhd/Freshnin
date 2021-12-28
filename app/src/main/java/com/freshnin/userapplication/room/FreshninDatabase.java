@@ -9,11 +9,12 @@ import androidx.room.RoomDatabase;
 
 import com.freshnin.userapplication.model.ModelFoodItem;
 import com.freshnin.userapplication.model.ModelMyCartItem;
+import com.freshnin.userapplication.model.ModelRegularItem;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {ModelMyCartItem.class, ModelFoodItem.class}, version = 3,exportSchema = false)
+@Database(entities = {ModelMyCartItem.class, ModelRegularItem.class}, version = 3,exportSchema = false)
 public abstract class FreshninDatabase extends RoomDatabase {
 
     public abstract MyCartItemDao getMyCartItemDao();

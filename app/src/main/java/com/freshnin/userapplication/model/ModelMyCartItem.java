@@ -8,7 +8,7 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-@Entity (tableName = "myCartItem_table")
+@Entity (tableName = "myCartItems_table")
 public class ModelMyCartItem implements Parcelable {
 
     @PrimaryKey(autoGenerate = true)

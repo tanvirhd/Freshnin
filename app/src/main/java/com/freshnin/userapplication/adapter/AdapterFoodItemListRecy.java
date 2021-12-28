@@ -57,6 +57,12 @@ public class AdapterFoodItemListRecy extends RecyclerView.Adapter<AdapterFoodIte
             holder.notFavouriteIcon.setVisibility(View.VISIBLE);
         }*/
 
+        holder.favouriteIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adapterFoodItemListRecycCallBacks.onFavouriteClicked(holder.getAdapterPosition());
+            }
+        });
 
         holder.onClickDetailsView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.freshnin.userapplication.model.ModelFoodItem;
+import com.freshnin.userapplication.model.ModelRegularItem;
 import com.freshnin.userapplication.repository.RepositoryFavouriteFood;
 
 import java.util.List;
@@ -20,15 +21,15 @@ public class ViewModelFavouriteFood extends AndroidViewModel {
         repository=new RepositoryFavouriteFood(application);
     }
 
-    public void insertFavouriteFood(ModelFoodItem foodItem){
-        repository.insertFavouriteFood(foodItem);
+    public void insertFavouriteFood(ModelRegularItem regularItem){
+        repository.insertFavouriteFood(regularItem);
     }
 
     public void deleteFavouriteFoodById(int id){
         repository.deleteFavouriteFoodById(id);
     }
 
-    public LiveData<List<ModelFoodItem>> getAllFavouriteFood(){
+    public LiveData<List<ModelRegularItem>> getAllFavouriteFood(){
         return repository.getAllFavouriteFood();
     }
 }

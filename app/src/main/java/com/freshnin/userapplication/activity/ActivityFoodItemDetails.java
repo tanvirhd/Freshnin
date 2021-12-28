@@ -1,5 +1,7 @@
 package com.freshnin.userapplication.activity;
 
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
@@ -9,9 +11,11 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +24,7 @@ import com.freshnin.userapplication.model.ModelCartItemWrapper;
 import com.freshnin.userapplication.model.ModelMyCartItem;
 import com.freshnin.userapplication.model.ModelRegularItem;
 import com.freshnin.userapplication.tools.Utils;
+import com.freshnin.userapplication.viewmodel.ViewModelFavouriteFood;
 import com.freshnin.userapplication.viewmodel.ViewModelMyCartItem;
 import com.squareup.picasso.Picasso;
 
@@ -39,6 +44,8 @@ public class ActivityFoodItemDetails extends AppCompatActivity {
 
     private ModelRegularItem itemDetails;
     private ViewModelMyCartItem viewModelMyCartItem;
+
+    private ViewModelFavouriteFood viewModelFavouriteFood;
 
     private Dialog dialogLoading;
 
@@ -103,6 +110,34 @@ public class ActivityFoodItemDetails extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.afid_menuFavourite:
+                addItemToFavourite();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void addItemToFavourite() {
+        viewModelFavouriteFood.insertFavouriteFood(
+                new ModelRegularItem(
+                        itemDetails.getProductId(),
+                        itemDetails.getProductName(),
+                        itemDetails.getProductDes(),
+                        itemDetails.getProductPicUrl(),
+                        itemDetails.getProductUnitPrice(),
+                        itemDetails.getProductUnitWeight(),
+                        itemDetails.getInStock(),
+                        itemDetails.getProductCategory()
+                )
+        );
+        Toast.makeText(this, "item added to favourite", Toast.LENGTH_SHORT).show();
+    }
+
     void init(){
         toolbar=findViewById(R.id.afid_toolbar_food_item_details);
         setSupportActionBar(toolbar);
@@ -115,6 +150,8 @@ public class ActivityFoodItemDetails extends AppCompatActivity {
         ivItemImage=findViewById(R.id.afid_ivFoodPicture);
 
         viewModelMyCartItem=new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(ViewModelMyCartItem.class);
+        viewModelFavouriteFood=new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(ViewModelFavouriteFood.class);
+
         dialogLoading= Utils.setupLoadingDialog(ActivityFoodItemDetails.this);
         itemDetails=getIntent().getExtras().getParcelable("parcel");
         if(itemDetails!=null){
